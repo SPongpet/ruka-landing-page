@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #2c2c2c;
+  --primary: #A6171C; /* Ruby */
+  --secondary: #F1C045; /* Sunny */
+
+  --primary-accent: #8a1419; /* Darker Ruby */
+  --foreground-accent: #666666;
+  --hero-background: #FBF9F6; /* Light Natural tone */
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply text-lg;
+  
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', 'Kanit', Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: #FBF9F6; /* Light Natural background */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.manrope {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.kanit {
+  font-family: "Kanit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', 'Kanit', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Support Thai text better */
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Kanit', 'Inter', Arial, sans-serif;
+}
+
+#logos svg {
+  @apply w-fit h-10 sm:h-12;
+}
+
+.benefit-section:last-of-type > div {
+  @apply mb-10;
+}
+
+/* Add premium visual enhancements */
+.premium-gradient {
+  background: linear-gradient(135deg, #A6171C 0%, #F1C045 100%);
+}
+
+.premium-shadow {
+  box-shadow: 0 10px 40px rgba(166, 23, 28, 0.1);
+}

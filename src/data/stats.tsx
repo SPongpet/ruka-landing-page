@@ -1,4 +1,4 @@
-import { BsBarChartFill, BsFillStarFill } from "react-icons/bs";
+import { BsFillStarFill } from "react-icons/bs";
 import { PiGlobeFill } from "react-icons/pi";
 import { FiGift } from "react-icons/fi";
 

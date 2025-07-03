@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -8,7 +9,6 @@ import {
   FiPhone,
   FiMapPin,
   FiSend,
-  FiUser,
   FiMessageCircle,
 } from "react-icons/fi";
 

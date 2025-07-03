@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { productCategories } from "@/data/products";
 import { productDetails } from "@/data/productDetails";
 import {
-  FiArrowLeft,
   FiShoppingCart,
   FiHeart,
   FiShare2,

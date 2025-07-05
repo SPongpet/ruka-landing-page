@@ -5,14 +5,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #2c2c2c;
-  --primary: #A6171C; /* Ruby */
-  --secondary: #F1C045; /* Sunny */
+  --background: #fdf8f6; /* Very light warm background based on natural */
+  --foreground: #2d1a18; /* Dark brown text */
+  --primary: #A6171C; /* Ruby - main color */
+  --secondary: #F1C045; /* Sunny - accent */
+  --natural: #D6D0C5; /* Natural - supporting color */
 
   --primary-accent: #8a1419; /* Darker Ruby */
-  --foreground-accent: #666666;
-  --hero-background: #FBF9F6; /* Light Natural tone */
+  --foreground-accent: #4a3631; /* Warm brown accent */
+  --hero-background: #f9f3f1; /* Very light warm tone */
 }
 
 html {
@@ -23,11 +24,12 @@ body {
   @apply text-lg;
   
   color: var(--foreground);
-  background: var(--background);
+   /* background: linear-gradient(135deg, #ffe1e2 0%, #ffa1a4 25%, #f63d43 50%, #e31f26 75%, #a6171c 100%);Ruby-focused gradient with natural tones */
+  background: linear-gradient(135deg, #ffe1e2 0%, #ffe1e2 25%, #ffe1e2 50%, #ffe1e2 75%, #ffe1e2 100%); /* Ruby-focused gradient with natural tones */
   font-family: 'Inter', 'Kanit', Arial, sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  background-color: #FBF9F6; /* Light Natural background */
+  min-height: 100vh;
 }
 
 @layer utilities {

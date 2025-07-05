@@ -35,7 +35,7 @@ export const benefits: IBenefit[] = [
         icon: <FiTrendingUp size={26} />,
       },
     ],
-    imageSrc: "/images/mockup-1.webp",
+    imageSrc: "/images/199161ac4ca4d2492f12d7f9dd9fb58f.jpg",
   },
   {
     title: "Custom Branding Solutions",
@@ -58,7 +58,7 @@ export const benefits: IBenefit[] = [
         icon: <FiShield size={26} />,
       },
     ],
-    imageSrc: "/images/mockup-2.webp",
+    imageSrc: "/images/43575aacf8381b811215cb2d16ef67da.jpg",
   },
   {
     title: "Professional Service & Support",
@@ -81,6 +81,6 @@ export const benefits: IBenefit[] = [
         icon: <FiHeart size={26} />,
       },
     ],
-    imageSrc: "/images/mockup-1.webp",
+    imageSrc: "/images/f5cbc3c2a34acaa9da5f7d68a9bb1cc5.jpg",
   },
 ];

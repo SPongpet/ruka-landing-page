@@ -32,32 +32,32 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-natural/10 to-white pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
       <div className="container mx-auto px-4">
         {/* Breadcrumb */}
         <div className="mb-8 flex items-center gap-2 text-sm">
           <Link
             href="/products"
-            className="text-ruby hover:text-ruby/80 transition-colors"
+            className="text-[#A6171C] hover:text-[#8a1419] transition-colors"
           >
             สินค้า
           </Link>
-          <span className="text-foreground-accent">{">"}</span>
+          <span className="text-[#4a3631]">{">"}</span>
           <Link
             href={`/products/${categoryId}`}
-            className="text-ruby hover:text-ruby/80 transition-colors"
+            className="text-[#A6171C] hover:text-[#8a1419] transition-colors"
           >
             {category.name}
           </Link>
-          <span className="text-foreground-accent">{">"}</span>
-          <span className="text-foreground-accent">{product.name}</span>
+          <span className="text-[#4a3631]">{">"}</span>
+          <span className="text-[#4a3631]">{product.name}</span>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Product Images */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="aspect-square bg-gradient-to-br from-natural/20 to-natural/40 rounded-3xl flex items-center justify-center">
+            <div className="aspect-square bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-3xl flex items-center justify-center shadow-lg">
               <div className="text-9xl opacity-60">{category.icon}</div>
             </div>
 
@@ -66,7 +66,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
               {[1, 2, 3, 4].map((index) => (
                 <div
                   key={index}
-                  className="aspect-square bg-gradient-to-br from-natural/20 to-natural/30 rounded-2xl flex items-center justify-center cursor-pointer hover:shadow-lg transition-shadow"
+                  className="aspect-square bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-2xl flex items-center justify-center cursor-pointer hover:shadow-lg transition-shadow"
                 >
                   <div className="text-2xl opacity-60">{category.icon}</div>
                 </div>
@@ -77,41 +77,37 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
           {/* Product Details */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-[#2d1a18] mb-4 drop-shadow-lg">
                 {product.name}
               </h1>
-              <p className="text-foreground-accent text-lg leading-relaxed">
+              <p className="text-[#4a3631] text-lg leading-relaxed">
                 {product.description}
               </p>
             </div>
 
             {/* Price and Order Info */}
-            <div className="bg-sunny/10 rounded-2xl p-6 border border-sunny/30">
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 border border-[#A6171C]/20 shadow-lg">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <span className="text-3xl font-bold text-ruby">
+                  <span className="text-3xl font-bold text-[#A6171C]">
                     {product.price}
                   </span>
-                  <span className="text-sm text-foreground-accent ml-2">
-                    ต่อชิ้น
-                  </span>
+                  <span className="text-sm text-[#4a3631] ml-2">ต่อชิ้น</span>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm text-foreground-accent">
-                    สั่งขั้นต่ำ
-                  </div>
-                  <div className="text-xl font-semibold text-foreground">
+                  <div className="text-sm text-[#4a3631]">สั่งขั้นต่ำ</div>
+                  <div className="text-xl font-semibold text-[#2d1a18]">
                     {product.minOrder} ชิ้น
                   </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <button className="bg-ruby hover:bg-ruby/90 text-white px-6 py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                <button className="bg-[#A6171C] hover:bg-[#8a1419] text-white px-6 py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
                   <FiShoppingCart size={20} />
                   สอบถามราคา
                 </button>
-                <button className="bg-sunny hover:bg-sunny/90 text-ruby px-6 py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                <button className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-6 py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
                   <FiPhone size={20} />
                   โทรสอบถาม
                 </button>
@@ -120,16 +116,16 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
 
             {/* Customization Options */}
             <div>
-              <h3 className="text-xl font-bold text-foreground mb-4">
+              <h3 className="text-xl font-bold text-[#2d1a18] mb-4">
                 ตัวเลือกการปรับแต่ง
               </h3>
               <div className="grid grid-cols-2 gap-3">
                 {product.customization.map((option, index) => (
                   <div
                     key={index}
-                    className="px-4 py-3 bg-white border border-natural/30 rounded-xl text-center hover:border-ruby hover:bg-ruby/5 transition-colors cursor-pointer"
+                    className="px-4 py-3 bg-white/80 border border-[#A6171C]/20 rounded-xl text-center hover:border-[#A6171C] hover:bg-[#A6171C]/5 transition-colors cursor-pointer shadow-sm"
                   >
-                    <span className="font-semibold text-foreground">
+                    <span className="font-semibold text-[#2d1a18]">
                       {option}
                     </span>
                   </div>
@@ -139,15 +135,15 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
 
             {/* Quick Actions */}
             <div className="flex gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 text-ruby hover:bg-ruby/10 rounded-lg transition-colors">
+              <button className="flex items-center gap-2 px-4 py-2 text-[#A6171C] hover:bg-[#A6171C]/10 rounded-lg transition-colors">
                 <FiHeart size={16} />
                 เพิ่มในรายการโปรด
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 text-ruby hover:bg-ruby/10 rounded-lg transition-colors">
+              <button className="flex items-center gap-2 px-4 py-2 text-[#A6171C] hover:bg-[#A6171C]/10 rounded-lg transition-colors">
                 <FiShare2 size={16} />
                 แชร์สินค้า
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 text-ruby hover:bg-ruby/10 rounded-lg transition-colors">
+              <button className="flex items-center gap-2 px-4 py-2 text-[#A6171C] hover:bg-[#A6171C]/10 rounded-lg transition-colors">
                 <FiDownload size={16} />
                 ดาวน์โหลดข้อมูล
               </button>
@@ -156,35 +152,35 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
         </div>
 
         {/* Product Details Tabs */}
-        <div className="bg-white rounded-3xl shadow-lg border border-natural/20 overflow-hidden mb-16">
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg border border-[#A6171C]/20 overflow-hidden mb-16">
           <div className="grid md:grid-cols-3">
             {/* Features */}
-            <div className="p-8 border-r border-natural/20">
-              <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-                <span className="text-ruby">✨</span>
+            <div className="p-8 border-r border-[#A6171C]/20">
+              <h3 className="text-xl font-bold text-[#2d1a18] mb-6 flex items-center gap-2">
+                <span className="text-[#A6171C]">✨</span>
                 คุณสมบัติเด่น
               </h3>
               <ul className="space-y-3">
                 {product.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="text-ruby mt-1 text-sm">•</span>
-                    <span className="text-foreground-accent">{feature}</span>
+                    <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                    <span className="text-[#4a3631]">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Materials */}
-            <div className="p-8 border-r border-natural/20">
-              <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-                <span className="text-ruby">🔧</span>
+            <div className="p-8 border-r border-[#A6171C]/20">
+              <h3 className="text-xl font-bold text-[#2d1a18] mb-6 flex items-center gap-2">
+                <span className="text-[#A6171C]">🔧</span>
                 วัสดุและคุณภาพ
               </h3>
               <ul className="space-y-3">
                 {product.materials.map((material, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <span className="text-ruby mt-1 text-sm">•</span>
-                    <span className="text-foreground-accent">{material}</span>
+                    <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                    <span className="text-[#4a3631]">{material}</span>
                   </li>
                 ))}
               </ul>
@@ -192,54 +188,88 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
 
             {/* Service Info */}
             <div className="p-8">
-              <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-                <span className="text-ruby">🛡️</span>
+              <h3 className="text-xl font-bold text-[#2d1a18] mb-6 flex items-center gap-2">
+                <span className="text-[#A6171C]">🛡️</span>
                 บริการ & การรับประกัน
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <span className="text-ruby mt-1 text-sm">•</span>
-                  <span className="text-foreground-accent">
-                    รับประกันคุณภาพ 1 ปี
+                  <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                  <span className="text-[#4a3631]">รับประกันคุณภาพ 1 ปี</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                  <span className="text-[#4a3631]">
+                    บริการหลังการขายครบวงจร
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-ruby mt-1 text-sm">•</span>
-                  <span className="text-foreground-accent">
-                    จัดส่งฟรีในเขต กทม.
-                  </span>
+                  <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                  <span className="text-[#4a3631]">จัดส่งฟรีทั่วไทย</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-ruby mt-1 text-sm">•</span>
-                  <span className="text-foreground-accent">
-                    ตัวอย่างสินค้าก่อนผลิต
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-ruby mt-1 text-sm">•</span>
-                  <span className="text-foreground-accent">
-                    บริการหลังการขาย 24/7
-                  </span>
+                  <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                  <span className="text-[#4a3631]">ใบเสนอราคาฟรี</span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Contact CTA */}
-        <div className="bg-gradient-to-r from-ruby to-ruby/90 rounded-3xl p-12 text-white text-center">
-          <h3 className="text-3xl font-bold mb-4">สนใจสินค้าชิ้นนี้?</h3>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            ติดต่อทีมผู้เชี่ยวชาญของเราเพื่อขอใบเสนอราคาและคำปรึกษาฟรี
-            เราพร้อมช่วยคุณสร้างของชำร่วยที่สมบูรณ์แบบ
+        {/* Related Products */}
+        <div>
+          <h2 className="text-2xl font-bold text-[#2d1a18] mb-8 text-center">
+            สินค้าแนะนำในหมวดเดียวกัน
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {categoryProducts
+              .filter((p) => p.id !== productId)
+              .slice(0, 3)
+              .map((relatedProduct) => (
+                <Link
+                  key={relatedProduct.id}
+                  href={`/products/${categoryId}/${relatedProduct.id}`}
+                  className="group"
+                >
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-[#A6171C]/20">
+                    <div className="h-40 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-xl flex items-center justify-center mb-4">
+                      <div className="text-4xl opacity-60">{category.icon}</div>
+                    </div>
+                    <h4 className="font-bold text-[#2d1a18] mb-2 group-hover:text-[#A6171C] transition-colors">
+                      {relatedProduct.name}
+                    </h4>
+                    <p className="text-[#4a3631] text-sm mb-3">
+                      {relatedProduct.description}
+                    </p>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#A6171C] font-bold">
+                        {relatedProduct.price}
+                      </span>
+                      <span className="text-xs text-[#4a3631]">
+                        ขั้นต่ำ {relatedProduct.minOrder} ชิ้น
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
+
+        {/* Contact Section */}
+        <div className="mt-16 bg-white/90 backdrop-blur-sm rounded-3xl p-8 text-center shadow-lg border border-[#A6171C]/20">
+          <h3 className="text-2xl font-bold text-[#2d1a18] mb-4">
+            ต้องการปรึกษาเพิ่มเติม?
+          </h3>
+          <p className="text-[#4a3631] mb-6 max-w-2xl mx-auto">
+            ทีมงานผู้เชี่ยวชาญของเราพร้อมให้คำแนะนำและปรับแต่งสินค้าให้ตรงกับความต้องการของคุณ
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-sunny hover:bg-sunny/90 text-ruby px-8 py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
-              <FiPhone size={20} />
-              โทร 02-XXX-XXXX
+            <button className="bg-[#A6171C] hover:bg-[#8a1419] text-white px-8 py-3 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+              <FiPhone size={16} />
+              โทรเลย 02-123-4567
             </button>
-            <button className="bg-transparent hover:bg-white/10 text-white border border-white px-8 py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
-              <FiMail size={20} />
+            <button className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-8 py-3 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+              <FiMail size={16} />
               ส่งอีเมลสอบถาม
             </button>
           </div>

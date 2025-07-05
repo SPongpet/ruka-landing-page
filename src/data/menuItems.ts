@@ -2,27 +2,27 @@ import { IMenuItem } from "@/types";
 
 export const menuItems: IMenuItem[] = [
     {
-        text: "หน้าแรก",
-        url: "#hero"
+        text: "Home",
+        url: "/"
     },
     {
-        text: "สินค้า",
+        text: "About Us",
+        url: "/AboutUs"
+    },
+    {
+        text: "Services",
+        url: "/Services"
+    },
+    {
+        text: "Products",
         url: "/products"
     },
     {
-        text: "บริการ",
-        url: "#features"
+        text: "Blog",
+        url: "/Blog"
     },
     {
-        text: "แพ็คเกจ",
-        url: "#pricing"
-    },
-    {
-        text: "รีวิว",
-        url: "#testimonials"
-    },
-    {
-        text: "ติดต่อ",
+        text: "Contract Us",
         url: "/contact"
     }
 ];

@@ -1,52 +1,30 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import {
+  FiPhone,
+  FiMail,
+  FiMapPin,
+  FiClock,
+  FiMessageSquare,
+  FiDownload,
+  FiPackage,
+  FiShoppingCart,
+} from "react-icons/fi";
 import { productCategories } from "@/data/products";
 import { productDetails } from "@/data/productDetails";
-import {
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiSend,
-  FiMessageCircle,
-} from "react-icons/fi";
 
-interface ContactForm {
-  name: string;
-  email: string;
-  phone: string;
-  company: string;
-  category: string;
-  product: string;
-  quantity: number;
-  message: string;
-}
-
-const ContactPage: React.FC = () => {
-  const [form, setForm] = useState<ContactForm>({
+export default function ContactPage() {
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
+    message: "",
     category: "",
     product: "",
-    quantity: 50,
-    message: "",
+    quantity: 1,
   });
-
-  const [availableProducts, setAvailableProducts] = useState<any[]>([]);
-
-  // Update available products when category changes
-  useEffect(() => {
-    if (form.category) {
-      const products = productDetails[form.category] || [];
-      setAvailableProducts(products);
-      setForm((prev) => ({ ...prev, product: "" })); // Reset product selection
-    } else {
-      setAvailableProducts([]);
-    }
-  }, [form.category]);
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -56,205 +34,167 @@ const ContactPage: React.FC = () => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [name]: name === "quantity" ? parseInt(value) || 0 : value,
+      [name]: value,
+      // Reset product when category changes
+      ...(name === "category" ? { product: "" } : {}),
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log("Form submitted:", form);
-    alert("ขอบคุณสำหรับการติดต่อ! เราจะติดต่อกลับภายใน 24 ชั่วโมง");
+    alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
   };
 
+  // Get products for selected category
+  const selectedCategoryProducts = form.category
+    ? productDetails[form.category] || []
+    : [];
+
+  // Get selected category and product info for display
+  const selectedCategory = productCategories.find(
+    (cat) => cat.id === form.category
+  );
+  const selectedProduct = selectedCategoryProducts.find(
+    (prod) => prod.id === form.product
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-natural/10 to-white pt-24 pb-16">
+    <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
       <div className="container mx-auto px-4">
-        {/* Header */}
+        {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#2d1a18] mb-6 drop-shadow-lg">
             ติดต่อเรา
           </h1>
-          <h2 className="text-2xl md:text-3xl text-ruby font-semibold italic mb-8">
+          <h2 className="text-2xl md:text-3xl text-[#A6171C] font-semibold italic mb-8 drop-shadow-md">
             Contact Us
           </h2>
-          <p className="text-foreground-accent max-w-3xl mx-auto text-lg leading-relaxed">
-            พร้อมให้คำปรึกษาและช่วยคุณเลือกสินค้าของชำร่วยที่เหมาะสมกับความต้องการ
-            กรุณากรอกข้อมูลด้านล่าง เราจะติดต่อกลับทันที
+          <p className="text-[#4a3631] max-w-2xl mx-auto text-lg leading-relaxed">
+            พร้อมให้คำปรึกษาและบริการคุณด้วยความเป็นมืออาชีพ
+            ติดต่อเราได้ทุกช่องทางตลอด 24 ชั่วโมง
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Contact Information */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-natural/20 h-fit">
-              <h3 className="text-2xl font-bold text-foreground mb-8">
-                ข้อมูลการติดต่อ
-              </h3>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-ruby/10 p-3 rounded-2xl">
-                    <FiPhone className="text-ruby" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">
-                      โทรศัพท์
-                    </h4>
-                    <p className="text-foreground-accent">02-XXX-XXXX</p>
-                    <p className="text-foreground-accent">08X-XXX-XXXX</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-ruby/10 p-3 rounded-2xl">
-                    <FiMail className="text-ruby" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">
-                      อีเมล
-                    </h4>
-                    <p className="text-foreground-accent">
-                      contact@rukaworld.com
-                    </p>
-                    <p className="text-foreground-accent">info@rukaworld.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-ruby/10 p-3 rounded-2xl">
-                    <FiMapPin className="text-ruby" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">
-                      ที่อยู่
-                    </h4>
-                    <p className="text-foreground-accent">
-                      123 ถนนสุขุมวิท แขวงคลองเตย
-                      <br />
-                      เขตคลองเตย กรุงเทพฯ 10110
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-8 border-t border-natural/20">
-                <h4 className="font-semibold text-foreground mb-4">
-                  เวลาทำการ
-                </h4>
-                <div className="space-y-2 text-foreground-accent">
-                  <p>จันทร์ - ศุกร์: 8:30 - 17:30</p>
-                  <p>เสาร์: 9:00 - 16:00</p>
-                  <p>อาทิตย์: ปิด</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-natural/20">
-              <h3 className="text-2xl font-bold text-foreground mb-8">
-                ฟอร์มสอบถาม
-              </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-foreground font-semibold mb-2">
-                      ชื่อ-นามสกุล *
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors"
-                      placeholder="กรอกชื่อ-นามสกุล"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-foreground font-semibold mb-2">
-                      อีเมล *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors"
-                      placeholder="example@company.com"
-                    />
-                  </div>
+          <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-[#A6171C]/20">
+            <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
+              ส่งข้อความถึงเรา
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[#2d1a18] font-semibold mb-2">
+                    ชื่อ
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                    placeholder="กรุณากรอกชื่อ"
+                  />
                 </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-foreground font-semibold mb-2">
-                      เบอร์โทรศัพท์ *
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors"
-                      placeholder="08X-XXX-XXXX"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-foreground font-semibold mb-2">
-                      ชื่อบริษัท
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={form.company}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors"
-                      placeholder="ชื่อบริษัท/องค์กร"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-[#2d1a18] font-semibold mb-2">
+                    นามสกุล
+                  </label>
+                  <input
+                    type="text"
+                    name="surname"
+                    className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                    placeholder="กรุณากรอกนามสกุล"
+                  />
                 </div>
+              </div>
 
-                {/* Product Selection */}
+              <div>
+                <label className="block text-[#2d1a18] font-semibold mb-2">
+                  อีเมล
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                  placeholder="กรุณากรอกอีเมล"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[#2d1a18] font-semibold mb-2">
+                  เบอร์โทรศัพท์
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                  placeholder="กรุณากรอกเบอร์โทรศัพท์"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[#2d1a18] font-semibold mb-2">
+                  บริษัท/องค์กร
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  value={form.company}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                  placeholder="ชื่อบริษัทหรือองค์กร"
+                />
+              </div>
+
+              {/* Product Selection Section */}
+              <div className="border-t border-[#A6171C]/20 pt-6">
+                <h4 className="text-lg font-semibold text-[#2d1a18] mb-4 flex items-center gap-2">
+                  <FiPackage className="text-[#A6171C]" />
+                  ข้อมูลสินค้าที่สนใจ (ไม่บังคับ)
+                </h4>
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-foreground font-semibold mb-2">
-                      หมวดหมู่สินค้าที่สนใจ *
+                    <label className="block text-[#2d1a18] font-semibold mb-2">
+                      หมวดหมู่สินค้า
                     </label>
                     <select
                       name="category"
                       value={form.category}
                       onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
                     >
-                      <option value="">เลือกหมวดหมู่</option>
+                      <option value="">เลือกหมวดหมู่สินค้า</option>
                       {productCategories.map((category) => (
                         <option key={category.id} value={category.id}>
-                          {category.name} - {category.description}
+                          {category.icon} {category.name}
                         </option>
                       ))}
                     </select>
                   </div>
+
                   <div>
-                    <label className="block text-foreground font-semibold mb-2">
-                      สินค้าที่สนใจ
+                    <label className="block text-[#2d1a18] font-semibold mb-2">
+                      สินค้า
                     </label>
                     <select
                       name="product"
                       value={form.product}
                       onChange={handleInputChange}
                       disabled={!form.category}
-                      className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors disabled:bg-natural/10 disabled:text-foreground-accent"
+                      className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90 disabled:bg-gray-100 disabled:text-gray-500"
                     >
                       <option value="">เลือกสินค้า</option>
-                      {availableProducts.map((product) => (
+                      {selectedCategoryProducts.map((product) => (
                         <option key={product.id} value={product.id}>
                           {product.name}
                         </option>
@@ -263,99 +203,177 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-foreground font-semibold mb-2">
-                    จำนวนที่ต้องการ (ชิ้น) *
+                <div className="mt-6">
+                  <label className="block text-[#2d1a18] font-semibold mb-2">
+                    จำนวนที่ต้องการ (ชิ้น)
                   </label>
-                  <input
-                    type="number"
-                    name="quantity"
-                    value={form.quantity}
-                    onChange={handleInputChange}
-                    min="1"
-                    required
-                    className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors"
-                    placeholder="จำนวน"
-                  />
-                  <p className="text-sm text-foreground-accent mt-2">
-                    * จำนวนขั้นต่ำอาจแตกต่างกันตามประเภทสินค้า
-                  </p>
+                  <div className="flex items-center gap-4">
+                    <input
+                      type="number"
+                      name="quantity"
+                      value={form.quantity}
+                      onChange={handleInputChange}
+                      min="1"
+                      max="10000"
+                      className="w-32 px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                      placeholder="1"
+                    />
+                    {selectedProduct && (
+                      <div className="text-sm text-[#4a3631]">
+                        ขั้นต่ำ: {selectedProduct.minOrder} ชิ้น
+                        <br />
+                        ราคา: {selectedProduct.price}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-foreground font-semibold mb-2">
-                    ข้อความ / รายละเอียดเพิ่มเติม
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleInputChange}
-                    rows={5}
-                    className="w-full px-4 py-3 border border-natural/30 rounded-xl focus:outline-none focus:border-ruby transition-colors resize-none"
-                    placeholder="กรุณาระบุรายละเอียดเพิ่มเติม เช่น การปรับแต่งโลโก้, สี, ขนาด หรือความต้องการพิเศษอื่นๆ"
-                  />
+                {/* Product Preview */}
+                {selectedCategory && selectedProduct && (
+                  <div className="mt-6 p-4 bg-[#f0e0d8]/50 rounded-xl border border-[#A6171C]/20">
+                    <h5 className="font-semibold text-[#2d1a18] mb-2 flex items-center gap-2">
+                      <FiShoppingCart className="text-[#A6171C]" />
+                      สินค้าที่เลือก
+                    </h5>
+                    <div className="flex items-center gap-4">
+                      <div className="text-3xl">{selectedCategory.icon}</div>
+                      <div>
+                        <div className="font-semibold text-[#2d1a18]">
+                          {selectedProduct.name}
+                        </div>
+                        <div className="text-sm text-[#4a3631]">
+                          {selectedProduct.description}
+                        </div>
+                        <div className="text-sm text-[#A6171C] font-semibold">
+                          จำนวน: {form.quantity} ชิ้น | ราคา:{" "}
+                          {selectedProduct.price}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-[#2d1a18] font-semibold mb-2">
+                  ข้อความ
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleInputChange}
+                  rows={5}
+                  className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                  placeholder="กรุณาระบุรายละเอียดความต้องการ"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#A6171C] hover:bg-[#8a1419] text-white py-4 px-8 rounded-xl font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
+              >
+                ส่งข้อความ
+              </button>
+            </form>
+          </div>
+
+          {/* Contact Information */}
+          <div className="space-y-8">
+            {/* Contact Methods */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-[#A6171C]/20">
+              <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
+                ช่องทางการติดต่อ
+              </h3>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="bg-[#A6171C] text-white p-3 rounded-xl">
+                    <FiPhone size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[#2d1a18]">โทรศัพท์</h4>
+                    <p className="text-[#4a3631]">02-123-4567</p>
+                    <p className="text-[#4a3631] text-sm">
+                      จันทร์-ศุกร์ 8:00-18:00 น.
+                    </p>
+                  </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-ruby hover:bg-ruby/90 text-white px-8 py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
-                >
-                  <FiSend size={20} />
-                  ส่งข้อความ
+                <div className="flex items-center gap-4">
+                  <div className="bg-[#A6171C] text-white p-3 rounded-xl">
+                    <FiMail size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[#2d1a18]">อีเมล</h4>
+                    <p className="text-[#4a3631]">info@rukaworld.com</p>
+                    <p className="text-[#4a3631] text-sm">
+                      ตอบกลับภายใน 24 ชั่วโมง
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="bg-[#A6171C] text-white p-3 rounded-xl">
+                    <FiMapPin size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[#2d1a18]">ที่อยู่</h4>
+                    <p className="text-[#4a3631]">
+                      123 ถนนสุขุมวิท แขวงคลองตัน
+                    </p>
+                    <p className="text-[#4a3631]">เขตวัฒนา กรุงเทพฯ 10110</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="bg-[#A6171C] text-white p-3 rounded-xl">
+                    <FiClock size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[#2d1a18]">เวลาทำการ</h4>
+                    <p className="text-[#4a3631]">
+                      จันทร์-ศุกร์: 8:00-18:00 น.
+                    </p>
+                    <p className="text-[#4a3631]">เสาร์: 9:00-16:00 น.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Map Section */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-[#A6171C]/20">
+              <h3 className="text-2xl font-bold text-[#2d1a18] mb-6 text-center">
+                แผนที่
+              </h3>
+              <div className="bg-[#D6D0C5] rounded-2xl h-96 flex items-center justify-center">
+                <p className="text-[#4a3631] text-lg">
+                  แผนที่ Google Maps จะแสดงที่นี่
+                </p>
+              </div>
+            </div>
+
+            {/* Quick Services */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-[#A6171C]/20">
+              <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
+                บริการด่วน
+              </h3>
+              <div className="space-y-4">
+                <button className="w-full bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                  <FiPhone size={20} />
+                  โทรเลย 02-123-4567
                 </button>
-              </form>
+                <button className="w-full bg-[#A6171C] hover:bg-[#8a1419] text-white py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                  <FiMessageSquare size={20} />
+                  แชทไลน์ @rukaworld
+                </button>
+                <button className="w-full border-2 border-[#A6171C] text-[#A6171C] hover:bg-[#A6171C] hover:text-white py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                  <FiDownload size={20} />
+                  ดาวน์โหลดแคตตาล็อก
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-
-        {/* Quick Contact Options */}
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-natural/20 text-center">
-            <div className="bg-sunny/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FiPhone className="text-ruby" size={28} />
-            </div>
-            <h3 className="text-xl font-bold text-foreground mb-4">
-              โทรสอบถาม
-            </h3>
-            <p className="text-foreground-accent mb-6">
-              พูดคุยกับทีมผู้เชี่ยวชาญโดยตรง
-            </p>
-            <button className="bg-sunny hover:bg-sunny/90 text-ruby px-6 py-3 rounded-xl font-semibold transition-colors duration-200">
-              02-XXX-XXXX
-            </button>
-          </div>
-
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-natural/20 text-center">
-            <div className="bg-sunny/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FiMail className="text-ruby" size={28} />
-            </div>
-            <h3 className="text-xl font-bold text-foreground mb-4">ส่งอีเมล</h3>
-            <p className="text-foreground-accent mb-6">
-              ส่งข้อมูลรายละเอียดให้เรา
-            </p>
-            <button className="bg-sunny hover:bg-sunny/90 text-ruby px-6 py-3 rounded-xl font-semibold transition-colors duration-200">
-              contact@rukaworld.com
-            </button>
-          </div>
-
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-natural/20 text-center">
-            <div className="bg-sunny/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FiMessageCircle className="text-ruby" size={28} />
-            </div>
-            <h3 className="text-xl font-bold text-foreground mb-4">
-              แชทออนไลน์
-            </h3>
-            <p className="text-foreground-accent mb-6">
-              พูดคุยผ่าน Line หรือ Facebook
-            </p>
-            <button className="bg-sunny hover:bg-sunny/90 text-ruby px-6 py-3 rounded-xl font-semibold transition-colors duration-200">
-              แชทเลย
-            </button>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default ContactPage;
+}

@@ -10,23 +10,23 @@ export const footerDetails: {
     subheading: "สร้างความประทับใจและสัมพันธ์ที่ยั่งยืนผ่านของชำร่วยคุณภาพพรีเมี่ยม",
     quickLinks: [
         {
-            text: "สินค้า",
+            text: "Products",
             url: "/products"
         },
         {
-            text: "บริการ",
+            text: "Abount Us ",
             url: "#features"
         },
         {
-            text: "แพ็คเกจ",
+            text: "Services",
             url: "#pricing"
         },
         {
-            text: "รีวิว",
+            text: "Blog",
             url: "#testimonials"
         },
         {
-            text: "เกี่ยวกับเรา",
+            text: "",
             url: "#about"
         },
         {

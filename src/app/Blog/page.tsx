@@ -1,93 +1,93 @@
 import React from "react";
 import Link from "next/link";
-import { FiCalendar, FiUser, FiArrowRight, FiTrendingUp } from "react-icons/fi";
+// import { FiCalendar, FiUser, FiArrowRight, FiTrendingUp } from "react-icons/fi";
 
 const BlogPage: React.FC = () => {
-  const featuredPost = {
-    id: 1,
-    title: "เทรนด์ของชำร่วยที่ได้รับความนิยมในปี 2024",
-    excerpt:
-      "ค้นพบเทรนด์ใหม่ของสินค้าของชำร่วยที่กำลังได้รับความนิยม และคาดการณ์แนวโน้มในอนาคต",
-    author: "ทีม Ruka World",
-    date: "15 มกราคม 2024",
-    image: "/images/gifts.png",
-    category: "เทรนด์",
-    readTime: "5 นาที",
-  };
+  // const featuredPost = {
+  //   id: 1,
+  //   title: "เทรนด์ของชำร่วยที่ได้รับความนิยมในปี 2024",
+  //   excerpt:
+  //     "ค้นพบเทรนด์ใหม่ของสินค้าของชำร่วยที่กำลังได้รับความนิยม และคาดการณ์แนวโน้มในอนาคต",
+  //   author: "ทีม Ruka World",
+  //   date: "15 มกราคม 2024",
+  //   image: "/images/gifts.png",
+  //   category: "เทรนด์",
+  //   readTime: "5 นาที",
+  // };
 
-  const blogPosts = [
-    {
-      id: 2,
-      title: "วิธีเลือกของชำร่วยที่เหมาะสมสำหรับงานแต่งงาน",
-      excerpt:
-        "คำแนะนำในการเลือกของชำร่วยที่จะทำให้แขกได้รับความประทับใจและจดจำงานของคุณ",
-      author: "น.ส. สมหญิง ใจดี",
-      date: "12 มกราคม 2024",
-      category: "คำแนะนำ",
-      readTime: "7 นาที",
-    },
-    {
-      id: 3,
-      title: "ของชำร่วยองค์กร: การสร้างแบรนด์ผ่านของขวัญ",
-      excerpt:
-        "เรียนรู้วิธีการใช้ของชำร่วยเป็นเครื่องมือในการสร้างความจำและเสริมแบรนด์องค์กร",
-      author: "คุณ ธุรกิจ เก่ง",
-      date: "10 มกราคม 2024",
-      category: "ธุรกิจ",
-      readTime: "6 นาที",
-    },
-    {
-      id: 4,
-      title: "DIY: ไอเดียการตกแต่งของชำร่วยให้ดูพิเศษ",
-      excerpt:
-        "เทคนิคง่ายๆ ในการตกแต่งและปรับแต่งของชำร่วยให้ดูสวยงามและเป็นเอกลักษณ์",
-      author: "คุณ สร้างสรรค์ ศิลป์",
-      date: "8 มกราคม 2024",
-      category: "DIY",
-      readTime: "4 นาที",
-    },
-    {
-      id: 5,
-      title: "งบประมาณของชำร่วย: วางแผนให้คุ้มค่าที่สุด",
-      excerpt:
-        "วิธีการวางแผนงบประมาณสำหรับของชำร่วยให้ได้ผลลัพธ์ที่ดีที่สุดในราคาที่เหมาะสม",
-      author: "คุณ ประหยัด เงิน",
-      date: "5 มกราคม 2024",
-      category: "การเงิน",
-      readTime: "5 นาที",
-    },
-    {
-      id: 6,
-      title: "ของชำร่วยเพื่อสิ่งแวดล้อม: Eco-Friendly Gifts",
-      excerpt: "แนะนำสินค้าของชำร่วยที่เป็นมิตรกับสิ่งแวดล้อมและยั่งยืน",
-      author: "คุณ รักษ์โลก",
-      date: "3 มกราคม 2024",
-      category: "สิ่งแวดล้อม",
-      readTime: "6 นาที",
-    },
-  ];
+  // const blogPosts = [
+  //   {
+  //     id: 2,
+  //     title: "วิธีเลือกของชำร่วยที่เหมาะสมสำหรับงานแต่งงาน",
+  //     excerpt:
+  //       "คำแนะนำในการเลือกของชำร่วยที่จะทำให้แขกได้รับความประทับใจและจดจำงานของคุณ",
+  //     author: "น.ส. สมหญิง ใจดี",
+  //     date: "12 มกราคม 2024",
+  //     category: "คำแนะนำ",
+  //     readTime: "7 นาที",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "ของชำร่วยองค์กร: การสร้างแบรนด์ผ่านของขวัญ",
+  //     excerpt:
+  //       "เรียนรู้วิธีการใช้ของชำร่วยเป็นเครื่องมือในการสร้างความจำและเสริมแบรนด์องค์กร",
+  //     author: "คุณ ธุรกิจ เก่ง",
+  //     date: "10 มกราคม 2024",
+  //     category: "ธุรกิจ",
+  //     readTime: "6 นาที",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "DIY: ไอเดียการตกแต่งของชำร่วยให้ดูพิเศษ",
+  //     excerpt:
+  //       "เทคนิคง่ายๆ ในการตกแต่งและปรับแต่งของชำร่วยให้ดูสวยงามและเป็นเอกลักษณ์",
+  //     author: "คุณ สร้างสรรค์ ศิลป์",
+  //     date: "8 มกราคม 2024",
+  //     category: "DIY",
+  //     readTime: "4 นาที",
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "งบประมาณของชำร่วย: วางแผนให้คุ้มค่าที่สุด",
+  //     excerpt:
+  //       "วิธีการวางแผนงบประมาณสำหรับของชำร่วยให้ได้ผลลัพธ์ที่ดีที่สุดในราคาที่เหมาะสม",
+  //     author: "คุณ ประหยัด เงิน",
+  //     date: "5 มกราคม 2024",
+  //     category: "การเงิน",
+  //     readTime: "5 นาที",
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "ของชำร่วยเพื่อสิ่งแวดล้อม: Eco-Friendly Gifts",
+  //     excerpt: "แนะนำสินค้าของชำร่วยที่เป็นมิตรกับสิ่งแวดล้อมและยั่งยืน",
+  //     author: "คุณ รักษ์โลก",
+  //     date: "3 มกราคม 2024",
+  //     category: "สิ่งแวดล้อม",
+  //     readTime: "6 นาที",
+  //   },
+  // ];
 
-  const categories = [
-    { name: "ทั้งหมด", count: 15 },
-    { name: "เทรนด์", count: 5 },
-    { name: "คำแนะนำ", count: 7 },
-    { name: "ธุรกิจ", count: 3 },
-    { name: "DIY", count: 4 },
-    { name: "การเงิน", count: 2 },
-    { name: "สิ่งแวดล้อม", count: 3 },
-  ];
+  // const categories = [
+  //   { name: "ทั้งหมด", count: 15 },
+  //   { name: "เทรนด์", count: 5 },
+  //   { name: "คำแนะนำ", count: 7 },
+  //   { name: "ธุรกิจ", count: 3 },
+  //   { name: "DIY", count: 4 },
+  //   { name: "การเงิน", count: 2 },
+  //   { name: "สิ่งแวดล้อม", count: 3 },
+  // ];
 
-  const getCategoryColor = (category: string) => {
-    const colors: { [key: string]: string } = {
-      เทรนด์: "bg-ruby text-white",
-      คำแนะนำ: "bg-sunny text-ruby",
-      ธุรกิจ: "bg-blue-500 text-white",
-      DIY: "bg-green-500 text-white",
-      การเงิน: "bg-purple-500 text-white",
-      สิ่งแวดล้อม: "bg-emerald-500 text-white",
-    };
-    return colors[category] || "bg-gray-500 text-white";
-  };
+  // const getCategoryColor = (category: string) => {
+  //   const colors: { [key: string]: string } = {
+  //     เทรนด์: "bg-ruby text-white",
+  //     คำแนะนำ: "bg-sunny text-ruby",
+  //     ธุรกิจ: "bg-blue-500 text-white",
+  //     DIY: "bg-green-500 text-white",
+  //     การเงิน: "bg-purple-500 text-white",
+  //     สิ่งแวดล้อม: "bg-emerald-500 text-white",
+  //   };
+  //   return colors[category] || "bg-gray-500 text-white";
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">

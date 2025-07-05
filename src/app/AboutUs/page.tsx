@@ -1,36 +1,36 @@
 import React from "react";
-import { FiAward, FiHeart, FiTrendingUp, FiUsers } from "react-icons/fi";
+// import { FiAward, FiHeart, FiTrendingUp, FiUsers } from "react-icons/fi";
 
 const AboutUsPage: React.FC = () => {
-  const values = [
-    {
-      icon: <FiHeart className="text-ruby" size={28} />,
-      title: "ใส่ใจคุณภาพ",
-      description: "เลือกสรรวัสดุชั้นเยี่ยมและการผลิตที่มีมาตรฐานสูง",
-    },
-    {
-      icon: <FiAward className="text-sunny" size={28} />,
-      title: "ความเป็นเลิศ",
-      description: "มุ่งมั่นสร้างสรรค์ผลงานที่โดดเด่นและน่าประทับใจ",
-    },
-    {
-      icon: <FiUsers className="text-ruby" size={28} />,
-      title: "ลูกค้าคือใจกลาง",
-      description: "ให้บริการที่เข้าใจและตอบสนองความต้องการจริง",
-    },
-    {
-      icon: <FiTrendingUp className="text-sunny" size={28} />,
-      title: "นวัตกรรม",
-      description: "ติดตามเทรนด์และพัฒนาผลิตภัณฑ์ใหม่ๆ อย่างต่อเนื่อง",
-    },
-  ];
+  // const values = [
+  //   {
+  //     icon: <FiHeart className="text-ruby" size={28} />,
+  //     title: "ใส่ใจคุณภาพ",
+  //     description: "เลือกสรรวัสดุชั้นเยี่ยมและการผลิตที่มีมาตรฐานสูง",
+  //   },
+  //   {
+  //     icon: <FiAward className="text-sunny" size={28} />,
+  //     title: "ความเป็นเลิศ",
+  //     description: "มุ่งมั่นสร้างสรรค์ผลงานที่โดดเด่นและน่าประทับใจ",
+  //   },
+  //   {
+  //     icon: <FiUsers className="text-ruby" size={28} />,
+  //     title: "ลูกค้าคือใจกลาง",
+  //     description: "ให้บริการที่เข้าใจและตอบสนองความต้องการจริง",
+  //   },
+  //   {
+  //     icon: <FiTrendingUp className="text-sunny" size={28} />,
+  //     title: "นวัตกรรม",
+  //     description: "ติดตามเทรนด์และพัฒนาผลิตภัณฑ์ใหม่ๆ อย่างต่อเนื่อง",
+  //   },
+  // ];
 
-  const stats = [
-    { number: "5,000+", label: "ลูกค้าที่ไว้วางใจ" },
-    { number: "10+", label: "ปีของประสบการณ์" },
-    { number: "100,000+", label: "ชิ้นงานที่ส่งมอบ" },
-    { number: "95%", label: "ลูกค้าพึงพอใจ" },
-  ];
+  // const stats = [
+  //   { number: "5,000+", label: "ลูกค้าที่ไว้วางใจ" },
+  //   { number: "10+", label: "ปีของประสบการณ์" },
+  //   { number: "100,000+", label: "ชิ้นงานที่ส่งมอบ" },
+  //   { number: "95%", label: "ลูกค้าพึงพอใจ" },
+  // ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">

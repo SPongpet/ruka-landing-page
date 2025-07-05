@@ -1,100 +1,100 @@
 import React from "react";
 import Link from "next/link";
-import {
-  FiPackage,
-  FiEdit,
-  FiTruck,
-  FiHeadphones,
-  FiGift,
-  FiUsers,
-  FiDollarSign,
-  FiClock,
-} from "react-icons/fi";
+// import {
+//   FiPackage,
+//   FiEdit,
+//   FiTruck,
+//   FiHeadphones,
+//   FiGift,
+//   FiUsers,
+//   FiDollarSign,
+//   FiClock,
+// } from "react-icons/fi";
 
 const ServicesPage: React.FC = () => {
-  const mainServices = [
-    {
-      icon: <FiGift className="text-ruby" size={40} />,
-      title: "สินค้าของชำร่วยคุณภาพ",
-      description:
-        "คัดสรรสินค้าคุณภาพพรีเมี่ยมจากทั่วโลก เหมาะสำหรับองค์กรทุกขนาด",
-      features: ["สินค้านำเข้าคุณภาพสูง", "หลากหลายหมวดหมู่", "ราคาที่เหมาะสม"],
-      cta: "ดูสินค้า",
-      link: "/products",
-    },
-    {
-      icon: <FiEdit className="text-sunny" size={40} />,
-      title: "การออกแบบและปรับแต่ง",
-      description:
-        "ออกแบบและปรับแต่งสินค้าตามความต้องการ พร้อมโลโก้และข้อความพิเศษ",
-      features: ["ออกแบบโลโก้", "ปรับแต่งสี", "เพิ่มข้อความพิเศษ"],
-      cta: "ปรึกษาดีไซน์",
-      link: "/contact",
-    },
-    {
-      icon: <FiTruck className="text-ruby" size={40} />,
-      title: "บริการจัดส่งทั่วประเทศ",
-      description: "ระบบจัดส่งที่เชื่อถือได้ ส่งถึงที่หมายปลอดภัยและรวดเร็ว",
-      features: ["จัดส่งทั่วประเทศ", "บรรจุภัณฑ์ปลอดภัย", "ติดตามสถานะได้"],
-      cta: "ดูรายละเอียด",
-      link: "/contact",
-    },
-    {
-      icon: <FiHeadphones className="text-sunny" size={40} />,
-      title: "คำปรึกษาจากผู้เชี่ยวชาญ",
-      description:
-        "ทีมผู้เชี่ยวชาญพร้อมให้คำปรึกษาและแนะนำสินค้าที่เหมาะสมที่สุด",
-      features: ["ปรึกษาฟรี", "แนะนำสินค้า", "วางแผนงบประมาณ"],
-      cta: "ปรึกษาเลย",
-      link: "/contact",
-    },
-  ];
+  // const mainServices = [
+  //   {
+  //     icon: <FiGift className="text-ruby" size={40} />,
+  //     title: "สินค้าของชำร่วยคุณภาพ",
+  //     description:
+  //       "คัดสรรสินค้าคุณภาพพรีเมี่ยมจากทั่วโลก เหมาะสำหรับองค์กรทุกขนาด",
+  //     features: ["สินค้านำเข้าคุณภาพสูง", "หลากหลายหมวดหมู่", "ราคาที่เหมาะสม"],
+  //     cta: "ดูสินค้า",
+  //     link: "/products",
+  //   },
+  //   {
+  //     icon: <FiEdit className="text-sunny" size={40} />,
+  //     title: "การออกแบบและปรับแต่ง",
+  //     description:
+  //       "ออกแบบและปรับแต่งสินค้าตามความต้องการ พร้อมโลโก้และข้อความพิเศษ",
+  //     features: ["ออกแบบโลโก้", "ปรับแต่งสี", "เพิ่มข้อความพิเศษ"],
+  //     cta: "ปรึกษาดีไซน์",
+  //     link: "/contact",
+  //   },
+  //   {
+  //     icon: <FiTruck className="text-ruby" size={40} />,
+  //     title: "บริการจัดส่งทั่วประเทศ",
+  //     description: "ระบบจัดส่งที่เชื่อถือได้ ส่งถึงที่หมายปลอดภัยและรวดเร็ว",
+  //     features: ["จัดส่งทั่วประเทศ", "บรรจุภัณฑ์ปลอดภัย", "ติดตามสถานะได้"],
+  //     cta: "ดูรายละเอียด",
+  //     link: "/contact",
+  //   },
+  //   {
+  //     icon: <FiHeadphones className="text-sunny" size={40} />,
+  //     title: "คำปรึกษาจากผู้เชี่ยวชาญ",
+  //     description:
+  //       "ทีมผู้เชี่ยวชาญพร้อมให้คำปรึกษาและแนะนำสินค้าที่เหมาะสมที่สุด",
+  //     features: ["ปรึกษาฟรี", "แนะนำสินค้า", "วางแผนงบประมาณ"],
+  //     cta: "ปรึกษาเลย",
+  //     link: "/contact",
+  //   },
+  // ];
 
-  const additionalServices = [
-    {
-      icon: <FiUsers className="text-ruby" size={24} />,
-      title: "บริการสำหรับองค์กร",
-      description: "แพ็คเกจพิเศษสำหรับองค์กรขนาดใหญ่",
-    },
-    {
-      icon: <FiDollarSign className="text-sunny" size={24} />,
-      title: "ราคาพิเศษสำหรับสั่งจำนวนมาก",
-      description: "ส่วนลดพิเศษเมื่อสั่งซื้อในปริมาณมาก",
-    },
-    {
-      icon: <FiClock className="text-ruby" size={24} />,
-      title: "บริการด่วนพิเศษ",
-      description: "รับงานด่วนภายใน 48 ชั่วโมง",
-    },
-    {
-      icon: <FiPackage className="text-sunny" size={24} />,
-      title: "บรรจุภัณฑ์พิเศษ",
-      description: "กล่องและบรรจุภัณฑ์สวยงามตามโอกาส",
-    },
-  ];
+  // const additionalServices = [
+  //   {
+  //     icon: <FiUsers className="text-ruby" size={24} />,
+  //     title: "บริการสำหรับองค์กร",
+  //     description: "แพ็คเกจพิเศษสำหรับองค์กรขนาดใหญ่",
+  //   },
+  //   {
+  //     icon: <FiDollarSign className="text-sunny" size={24} />,
+  //     title: "ราคาพิเศษสำหรับสั่งจำนวนมาก",
+  //     description: "ส่วนลดพิเศษเมื่อสั่งซื้อในปริมาณมาก",
+  //   },
+  //   {
+  //     icon: <FiClock className="text-ruby" size={24} />,
+  //     title: "บริการด่วนพิเศษ",
+  //     description: "รับงานด่วนภายใน 48 ชั่วโมง",
+  //   },
+  //   {
+  //     icon: <FiPackage className="text-sunny" size={24} />,
+  //     title: "บรรจุภัณฑ์พิเศษ",
+  //     description: "กล่องและบรรจุภัณฑ์สวยงามตามโอกาส",
+  //   },
+  // ];
 
-  const processSteps = [
-    {
-      step: "01",
-      title: "ปรึกษาและวางแผน",
-      description: "พูดคุยเกี่ยวกับความต้องการและงบประมาณ",
-    },
-    {
-      step: "02",
-      title: "เลือกสินค้า",
-      description: "แนะนำและเลือกสินค้าที่เหมาะสมที่สุด",
-    },
-    {
-      step: "03",
-      title: "ออกแบบและปรับแต่ง",
-      description: "ออกแบบโลโก้และปรับแต่งตามความต้องการ",
-    },
-    {
-      step: "04",
-      title: "ผลิตและจัดส่ง",
-      description: "ผลิตสินค้าและจัดส่งถึงที่หมายปลอดภัย",
-    },
-  ];
+  // const processSteps = [
+  //   {
+  //     step: "01",
+  //     title: "ปรึกษาและวางแผน",
+  //     description: "พูดคุยเกี่ยวกับความต้องการและงบประมาณ",
+  //   },
+  //   {
+  //     step: "02",
+  //     title: "เลือกสินค้า",
+  //     description: "แนะนำและเลือกสินค้าที่เหมาะสมที่สุด",
+  //   },
+  //   {
+  //     step: "03",
+  //     title: "ออกแบบและปรับแต่ง",
+  //     description: "ออกแบบโลโก้และปรับแต่งตามความต้องการ",
+  //   },
+  //   {
+  //     step: "04",
+  //     title: "ผลิตและจัดส่ง",
+  //     description: "ผลิตสินค้าและจัดส่งถึงที่หมายปลอดภัย",
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">

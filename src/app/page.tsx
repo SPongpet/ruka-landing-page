@@ -3,45 +3,49 @@ import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing/Pricing";
 import FAQ from "@/components/FAQ";
 // import Logos from "@/components/Logos";
-import Benefits from "@/components/Benefits/Benefits";
 import Products from "@/components/Products";
 import Container from "@/components/Container";
 import Section from "@/components/Section";
-import Stats from "@/components/Stats";
 import CTA from "@/components/CTA";
+import OneStopExperience from "@/components/OneStopExperience";
 
 const HomePage: React.FC = () => {
   return (
     <>
       <Hero />
-      {/* <Logos /> */}
-      <Container>
-        <Products />
 
-        <Benefits />
+      <div className="bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] min-h-screen">
+        {/* <Logos /> */}
+        <Container>
+          <OneStopExperience />
 
-        <Section
-          id="pricing"
-          title="แพ็คเกจราคา"
-          description="เลือกแพ็คเกจที่เหมาะสมกับความต้องการและงบประมาณของคุณ"
-        >
-          <Pricing />
-        </Section>
+          <Products />
 
-        <Section
-          id="testimonials"
-          title="ลูกค้าพูดถึงเรา"
-          description="ฟังเสียงจากลูกค้าที่เลือกใช้บริการของเรา"
-        >
-          <Testimonials />
-        </Section>
+          {/* <Benefits /> */}
 
-        <FAQ />
+          <Section
+            id="pricing"
+            title="แพ็คเกจราคา"
+            description="เลือกแพ็คเกจที่เหมาะสมกับความต้องการและงบประมาณของคุณ"
+          >
+            <Pricing />
+          </Section>
 
-        <Stats />
+          <Section
+            id="testimonials"
+            title="ลูกค้าพูดถึงเรา"
+            description="ฟังเสียงจากลูกค้าที่เลือกใช้บริการของเรา"
+          >
+            <Testimonials />
+          </Section>
 
-        <CTA />
-      </Container>
+          <FAQ />
+
+          {/* <Stats /> */}
+
+          <CTA />
+        </Container>
+      </div>
     </>
   );
 };

@@ -33,7 +33,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 mt-10">
         {/* Breadcrumb */}
         <div className="mb-8 flex items-center gap-2 text-sm">
           <Link

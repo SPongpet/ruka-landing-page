@@ -1,6 +1,7 @@
 export const heroDetails = {
-    heading: 'สร้างความประทับใจให้กับลูกค้าคนสำคัญของคุณ',
+    heading1: `สร้างความประทับใจให้กับลูกค้า`,
+    heading2: `คนสำคัญของคุณ`,
     subheading: 'Elevate Your Corporate Gifting',
-    description: 'พบกับสินค้าของชำร่วยคุณภาพพรีเมี่ยม ที่ออกแบบมาเพื่อสร้างความประทับใจและความผูกพันที่ยั่งยืนในธุรกิจของคุณ',
+    description: '',
     centerImageSrc: '/images/gifts.png',
 }

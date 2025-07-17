@@ -22,7 +22,7 @@ export const menuItems: IMenuItem[] = [
         url: "/Blog"
     },
     {
-        text: "Contract Us",
+        text: "Contact",
         url: "/contact"
     }
 ];

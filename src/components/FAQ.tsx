@@ -26,12 +26,12 @@ const FAQ: React.FC = () => {
           <p className="text-[#4a3631] text-center max-w-2xl mx-auto mb-12">
             Ask us anything!
           </p>
-          <a
+          {/* <a
             href="mailto:help@rukaworld.com"
             className="mt-3 block text-xl lg:text-4xl text-sunny font-semibold hover:underline text-center lg:text-left"
           >
             help@rukaworld.com
-          </a>
+          </a> */}
         </div>
 
         <div className="w-full lg:max-w-2xl mx-auto border-b border-gray-600">

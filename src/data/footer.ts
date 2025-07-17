@@ -3,43 +3,38 @@ import { IMenuItem, ISocials } from "@/types";
 export const footerDetails: {
     subheading: string;
     quickLinks: IMenuItem[];
-    email: string;
     telephone: string;
     socials: ISocials;
 } = {
-    subheading: "สร้างความประทับใจและสัมพันธ์ที่ยั่งยืนผ่านของชำร่วยคุณภาพพรีเมี่ยม",
+    subheading: "ยกระดับความประทับใจ สร้างสัมพันธ์ ยั่งยืนด้วยของขวัญพรีเมียม",
     quickLinks: [
+        {
+            text: "About Us",
+            url: "/AboutUs"
+        },
+        {
+            text: "Services",
+            url: "/Services"
+        },
         {
             text: "Products",
             url: "/products"
         },
         {
-            text: "Abount Us ",
-            url: "#features"
-        },
-        {
-            text: "Services",
-            url: "#pricing"
-        },
-        {
             text: "Blog",
-            url: "#testimonials"
+            url: "/Blog"
         },
         {
-            text: "",
-            url: "#about"
-        },
-        {
-            text: "ติดต่อเรา",
+            text: "Contact",
             url: "/contact"
         }
     ],
-    email: 'contact@rukaworld.com',
-    telephone: '+66 2 XXX XXXX',
+    // email: 'Line: https://lin.ee/Eoc4mUN',
+    telephone: '📞 082 113 8914',
     socials: {
-        facebook: 'https://facebook.com/rukaworld',
-        linkedin: 'https://www.linkedin.com/company/rukaworld',
-        instagram: 'https://www.instagram.com/rukaworld',
-        twitter: 'https://twitter.com/rukaworld',
+        facebook: 'https://www.facebook.com/share/1G3NH5PCTG/',
+        line: 'https://lin.ee/Eoc4mUN',
+        instagram: 'https://www.instagram.com/ruka.ruka.world?igsh=MXZna2J1MHpzbnZscg==',
+        // twitter: 'https://twitter.com/rukaworld',
     }
 }

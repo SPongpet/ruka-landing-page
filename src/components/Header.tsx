@@ -7,6 +7,7 @@ import { HiOutlineXMark, HiBars3 } from "react-icons/hi2";
 
 import Container from "./Container";
 import { menuItems } from "@/data/menuItems";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,44 +16,64 @@ const Header: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const leftMenuItems = menuItems.slice(0, 3); // Home, About Us, Services
+  const rightMenuItems = menuItems.slice(3); // Products, Blog, Contact Us
+
   return (
-    <header className="bg-gradient-to-r from-white/95 via-[#A6171C]/90 to-[#A6171C]/90 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 mx-auto w-full border-b border-[#A6171C]/20 shadow-lg">
+    <header className="bg-white backdrop-blur-lg fixed top-0 left-0 right-0 z-50 mx-auto w-full border-b border-[#f7f7f7]/20 shadow-lg">
       <Container className="!px-0">
         <nav className="mx-auto flex justify-between items-center py-4 px-5">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 select-none">
-            <span
-              className="text-4xl font-bold"
-              style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
-            >
-              <span className="text-ruby">R</span>
-              <span className="text-sunny">ukà</span>
-            </span>
-          </Link>
-
-          {/* Desktop Menu */}
+          {/* ซ้ายเมนู */}
           <ul
-            className="hidden md:flex space-x-8 font-bold text-lg"
+            className="hidden md:flex flex-1 justify-end space-x-8 font-bold text-lg pr-5"
             style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
           >
-            {menuItems.map((item) => (
+            {leftMenuItems.map((item) => (
               <li key={item.text}>
                 <Link
                   href={item.url}
-                  className="text-[#FFFFFF] hover:text-[#F1C045] transition-colors border-b-2 border-transparent hover:border-[#F1C045] pb-1"
+                  className="text-[#000000] hover:text-[#A6171C] transition-colors border-b-2 border-transparent hover:border-[#A6171C] pb-1"
                 >
                   {item.text}
                 </Link>
               </li>
             ))}
-            {/* <li>
-              <Link
-                href="#cta"
-                className="text-ruby bg-white hover:bg-sunny hover:text-white px-8 py-3 rounded-full transition-colors font-bold border-2 border-white hover:border-sunny"
+          </ul>
+
+          {/* โลโก้ตรงกลาง */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center gap-2 select-none">
+              <span
+                className="text-4xl font-bold"
+                style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
               >
-                Catalog
-              </Link>
-            </li> */}
+                {/* <span className="text-ruby">R</span>
+                <span className="text-sunny">ukà</span> */}
+                <Image
+                  src="/images/logo.png"
+                  alt="logo"
+                  width={100}
+                  height={100}
+                />
+              </span>
+            </Link>
+          </div>
+
+          {/* ขวาเมนู */}
+          <ul
+            className="hidden md:flex flex-1 justify-start space-x-8 font-bold text-lg pl-5"
+            style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
+          >
+            {rightMenuItems.map((item) => (
+              <li key={item.text}>
+                <Link
+                  href={item.url}
+                  className="text-[#000000] hover:text-[#A6171C] transition-colors border-b-2 border-transparent hover:border-[#A6171C] pb-1"
+                >
+                  {item.text}
+                </Link>
+              </li>
+            ))}
           </ul>
 
           {/* Mobile Menu Button */}

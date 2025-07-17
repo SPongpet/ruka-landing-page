@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import { productCategories } from "@/data/products";
+import Image from "next/image";
 
 export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 mt-10">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-[#2d1a18] mb-6 drop-shadow-lg">
@@ -36,13 +37,18 @@ export default function ProductsPage() {
                 )}
 
                 <div className="text-center">
-                  <div className="text-8xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                    {category.icon}
+                  <div className="text-8xl mb-6 transform group-hover:scale-110 transition-transform duration-300 flex justify-center items-center">
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      width={80}
+                      height={80}
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-[#2d1a18] mb-4 group-hover:text-[#A6171C] transition-colors">
                     {category.name}
                   </h3>
-                  <p className="text-[#4a3631] mb-6 leading-relaxed">
+                  <p className="text-[#4a3631] mb-6 leading-relaxed h-12">
                     {category.description}
                   </p>
 

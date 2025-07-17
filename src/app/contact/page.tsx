@@ -5,11 +5,11 @@ import {
   FiPhone,
   FiMail,
   FiMapPin,
-  FiClock,
   FiMessageSquare,
   FiDownload,
   FiPackage,
   FiShoppingCart,
+  FiLoader,
 } from "react-icons/fi";
 import { productCategories } from "@/data/products";
 import { productDetails } from "@/data/productDetails";
@@ -17,33 +17,176 @@ import { productDetails } from "@/data/productDetails";
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
+    surname: "",
     email: "",
     phone: "",
     company: "",
+    hasCompany: false,
+    taxId: "",
+    address: "",
     message: "",
     category: "",
     product: "",
     quantity: 1,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+
     setForm((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
       // Reset product when category changes
       ...(name === "category" ? { product: "" } : {}),
+      // Clear TAX ID and address when hasCompany becomes false
+      ...(name === "hasCompany" && !checked ? { taxId: "", address: "" } : {}),
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", form);
-    alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
+    setIsSubmitting(true);
+
+    try {
+      // Prepare data for Google Sheets
+      const selectedCategory = productCategories.find(
+        (cat) => cat.id === form.category
+      );
+      const selectedCategoryProducts = form.category
+        ? productDetails[form.category] || []
+        : [];
+      const selectedProduct = selectedCategoryProducts.find(
+        (prod) => prod.id === form.product
+      );
+
+      const submitData = {
+        timestamp: new Date().toLocaleString("th-TH", {
+          timeZone: "Asia/Bangkok",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }),
+        name: form.name,
+        surname: form.surname,
+        email: form.email,
+        phone: form.phone,
+        company: form.company,
+        hasCompany: form.hasCompany ? "มี" : "ไม่มี",
+        taxId: form.taxId,
+        address: form.address,
+        categoryName: selectedCategory?.name || "",
+        categoryIcon: selectedCategory?.icon || "",
+        productName: selectedProduct?.name || "",
+        productPrice: selectedProduct?.price || "",
+        quantity: form.quantity,
+        message: form.message,
+      };
+
+      // Send to Google Sheets
+      const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycby1Eshcdcp-uyIx7aWTq4u1wczGME56E2t66mPlz_islG4XFVLBsqIHzBjUufqW5-aJlA/exec";
+
+      if (!GOOGLE_SCRIPT_URL) {
+        console.error("Google Script URL not configured");
+        alert("ระบบยังไม่พร้อมใช้งาน กรุณาติดต่อผู้ดูแลระบบ");
+        return;
+      }
+
+      // ลองใช้ fetch ก่อน
+      try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+          },
+          body: JSON.stringify(submitData),
+        });
+
+        if (response.ok) {
+          alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
+
+          // Reset form
+          setForm({
+            name: "",
+            surname: "",
+            email: "",
+            phone: "",
+            company: "",
+            hasCompany: false,
+            taxId: "",
+            address: "",
+            message: "",
+            category: "",
+            product: "",
+            quantity: 1,
+          });
+          return;
+        }
+      } catch (fetchError) {
+        console.log(
+          "Fetch failed due to CORS, trying form submission method:",
+          fetchError
+        );
+      }
+
+      // หาก fetch ไม่ได้ผล ใช้วิธี form submission (ไม่มีปัญหา CORS)
+      const hiddenForm = document.createElement("form");
+      hiddenForm.method = "POST";
+      hiddenForm.action = GOOGLE_SCRIPT_URL;
+      hiddenForm.target = "_blank";
+      hiddenForm.style.display = "none";
+
+      // สร้าง hidden inputs
+      Object.entries(submitData).forEach(([key, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = String(value);
+        hiddenForm.appendChild(input);
+      });
+
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+      document.body.removeChild(hiddenForm);
+
+      alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
+
+      // Reset form
+      setForm({
+        name: "",
+        surname: "",
+        email: "",
+        phone: "",
+        company: "",
+        hasCompany: false,
+        taxId: "",
+        address: "",
+        message: "",
+        category: "",
+        product: "",
+        quantity: 1,
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert(
+        "เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง หรือติดต่อเราทางโทรศัพท์"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Get products for selected category
@@ -61,7 +204,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 mt-10">
         {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-[#2d1a18] mb-6 drop-shadow-lg">
@@ -105,6 +248,8 @@ export default function ContactPage() {
                   <input
                     type="text"
                     name="surname"
+                    value={form.surname}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
                     placeholder="กรุณากรอกนามสกุล"
                   />
@@ -153,6 +298,54 @@ export default function ContactPage() {
                   className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
                   placeholder="ชื่อบริษัทหรือองค์กร"
                 />
+              </div>
+
+              {/* Company Information Checkbox */}
+              <div className="border-t border-[#A6171C]/20 pt-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <input
+                    type="checkbox"
+                    name="hasCompany"
+                    checked={form.hasCompany}
+                    onChange={handleInputChange}
+                    className="w-5 h-5 text-[#A6171C] border-[#A6171C]/30 rounded focus:ring-[#A6171C] focus:ring-2"
+                  />
+                  <label className="text-[#2d1a18] font-semibold">
+                    มีข้อมูลบริษัท (TAX ID และที่อยู่)
+                  </label>
+                </div>
+
+                {/* Conditional Company Fields */}
+                {form.hasCompany && (
+                  <div className="space-y-4 ml-8">
+                    <div>
+                      <label className="block text-[#2d1a18] font-semibold mb-2">
+                        TAX ID
+                      </label>
+                      <input
+                        type="text"
+                        name="taxId"
+                        value={form.taxId}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                        placeholder="เลขประจำตัวผู้เสียภาษี"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[#2d1a18] font-semibold mb-2">
+                        ที่อยู่บริษัท
+                      </label>
+                      <textarea
+                        name="address"
+                        value={form.address}
+                        onChange={handleInputChange}
+                        rows={3}
+                        className="w-full px-4 py-3 rounded-xl border border-[#A6171C]/30 focus:border-[#A6171C] focus:outline-none transition-colors bg-white/90"
+                        placeholder="ที่อยู่บริษัทสำหรับออกใบเสร็จ"
+                      ></textarea>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Product Selection Section */}
@@ -271,8 +464,16 @@ export default function ContactPage() {
               <button
                 type="submit"
                 className="w-full bg-[#A6171C] hover:bg-[#8a1419] text-white py-4 px-8 rounded-xl font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
               >
-                ส่งข้อความ
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <FiLoader className="animate-spin" />
+                    ส่งข้อความ...
+                  </div>
+                ) : (
+                  "ส่งข้อความ"
+                )}
               </button>
             </form>
           </div>
@@ -291,7 +492,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-[#2d1a18]">โทรศัพท์</h4>
-                    <p className="text-[#4a3631]">02-123-4567</p>
+                    <p className="text-[#4a3631]">📞 082 113 8914</p>
                     <p className="text-[#4a3631] text-sm">
                       จันทร์-ศุกร์ 8:00-18:00 น.
                     </p>
@@ -300,14 +501,35 @@ export default function ContactPage() {
 
                 <div className="flex items-center gap-4">
                   <div className="bg-[#A6171C] text-white p-3 rounded-xl">
+                    <FiMessageSquare size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-[#2d1a18]">Line</h4>
+                    <a
+                      href="https://lin.ee/Eoc4mUN"
+                      className="text-[#A6171C] hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      https://lin.ee/Eoc4mUN
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="bg-[#A6171C] text-white p-3 rounded-xl">
                     <FiMail size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#2d1a18]">อีเมล</h4>
-                    <p className="text-[#4a3631]">info@rukaworld.com</p>
-                    <p className="text-[#4a3631] text-sm">
-                      ตอบกลับภายใน 24 ชั่วโมง
-                    </p>
+                    <h4 className="font-semibold text-[#2d1a18]">Facebook</h4>
+                    <a
+                      href="https://www.facebook.com/share/1G3NH5PCTG/"
+                      className="text-[#A6171C] hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      facebook.com/ruka
+                    </a>
                   </div>
                 </div>
 
@@ -316,24 +538,15 @@ export default function ContactPage() {
                     <FiMapPin size={24} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-[#2d1a18]">ที่อยู่</h4>
-                    <p className="text-[#4a3631]">
-                      123 ถนนสุขุมวิท แขวงคลองตัน
-                    </p>
-                    <p className="text-[#4a3631]">เขตวัฒนา กรุงเทพฯ 10110</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="bg-[#A6171C] text-white p-3 rounded-xl">
-                    <FiClock size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[#2d1a18]">เวลาทำการ</h4>
-                    <p className="text-[#4a3631]">
-                      จันทร์-ศุกร์: 8:00-18:00 น.
-                    </p>
-                    <p className="text-[#4a3631]">เสาร์: 9:00-16:00 น.</p>
+                    <h4 className="font-semibold text-[#2d1a18]">Instagram</h4>
+                    <a
+                      href="https://www.instagram.com/ruka.ruka.world?igsh=MXZna2J1MHpzbnZscg=="
+                      className="text-[#A6171C] hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      @ruka.ruka.world
+                    </a>
                   </div>
                 </div>
               </div>
@@ -357,14 +570,22 @@ export default function ContactPage() {
                 บริการด่วน
               </h3>
               <div className="space-y-4">
-                <button className="w-full bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                <a
+                  href="tel:082-113-8914"
+                  className="w-full bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
+                >
                   <FiPhone size={20} />
-                  โทรเลย 02-123-4567
-                </button>
-                <button className="w-full bg-[#A6171C] hover:bg-[#8a1419] text-white py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                  โทรหา Ruka เดี๋ยวนี้
+                </a>
+                <a
+                  href="https://lin.ee/Eoc4mUN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#A6171C] hover:bg-[#8a1419] text-white py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
+                >
                   <FiMessageSquare size={20} />
-                  แชทไลน์ @rukaworld
-                </button>
+                  แชทไลน์ @ruka
+                </a>
                 <button className="w-full border-2 border-[#A6171C] text-[#A6171C] hover:bg-[#A6171C] hover:text-white py-3 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
                   <FiDownload size={20} />
                   ดาวน์โหลดแคตตาล็อก

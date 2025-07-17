@@ -48,6 +48,7 @@ export interface ISocials {
     threads?: string;
     twitter?: string;
     youtube?: string;
+    line?: string;
     x?: string;
     [key: string]: string | undefined;
 }

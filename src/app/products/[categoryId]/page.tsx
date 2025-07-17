@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { productCategories } from "@/data/products";
 import { productDetails } from "@/data/productDetails";
 import { FiArrowLeft, FiShoppingCart, FiHeart, FiShare2 } from "react-icons/fi";
+import Image from "next/image";
 
 interface CategoryPageProps {
   params: {
@@ -24,7 +25,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 mt-10">
         {/* Breadcrumb */}
         <div className="mb-8">
           <Link
@@ -38,7 +39,14 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
 
         {/* Category Header */}
         <div className="text-center mb-16">
-          <div className="text-8xl mb-6">{category.icon}</div>
+          <div className="text-8xl mb-6 flex justify-center items-center">
+            <Image
+              src={category.image}
+              alt={category.name}
+              width={180}
+              height={180}
+            />
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold text-[#2d1a18] mb-4 drop-shadow-lg">
             {category.name}
           </h1>

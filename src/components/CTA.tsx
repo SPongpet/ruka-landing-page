@@ -34,16 +34,7 @@ const CTA: React.FC = () => {
               </Link>
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 text-sm opacity-90">
-              <div className="flex items-center gap-2">
-                <span>📧</span>
-                <span>{ctaDetails.contactEmail}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>📞</span>
-                <span>{ctaDetails.phoneNumber}</span>
-              </div>
-            </div>
+            <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 text-sm opacity-90"></div>
           </div>
         </div>
       </div>

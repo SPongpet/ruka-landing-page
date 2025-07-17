@@ -1,12 +1,13 @@
 import React from "react";
 import { productCategories } from "@/data/products";
 import Link from "next/link";
+import Image from "next/image";
 
 const Products: React.FC = () => {
   return (
     <section
       id="products"
-      className="py-16 bg-gradient-to-b from-[#f0e0d8] to-[#D6D0C5]"
+      className="py-16 bg-gradient-to-b from-white via-red-50 to-red-100"
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
@@ -35,7 +36,14 @@ const Products: React.FC = () => {
               )}
 
               <div className="text-center">
-                <div className="text-6xl mb-4">{category.icon}</div>
+                <div className="text-6xl mb-4 flex justify-center items-center">
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    width={80}
+                    height={80}
+                  />
+                </div>
                 <h4 className="text-xl font-bold text-[#2d1a18] mb-2">
                   {category.name}
                 </h4>

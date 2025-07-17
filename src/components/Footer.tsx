@@ -34,14 +34,14 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
 
-          {footerDetails.email && (
+          {/* {footerDetails.email && (
             <a
               href={`mailto:${footerDetails.email}`}
               className="block text-[#4a3631] hover:text-[#A6171C]"
             >
               Email: {footerDetails.email}
             </a>
-          )}
+          )} */}
 
           {footerDetails.telephone && (
             <a

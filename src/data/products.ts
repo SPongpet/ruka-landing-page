@@ -12,7 +12,7 @@ export const productCategories: ProductCategory[] = [
         id: 'tumblers',
         name: 'Tumblers',
         description: 'แก้วน้ำและขวดน้ำคุณภาพสูง เหมาะสำหรับใช้ในออฟฟิศ',
-        image: '/images/products/tumblers.webp',
+        image: '/icons/icon_1.png',
         icon: '🥤',
         popular: true
     },
@@ -20,14 +20,14 @@ export const productCategories: ProductCategory[] = [
         id: 'umbrellas',
         name: 'Umbrellas',
         description: 'ร่มกันฝนและแดดที่ทนทาน สกรีนโลโก้ได้สวยงาม',
-        image: '/images/products/umbrellas.webp',
+        image: '/icons/icon_2.png',
         icon: '☂️'
     },
     {
         id: 'bags',
         name: 'Bags',
         description: 'กระเป๋าและถุงผ้าหลากหลายสไตล์ เป็นมิตรต่อสิ่งแวดล้อม',
-        image: '/images/products/bags.webp',
+        image: '/icons/icon_3.png',
         icon: '👜',
         popular: true
     },
@@ -35,43 +35,43 @@ export const productCategories: ProductCategory[] = [
         id: 'hats',
         name: 'Hats',
         description: 'หมวกแฟชั่นและหมวกกันแดด ปักโลโก้ได้สวยงาม',
-        image: '/images/products/hats.webp',
+        image: '/icons/icon_4.png',
         icon: '🧢'
-    },
-    {
-        id: 'luggage',
-        name: 'Luggages',
-        description: 'กระเป๋าเดินทางและกระเป๋าล้อลาก คุณภาพพรีเมี่ยม',
-        image: '/images/products/luggage.webp',
-        icon: '🧳'
     },
     {
         id: 'gadgets',
         name: 'Gadgets',
+        description: 'กระเป๋าเดินทางและกระเป๋าล้อลาก คุณภาพพรีเมี่ยม',
+        image: '/icons/icon_5.png',
+        icon: '🧳'
+    },
+    {
+        id: 'sustainable',
+        name: 'Sustainable',
         description: 'อุปกรณ์เทคโนโลยีและ gadget สมัยใหม่',
-        image: '/images/products/gadgets.webp',
+        image: '/icons/icon_6.png',
         icon: '📱',
         popular: true
     },
     {
-        id: 'gift-sets',
-        name: 'Gift Sets',
+        id: 'stationery',
+        name: 'Stationery',
         description: 'ชุดของขวัญที่จัดเซ็ตมาอย่างสวยงาม พร้อมกล่อง',
-        image: '/images/products/gift-sets.webp',
+        image: '/icons/icon_7.png',
         icon: '🎁'
     },
     {
-        id: 'keychains',
-        name: 'Keychains',
+        id: 'wellness',
+        name: 'Wellness',
         description: 'พวงกุญแจที่ระลึกหลากหลายวัสดุ ขนาดกะทัดรัด',
-        image: '/images/products/keychains.webp',
+        image: '/icons/icon_8.png',
         icon: '🔑'
     },
     {
-        id: 'stationery',
-        name: 'Stationery',
+        id: 'gift-sets',
+        name: 'Gift Sets',
         description: 'เครื่องเขียนและอุปกรณ์สำนักงานคุณภาพดี',
-        image: '/images/products/stationery.webp',
+        image: '/icons/icon_9.png',
         icon: '✏️'
     }
 ]; 

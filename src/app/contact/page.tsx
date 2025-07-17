@@ -105,15 +105,14 @@ export default function ContactPage() {
       // ลองใช้ fetch ก่อน
       try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
+          mode: "no-cors",
+          method: "post",
           headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type",
+            "Content-Type": "application/x-www-form-urlencoded",
           },
           body: JSON.stringify(submitData),
         });
+        console.log("🚀 ~ handleSubmit ~ response:", response);
 
         if (response.ok) {
           alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");

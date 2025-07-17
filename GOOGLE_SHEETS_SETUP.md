@@ -1,19 +1,47 @@
 # วิธีการตั้งค่า Google Sheets สำหรับฟอร์มติดต่อ
 
-## ขั้นตอนที่ 1: สร้าง Google Sheet
+> **⚠️ คู่มือนี้ถูกย้ายแล้ว**
+>
+> กรุณาใช้คู่มือใหม่ที่ปรับปรุงแล้ว: **[GOOGLE_APPS_SCRIPT_SETUP.md](./GOOGLE_APPS_SCRIPT_SETUP.md)**
+>
+> คู่มือใหม่มีการปรับปรุง:
+>
+> - ✅ แก้ไขปัญหา CORS
+> - ✅ ปรับปรุง Error Handling
+> - ✅ เพิ่ม Logging และ Debugging
+> - ✅ รองรับ Environment Variables
+> - ✅ คำแนะนำแก้ไขปัญหาที่ครบถ้วน
 
-1. ไปที่ [Google Sheets](https://sheets.google.com)
-2. สร้าง Google Sheet ใหม่
-3. ตั้งชื่อไฟล์ เช่น "Contact Form Data - RUKA"
-4. **บันทึก ID ของ Google Sheet จาก URL**
-   - URL จะเป็น: `https://docs.google.com/spreadsheets/d/[SHEET_ID]/edit`
-   - คัดลอก SHEET_ID ส่วนที่อยู่ระหว่าง `/d/` และ `/edit`
+---
 
-## ขั้นตอนที่ 2: สร้าง Google Apps Script
+## Quick Start
 
-1. ไปที่ [Google Apps Script](https://script.google.com)
-2. คลิก **"New project"**
-3. ลบโค้ดเดิมทั้งหมดแล้วใส่โค้ดนี้:
+1. ไปที่ **[GOOGLE_APPS_SCRIPT_SETUP.md](./GOOGLE_APPS_SCRIPT_SETUP.md)**
+2. ทำตามขั้นตอนการตั้งค่า
+3. ใช้โค้ด Google Apps Script ที่ปรับปรุงใหม่จากไฟล์ `google-apps-script.js`
+
+---
+
+## สำหรับผู้ที่เคยตั้งค่าแล้ว
+
+หากคุณเคยใช้คู่มือนี้แล้ว แต่ยังมีปัญหา กรุณา:
+
+1. อัปเดต Google Apps Script ด้วยโค้ดใหม่จาก `google-apps-script.js`
+2. Deploy ใหม่
+3. ตรวจสอบ Environment Variables ใน `.env.local`
+
+---
+
+## ต้องการความช่วยเหลือ?
+
+ดูคำแนะนำการแก้ไขปัญหาใน **[GOOGLE_APPS_SCRIPT_SETUP.md](./GOOGLE_APPS_SCRIPT_SETUP.md)** ในหัวข้อ "การแก้ไขปัญหา"
+
+---
+
+<details>
+<summary>เอกสารเดิม (เลิกใช้แล้ว)</summary>
+
+## ขั้นตอนเดิม (ไม่แนะนำให้ใช้)
 
 ```javascript
 /**
@@ -280,3 +308,5 @@ https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
 3. เพิ่ม header ใหม่ใน Google Apps Script
 4. เพิ่มข้อมูลใน `rowData` array
 5. Deploy Google Apps Script ใหม่
+
+</details>

@@ -94,6 +94,7 @@ export default function ContactPage() {
 
       // Send to Google Sheets
       const GOOGLE_SCRIPT_URL =
+        process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL ||
         "https://script.google.com/macros/s/AKfycby1Eshcdcp-uyIx7aWTq4u1wczGME56E2t66mPlz_islG4XFVLBsqIHzBjUufqW5-aJlA/exec";
 
       if (!GOOGLE_SCRIPT_URL) {
@@ -105,79 +106,51 @@ export default function ContactPage() {
       // ลองใช้ fetch ก่อน
       try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {
-          mode: "no-cors",
-          method: "post",
+          method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(submitData),
         });
-        console.log("🚀 ~ handleSubmit ~ response:", response);
+
+        console.log("🚀 ~ handleSubmit ~ response status:", response.status);
 
         if (response.ok) {
-          alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
+          const result = await response.json();
+          console.log("🚀 ~ handleSubmit ~ result:", result);
 
-          // Reset form
-          setForm({
-            name: "",
-            surname: "",
-            email: "",
-            phone: "",
-            company: "",
-            hasCompany: false,
-            taxId: "",
-            address: "",
-            message: "",
-            category: "",
-            product: "",
-            quantity: 1,
-          });
-          return;
+          if (result.success) {
+            alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
+
+            // Reset form
+            setForm({
+              name: "",
+              surname: "",
+              email: "",
+              phone: "",
+              company: "",
+              hasCompany: false,
+              taxId: "",
+              address: "",
+              message: "",
+              category: "",
+              product: "",
+              quantity: 1,
+            });
+
+            return;
+          } else {
+            throw new Error(result.message || "เกิดข้อผิดพลาดในการส่งข้อมูล");
+          }
+        } else {
+          throw new Error(`HTTP Error: ${response.status}`);
         }
       } catch (fetchError) {
-        console.log(
-          "Fetch failed due to CORS, trying form submission method:",
-          fetchError
+        console.error("Failed to submit form:", fetchError);
+        alert(
+          "เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง หรือติดต่อเราทางโทรศัพท์"
         );
       }
-
-      // หาก fetch ไม่ได้ผล ใช้วิธี form submission (ไม่มีปัญหา CORS)
-      const hiddenForm = document.createElement("form");
-      hiddenForm.method = "POST";
-      hiddenForm.action = GOOGLE_SCRIPT_URL;
-      hiddenForm.target = "_blank";
-      hiddenForm.style.display = "none";
-
-      // สร้าง hidden inputs
-      Object.entries(submitData).forEach(([key, value]) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = String(value);
-        hiddenForm.appendChild(input);
-      });
-
-      document.body.appendChild(hiddenForm);
-      hiddenForm.submit();
-      document.body.removeChild(hiddenForm);
-
-      alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
-
-      // Reset form
-      setForm({
-        name: "",
-        surname: "",
-        email: "",
-        phone: "",
-        company: "",
-        hasCompany: false,
-        taxId: "",
-        address: "",
-        message: "",
-        category: "",
-        product: "",
-        quantity: 1,
-      });
     } catch (error) {
       console.error("Error submitting form:", error);
       alert(

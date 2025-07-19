@@ -11,10 +11,7 @@ import { faqs } from "@/data/faq";
 
 const FAQ: React.FC = () => {
   return (
-    <section
-      id="faq"
-      className="py-16 bg-gradient-to-b from-[#D6D0C5] to-[#f0e0d8]"
-    >
+    <section id="faq" className="py-20]">
       <div className="flex flex-col lg:flex-row gap-10 container mx-auto px-4">
         <div className="">
           <p className="hidden lg:block text-gray-300">FAQ&apos;S</p>
@@ -41,7 +38,7 @@ const FAQ: React.FC = () => {
                 {({ open }) => (
                   <>
                     <DisclosureButton className="flex items-center justify-between w-full px-4 pt-7 text-lg text-left border-t border-gray-600">
-                      <span className="font-semibold text-[#2d1a18]">
+                      <span className="font-semibold text-[#A6171C]">
                         {faq.question}
                       </span>
                       <span

@@ -13,6 +13,7 @@ import {
 } from "react-icons/fi";
 import { productCategories } from "@/data/products";
 import { productDetails } from "@/data/productDetails";
+import axios from "axios";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -92,64 +93,65 @@ export default function ContactPage() {
         message: form.message,
       };
 
-      // Send to Google Sheets
-      const GOOGLE_SCRIPT_URL =
-        process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL ||
-        "https://script.google.com/macros/s/AKfycby1Eshcdcp-uyIx7aWTq4u1wczGME56E2t66mPlz_islG4XFVLBsqIHzBjUufqW5-aJlA/exec";
+      // Send to Next.js API route (จะ proxy ไปยัง Google Apps Script)
+      const API_URL = "/api/submit-contact";
 
-      if (!GOOGLE_SCRIPT_URL) {
-        console.error("Google Script URL not configured");
-        alert("ระบบยังไม่พร้อมใช้งาน กรุณาติดต่อผู้ดูแลระบบ");
-        return;
-      }
-
-      // ลองใช้ fetch ก่อน
+      // ใช้ axios ส่งไปยัง Next.js API route (ไม่มีปัญหา CORS)
       try {
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
+        const response = await axios.post(API_URL, submitData, {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(submitData),
+          timeout: 30000, // 30 seconds timeout
         });
 
-        console.log("🚀 ~ handleSubmit ~ response status:", response.status);
+        if (response.data && response.data.success) {
+          alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
 
-        if (response.ok) {
-          const result = await response.json();
-          console.log("🚀 ~ handleSubmit ~ result:", result);
+          // Reset form
+          setForm({
+            name: "",
+            surname: "",
+            email: "",
+            phone: "",
+            company: "",
+            hasCompany: false,
+            taxId: "",
+            address: "",
+            message: "",
+            category: "",
+            product: "",
+            quantity: 1,
+          });
 
-          if (result.success) {
-            alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
-
-            // Reset form
-            setForm({
-              name: "",
-              surname: "",
-              email: "",
-              phone: "",
-              company: "",
-              hasCompany: false,
-              taxId: "",
-              address: "",
-              message: "",
-              category: "",
-              product: "",
-              quantity: 1,
-            });
-
-            return;
-          } else {
-            throw new Error(result.message || "เกิดข้อผิดพลาดในการส่งข้อมูล");
-          }
+          return;
         } else {
-          throw new Error(`HTTP Error: ${response.status}`);
+          throw new Error(
+            response.data?.message || "เกิดข้อผิดพลาดในการส่งข้อมูล"
+          );
         }
-      } catch (fetchError) {
-        console.error("Failed to submit form:", fetchError);
-        alert(
-          "เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง หรือติดต่อเราทางโทรศัพท์"
-        );
+      } catch (axiosError: unknown) {
+        console.error("Failed to submit form:", axiosError);
+
+        // แสดง error message ที่เป็นประโยชน์มากขึ้น
+        let errorMessage = "เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง";
+
+        if (axios.isAxiosError(axiosError)) {
+          if (axiosError.response) {
+            // Server responded with error status
+            console.error("Response error:", axiosError.response.data);
+            errorMessage = `เกิดข้อผิดพลาด: ${axiosError.response.status}`;
+          } else if (axiosError.request) {
+            // Request was made but no response received
+            console.error("Request error:", axiosError.request);
+            errorMessage = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้";
+          } else {
+            // Something else happened
+            console.error("Error:", axiosError.message);
+          }
+        }
+
+        alert(errorMessage + " หรือติดต่อเราทางโทรศัพท์");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -187,13 +189,15 @@ export default function ContactPage() {
           </h2>
           <p className="text-[#4a3631] max-w-2xl mx-auto text-lg leading-relaxed">
             พร้อมให้คำปรึกษาและบริการคุณด้วยความเป็นมืออาชีพ
+          </p>
+          <p className="text-[#4a3631] max-w-2xl mx-auto text-lg leading-relaxed">
             ติดต่อเราได้ทุกช่องทางตลอด 24 ชั่วโมง
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-3 gap-12 mb-16">
           {/* Contact Form */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-[#A6171C]/20">
+          <div className="lg:col-span-2 bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-[#A6171C]/20">
             <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
               ส่งข้อความถึงเรา
             </h3>

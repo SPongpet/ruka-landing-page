@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
     <>
       <Hero />
 
-      <div className="bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] min-h-screen">
+      <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
         {/* <Logos /> */}
         <Container>
           <OneStopExperience />

@@ -137,7 +137,7 @@ export default function ProductsPage() {
               href="tel:02-123-4567"
               className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-8 py-4 rounded-xl font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
             >
-              โทร 02-123-4567
+              โทร 082-113-8914
             </Link>
           </div>
         </div>

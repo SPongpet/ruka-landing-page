@@ -28,7 +28,7 @@ const CTA: React.FC = () => {
               </Link>
               <Link
                 href="/products"
-                className="bg-transparent hover:bg-white/10 text-white border border-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
+                className="bg-[#8a1419] hover:bg-[#8a1419] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
               >
                 {ctaDetails.secondaryCtaText}
               </Link>

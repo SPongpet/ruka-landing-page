@@ -62,6 +62,9 @@ const AboutUsPage: React.FC = () => {
 
             <div>
               <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
+                Mission
+              </h3>
+              <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
                 S-H-I-N-E
               </h3>
               <div className="space-y-4">

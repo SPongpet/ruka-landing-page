@@ -1,6 +1,7 @@
 import React from "react";
 
 import { heroDetails } from "@/data/hero";
+import Link from "next/link";
 // import Image from "next/image";
 
 const Hero: React.FC = () => {
@@ -25,12 +26,18 @@ const Hero: React.FC = () => {
 
         <div className="mt-24" />
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="bg-[#A6171C] hover:bg-[#8a1419] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
+          <Link
+            href="/products"
+            className="bg-[#8a1419] hover:bg-[#8a1419] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
             🔍 สำรวจสินค้าของเรา
-          </button>
-          <button className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
+          </Link>
+          <Link
+            href="/contact"
+            className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
             💬 ขอคำปรึกษาฟรี
-          </button>
+          </Link>
         </div>
 
         <div className="relative  mx-auto z-10 w-96 h-52"></div>

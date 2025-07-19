@@ -4,7 +4,7 @@
  */
 
 // ใส่ ID ของ Google Sheet ที่นี่
-const SPREADSHEET_ID = "YOUR_GOOGLE_SHEET_ID_HERE";
+const SPREADSHEET_ID = "1OECkebqxpsDgCMQys1RdVTmQj3dRU7q5ylclnOF9mDM";
 
 function doPost(e) {
   try {
@@ -109,8 +109,14 @@ function doPost(e) {
       timestamp: timestamp,
     };
 
-    const output = ContentService.createTextOutput(JSON.stringify(response));
-    output.setMimeType(ContentService.MimeType.JSON);
+    const output = ContentService.createTextOutput(JSON.stringify(response))
+      .setMimeType(ContentService.MimeType.JSON);
+    
+    // Set CORS headers
+    output.setHeader("Access-Control-Allow-Origin", "*");
+    output.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    output.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    
     return output;
 
   } catch (error) {
@@ -122,8 +128,14 @@ function doPost(e) {
       message: "เกิดข้อผิดพลาดในการบันทึกข้อมูล",
     };
 
-    const errorOutput = ContentService.createTextOutput(JSON.stringify(errorResponse));
-    errorOutput.setMimeType(ContentService.MimeType.JSON);
+    const errorOutput = ContentService.createTextOutput(JSON.stringify(errorResponse))
+      .setMimeType(ContentService.MimeType.JSON);
+    
+    // Set CORS headers for error response
+    errorOutput.setHeader("Access-Control-Allow-Origin", "*");
+    errorOutput.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    errorOutput.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    
     return errorOutput;
   }
 }
@@ -133,6 +145,11 @@ function doOptions(e) {
   console.log("Received OPTIONS request for CORS preflight");
   
   const optionsOutput = ContentService.createTextOutput("");
+  optionsOutput.setHeader("Access-Control-Allow-Origin", "*");
+  optionsOutput.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+  optionsOutput.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  optionsOutput.setHeader("Access-Control-Max-Age", "86400");
+  
   return optionsOutput;
 }
 
@@ -145,8 +162,13 @@ function doGet(e) {
     version: "2.0",
   };
 
-  const getOutput = ContentService.createTextOutput(JSON.stringify(testResponse));
-  getOutput.setMimeType(ContentService.MimeType.JSON);
+  const getOutput = ContentService.createTextOutput(JSON.stringify(testResponse))
+    .setMimeType(ContentService.MimeType.JSON);
+  
+  getOutput.setHeader("Access-Control-Allow-Origin", "*");
+  getOutput.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+  getOutput.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  
   return getOutput;
 }
 

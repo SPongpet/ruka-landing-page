@@ -5,10 +5,7 @@ import Image from "next/image";
 
 const Products: React.FC = () => {
   return (
-    <section
-      id="products"
-      className="py-16 bg-gradient-to-b from-white via-red-50 to-red-100"
-    >
+    <section id="products" className="py-20 ">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-[#2d1a18] mb-4">

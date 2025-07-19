@@ -4,7 +4,7 @@ import { testimonials } from "@/data/testimonials";
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-16 bg-gradient-to-b from-[#f0e0d8] to-[#D6D0C5]">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-[#2d1a18] text-center mb-4">
           ความคิดเห็นจากลูกค้า

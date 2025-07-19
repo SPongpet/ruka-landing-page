@@ -38,20 +38,26 @@ const BlogPage: React.FC = () => {
         const data = await response.json();
 
         if (data.success) {
-          // ตรวจสอบบทความใหม่
-          if (!silent && blogPosts.length > 0) {
-            const newPosts = data.data.filter(
-              (newPost: BlogPost) =>
-                !blogPosts.some(
-                  (existingPost) => existingPost.id === newPost.id
-                )
-            );
-            if (newPosts.length > 0) {
-              setNewPostsCount((prev) => prev + newPosts.length);
-            }
+          // ตรวจสอบบทความใหม่ - ใช้ setState callback เพื่อหลีกเลี่ยง dependency
+          if (!silent) {
+            setBlogPosts((prevPosts) => {
+              if (prevPosts.length > 0) {
+                const newPosts = data.data.filter(
+                  (newPost: BlogPost) =>
+                    !prevPosts.some(
+                      (existingPost) => existingPost.id === newPost.id
+                    )
+                );
+                if (newPosts.length > 0) {
+                  setNewPostsCount((prev) => prev + newPosts.length);
+                }
+              }
+              return data.data;
+            });
+          } else {
+            setBlogPosts(data.data);
           }
 
-          setBlogPosts(data.data);
           setLastUpdated(data.lastUpdated);
 
           // หาบทความเด่น
@@ -62,7 +68,7 @@ const BlogPage: React.FC = () => {
         console.error("Error fetching blog posts:", error);
       }
     },
-    [blogPosts]
+    [] // เอา blogPosts ออกจาก dependency เพื่อหลีกเลี่ยง infinite loop
   );
 
   // ฟังก์ชันสำหรับรีเฟรชข้อมูล

@@ -108,7 +108,14 @@ const ContactSection = ({
                 <textarea
                   name="message"
                   value={form.message}
-                  onChange={handleInputChange}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                    handleInputChange({
+                      target: {
+                        name: e.target.name,
+                        value: e.target.value,
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>)
+                  }
                   rows={5}
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-[#A6171C] focus:outline-none transition-colors resize-none"
                   placeholder="กรุณากรอกข้อความหรือรายละเอียดที่ต้องการ"

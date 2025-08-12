@@ -1,51 +1,187 @@
+"use client";
+
 import Hero from "@/components/Hero";
-import Testimonials from "@/components/Testimonials";
+import Image from "next/image";
 import Pricing from "@/components/Pricing/Pricing";
 import FAQ from "@/components/FAQ";
-// import Logos from "@/components/Logos";
 import Products from "@/components/Products";
 import Container from "@/components/Container";
 import Section from "@/components/Section";
 import CTA from "@/components/CTA";
 import OneStopExperience from "@/components/OneStopExperience";
+import RukaWorldSection from "@/components/AboutRuka";
+import { testimonials } from "@/data/testimonials";
+import { useState } from "react";
+import axios from "axios";
+import ContactSection from "@/components/ContactSection";
 
 const HomePage: React.FC = () => {
+  const [form, setForm] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post("/api/submit-contact", form);
+
+      if (response.data && response.data.success) {
+        alert("ส่งข้อความเรียบร้อยแล้ว เราจะติดต่อกลับโดยเร็วที่สุด");
+
+        // Reset form
+        setForm({
+          name: "",
+          surname: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+
+        return;
+      } else {
+        throw new Error(
+          response.data?.message || "เกิดข้อผิดพลาดในการส่งข้อมูล"
+        );
+      }
+    } catch (axiosError: unknown) {
+      console.error("Failed to submit form:", axiosError);
+
+      let errorMessage = "เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง";
+
+      if (axios.isAxiosError(axiosError)) {
+        if (axiosError.response) {
+          console.error("Response error:", axiosError.response.data);
+          errorMessage = `เกิดข้อผิดพลาด: ${axiosError.response.status}`;
+        } else if (axiosError.request) {
+          console.error("Request error:", axiosError.request);
+          errorMessage = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้";
+        } else {
+          console.error("Error:", axiosError.message);
+        }
+      }
+
+      alert(errorMessage + " หรือติดต่อเราทางโทรศัพท์");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <Hero />
 
-      <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
-        {/* <Logos /> */}
+      <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pb-16">
         <Container>
-          <OneStopExperience />
+          {/* About RUKA WORLD Section */}
+          <RukaWorldSection />
 
           <Products />
 
-          {/* <Benefits /> */}
+          <OneStopExperience />
 
           <Section
             id="pricing"
-            title="แพ็คเกจราคา"
+            title="package"
             description="เลือกแพ็คเกจที่เหมาะสมกับความต้องการและงบประมาณของคุณ"
           >
             <Pricing />
           </Section>
 
-          <Section
-            id="testimonials"
-            title="ลูกค้าพูดถึงเรา"
-            description="ฟังเสียงจากลูกค้าที่เลือกใช้บริการของเรา"
-          >
-            <Testimonials />
-          </Section>
+          {/* Testimonials Section */}
+          <section className="relative py-20 bg-gradient-to-b from-[#7b1a1b] to-[#de2a29] -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
+            <div className="max-w-6xl mx-auto px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  ลูกค้าพูดถึงเรา
+                </h2>
+                <p className="text-lg md:text-xl text-[#F1C045] max-w-4xl mx-auto leading-relaxed">
+                  ฟังเสียงจากลูกค้าที่เลือกใช้บริการของเรา
+                </p>
+              </div>
+
+              {/* Cards Grid */}
+              <div className="grid grid-cols-3 gap-8 max-w-5xl mx-auto">
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="relative flex justify-center">
+                    {/* ชั้นหลัง */}
+                    <div className="absolute top-3 left-3 w-full h-full bg-[#E5B78C] rounded-[1.5rem]"></div>
+
+                    {/* ชั้นหน้า */}
+                    <div className="relative bg-[#C89465] rounded-[1.5rem] p-6 w-full text-center shadow-lg">
+                      {/* Avatar */}
+                      <div className="flex justify-center mb-3">
+                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                          <Image
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            width={64}
+                            height={64}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Name */}
+                      <h4 className="font-bold text-base text-white">
+                        {testimonial.name}
+                      </h4>
+
+                      {/* Message */}
+                      <p className="mt-2 text-sm text-white/90 leading-relaxed line-clamp-4">
+                        &quot;{testimonial.message}&quot;
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* ช่องว่างถ้าจำนวนไม่ครบ */}
+                {Array.from(
+                  { length: Math.max(0, 6 - testimonials.length) },
+                  (_, index) => (
+                    <div
+                      key={`empty-${index}`}
+                      className="relative flex justify-center"
+                    >
+                      <div className="absolute top-3 left-3 w-full h-full bg-[#dbba99] rounded-[1.5rem]"></div>
+                      <div className="relative bg-[#C89465] rounded-[1.5rem] w-full h-56"></div>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </section>
 
           <FAQ />
-
-          {/* <Stats /> */}
 
           <CTA />
         </Container>
       </div>
+
+      {/* Contact Section */}
+      <ContactSection
+        handleSubmit={handleSubmit}
+        form={form}
+        handleInputChange={handleInputChange}
+        isSubmitting={isSubmitting}
+      />
     </>
   );
 };

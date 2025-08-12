@@ -20,4 +20,22 @@ export const testimonials: ITestimonial[] = [
         message: `ประทับใจบริการ ${siteDetails.siteName} มาก ตั้งแต่การให้คำปรึกษา การออกแบบ ไปจนถึงการส่งมอบ ทุกขั้นตอนเป็นมืออาชีพ คุ้มค่าทุกบาทที่จ่ายไป`,
         avatar: '/images/testimonial-3.webp',
     },
+    {
+        name: 'วรพล ศิริชัย',
+        role: '',
+        message: `${siteDetails.siteName} ให้บริการได้รวดเร็วและยืดหยุ่นมาก สามารถปรับเปลี่ยนตามความต้องการของเราได้ทันที ทำให้โครงการเสร็จตรงเวลาและได้คุณภาพที่เกินคาด`,
+        avatar: '/images/testimonial-4.webp',
+      },
+      {
+        name: 'พิมพ์ชนก อินทร์แก้ว',
+        role: '',
+        message: `ประสบการณ์ทำงานกับ ${siteDetails.siteName} เป็นอะไรที่ยอดเยี่ยม ทีมงานเป็นกันเอง ให้คำแนะนำที่ตรงจุด และใส่ใจทุกรายละเอียดของงาน`,
+        avatar: '/images/testimonial-5.webp',
+      },
+      {
+        name: 'นฤพล ธนากร',
+        role: '',
+        message: `ผมชื่นชมการทำงานของ ${siteDetails.siteName} มาก เพราะทุกขั้นตอนทำอย่างมีระบบและตรวจสอบได้ ทำให้มั่นใจในคุณภาพและบริการหลังการขาย`,
+        avatar: '/images/testimonial-6.webp',
+      },
 ];

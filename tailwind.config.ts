@@ -20,6 +20,14 @@ const config: Config = {
         ruby: '#A6171C',
         natural: '#D6D0C5',
         sunny: '#F1C045',
+
+        'ruka-deep-red': '#5a0f10',
+        'ruka-dark-red': '#3b0a0a',
+        'ruka-mid-red': '#8c1515',
+        'ruka-text-red': '#4a0404',
+        'ruka-beige': '#d2a679',
+        'ruka-gold': '#f5a623',
+
       },
     },
   },

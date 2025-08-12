@@ -16,23 +16,20 @@ const Header: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  const leftMenuItems = menuItems.slice(0, 3); // Home, About Us, Services
-  const rightMenuItems = menuItems.slice(3); // Products, Blog, Contact Us
-
   return (
-    <header className="bg-white backdrop-blur-lg fixed top-0 left-0 right-0 z-50 mx-auto w-full border-b border-[#f7f7f7]/20 shadow-lg">
+    <header className="bg-gradient-to-r from-[#A6171C] to-[#8a1419] fixed top-0 left-0 right-0 z-50 mx-auto w-full shadow-lg">
       <Container className="!px-0">
-        <nav className="mx-auto flex justify-between items-center py-4 px-5">
-          {/* ซ้ายเมนู */}
-          <ul
-            className="hidden md:flex flex-1 justify-end space-x-8 font-bold text-lg pr-5"
-            style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
-          >
-            {leftMenuItems.map((item) => (
+        <nav className="mx-auto flex justify-between items-center py-3 px-5">
+          {/* โลโก้ด้านซ้าย */}
+          <div className="flex-shrink-0" />
+
+          {/* เมนูกลาง */}
+          <ul className="hidden md:flex items-center space-x-8 font-semibold text-white">
+            {menuItems.map((item) => (
               <li key={item.text}>
                 <Link
                   href={item.url}
-                  className="text-[#000000] hover:text-[#A6171C] transition-colors border-b-2 border-transparent hover:border-[#A6171C] pb-1"
+                  className="hover:text-[#F1C045] transition-colors duration-200 border-b-2 border-transparent hover:border-[#F1C045] pb-1 text-lg tracking-wide"
                 >
                   {item.text}
                 </Link>
@@ -40,48 +37,15 @@ const Header: React.FC = () => {
             ))}
           </ul>
 
-          {/* โลโก้ตรงกลาง */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2 select-none">
-              <span
-                className="text-4xl font-bold"
-                style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
-              >
-                {/* <span className="text-ruby">R</span>
-                <span className="text-sunny">ukà</span> */}
-                <Image
-                  src="/images/logo.png"
-                  alt="logo"
-                  width={100}
-                  height={100}
-                />
-              </span>
-            </Link>
-          </div>
-
-          {/* ขวาเมนู */}
-          <ul
-            className="hidden md:flex flex-1 justify-start space-x-8 font-bold text-lg pl-5"
-            style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
-          >
-            {rightMenuItems.map((item) => (
-              <li key={item.text}>
-                <Link
-                  href={item.url}
-                  className="text-[#000000] hover:text-[#A6171C] transition-colors border-b-2 border-transparent hover:border-[#A6171C] pb-1"
-                >
-                  {item.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {/* ปุ่มด้านขวา */}
+          <div className="hidden md:flex items-center space-x-4" />
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
               type="button"
-              className="bg-sunny text-black focus:outline-none rounded-full w-10 h-10 flex items-center justify-center border-2 border-sunny"
+              className="text-white focus:outline-none rounded-full w-10 h-10 flex items-center justify-center border-2 border-white/30 hover:border-white/50"
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
             >
@@ -108,32 +72,29 @@ const Header: React.FC = () => {
       >
         <div
           id="mobile-menu"
-          className="md:hidden bg-gradient-to-b from-white/95 via-[#D6D0C5]/90 to-[#f0e0d8]/90 backdrop-blur-lg shadow-lg"
+          className="md:hidden bg-gradient-to-b from-[#A6171C] to-[#8a1419] shadow-lg"
         >
-          <ul
-            className="flex flex-col space-y-4 pt-1 pb-6 px-6 font-bold text-lg"
-            style={{ fontFamily: "Fredoka One, Arial, sans-serif" }}
-          >
+          <ul className="flex flex-col space-y-2 pt-2 pb-6 px-6 font-semibold text-white">
             {menuItems.map((item) => (
               <li key={item.text}>
                 <Link
                   href={item.url}
-                  className="text-[#2d1a18] hover:text-[#A6171C] block border-b-2 border-transparent hover:border-[#A6171C] pb-1"
+                  className="hover:text-[#F1C045] block py-2 px-3 rounded-lg hover:bg-white/10 transition-colors duration-200"
                   onClick={toggleMenu}
                 >
                   {item.text}
                 </Link>
               </li>
             ))}
-            {/* <li>
+            <li className="pt-4">
               <Link
-                href="#cta"
-                className="text-ruby bg-white hover:bg-sunny hover:text-white px-5 py-2 rounded-full block w-fit font-bold border-2 border-white hover:border-sunny"
+                href="/contact"
+                className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-6 py-3 rounded-lg font-bold text-sm block text-center transition-all duration-300"
                 onClick={toggleMenu}
               >
-                Catalog
+                ติดต่อเรา
               </Link>
-            </li> */}
+            </li>
           </ul>
         </div>
       </Transition>

@@ -2,190 +2,208 @@ import React from "react";
 
 const AboutUsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
-      <div className="container mx-auto px-4 mt-10">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#2d1a18] mb-6 drop-shadow-lg">
-            เกี่ยวกับเรา
-          </h1>
-          <h2 className="text-2xl md:text-3xl text-[#A6171C] font-semibold italic mb-8 drop-shadow-md">
-            About Ruka World
-          </h2>
-        </div>
-
-        {/* Our Why Section */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-lg border border-[#A6171C]/20 mb-16">
-          <h3 className="text-3xl font-bold text-[#2d1a18] text-center mb-8">
-            Our Why เหตุผลที่ Ruka เกิดมา?
-          </h3>
-          <div className="text-center mb-8">
-            <p className="text-xl text-[#A6171C] font-semibold mb-6">
-              &ldquo;ทำไมของขวัญแบรนด์ส่วนใหญ่ถึงกลายเป็นแค่ของกองบนโต๊ะทำงาน?&rdquo;
-            </p>
-            <p className="text-lg text-[#4a3631] mb-6">
-              เราถามคำถามนี้ตั้งแต่วันแรก
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg text-[#4a3631] leading-relaxed mb-6">
-              <strong>Ruka จึงเกิดขึ้นเพื่อพลิกนิยาม ของขวัญองค์กร</strong> จาก{" "}
-              <span className="text-[#A6171C]">&ldquo;ของแถม&rdquo;</span> ไปสู่
-            </p>
-            <p className="text-2xl font-bold text-[#A6171C] mb-8">
-              &ldquo;ประสบการณ์ที่สะท้อนตัวตนแบรนด์&rdquo;
-            </p>
-            <p className="text-lg text-[#4a3631] leading-relaxed">
-              เลือก Ruka แล้วมาร่วมเปลี่ยนการ{" "}
-              <span className="font-bold text-[#A6171C]">
-                &ldquo;Give&rdquo;
-              </span>{" "}
-              ให้กลายเป็น{" "}
-              <span className="font-bold text-[#A6171C]">
-                &ldquo;Elevate&rdquo;
-              </span>{" "}
-              ไปด้วยกัน
-            </p>
+    <div className="min-h-screen">
+      {/* Hero Section with Red Background */}
+      <div className="bg-gradient-to-b from-[#7b1a1b] to-[#de2a29] pt-24 pb-16">
+        <div className="container mx-auto px-4 mt-10">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+              เกี่ยวกับเรา
+            </h1>
+            <h2 className="text-2xl md:text-4xl text-[#F1C045] font-bold">
+              About Ruka World
+            </h2>
           </div>
         </div>
+      </div>
 
-        {/* Vision and Mission */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-lg border border-[#A6171C]/20 mb-16">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">Vision</h3>
-              <p className="text-[#4a3631] leading-relaxed text-lg">
-                ยกระดับการให้ของขวัญให้กลายเป็นสื่อคุณค่าที่แข็งแรงที่สุด
-              </p>
-            </div>
+      {/* Content Section */}
+      <div className="bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] py-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+          {/* Our Why Section */}
+          <div className="relative mb-12">
+            {/* Shadow element */}
+            <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl"></div>
 
-            <div>
-              <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
-                Mission
+            {/* Main content */}
+            <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 md:p-12 text-white">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+                Our Why เหตุผลที่ <span className="text-[#F1C045]">Ruka</span>{" "}
+                เกิดมา?
               </h3>
-              <h3 className="text-2xl font-bold text-[#2d1a18] mb-6">
-                S-H-I-N-E
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-lg font-semibold text-[#A6171C] mb-2">
-                    S – Story-First Design
-                  </h4>
-                  <p className="text-[#4a3631] text-sm">
-                    ทุกชิ้นต้องเล่าเรื่องแบรนด์ได้ตั้งแต่แรกเห็น
+
+              <div className="text-center space-y-4">
+                <p className="text-lg leading-relaxed">
+                  ทำไมของขวัญแบรนด์ส่วนใหญ่ถึงกลายเป็นแค่ของกองบนโต๊ะทำงาน?
+                  เราถามคำถามนี้ตั้งแต่วันแรก
+                </p>
+                <p className="text-lg font-semibold">
+                  Ruka จึงเกิดขึ้นเพื่อพลิกนิยาม ของขวัญองค์กร จาก{" "}
+                  <span className="text-[#F1C045]">ของแถม</span> ไปสู่
+                </p>
+                <p className="text-xl font-bold text-red-600">
+                  ประสบการณ์ที่สะท้อนตัวตนแบรนด์
+                </p>
+                <p className="text-lg">
+                  เลือก Ruka แล้วมาร่วมเปลี่ยนการ{" "}
+                  <span className="font-bold">Give</span> ให้กลายเป็น{" "}
+                  <span className="font-bold">Elevate</span> ไปด้วยกัน
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Vision and Mission */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            {/* Vision */}
+            <div className="relative">
+              {/* Shadow element */}
+              <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl"></div>
+
+              {/* Main content */}
+              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 text-white">
+                <div className="text-center">
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#F1C045] mb-6">
+                    Vision
+                  </h3>
+                  <p className="text-lg font-semibold leading-relaxed">
+                    ยกระดับ การให้ของขวัญ
+                    <br />
+                    ให้กลายเป็นสื่อคุณค่าที่แข็งแรงที่สุด
                   </p>
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-[#A6171C] mb-2">
-                    H – Hyper-Transparent Flow
+              </div>
+            </div>
+
+            {/* Mission */}
+            <div className="relative">
+              {/* Shadow element */}
+              <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl"></div>
+
+              {/* Main content */}
+              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 text-white">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#F1C045] text-center mb-2">
+                  Mission
+                </h3>
+                <h4 className="text-xl font-bold text-center mb-6">
+                  S-H-I-N-E
+                </h4>
+
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <h5 className="font-bold mb-1">S – Story-First Design</h5>
+                    <p className="leading-relaxed text-white/90">
+                      ทุกชิ้นต้องเล่าเรื่องแบรนด์ได้ตั้งแต่แรกเห็น
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="font-bold mb-1">
+                      H – Hyper-Transparent Flow
+                    </h5>
+                    <p className="leading-relaxed text-white/90">
+                      เสถานะงานเรียลไทม์ ไม่ต้องทวง ไม่ต้องเดา
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="font-bold mb-1">I – Impact Over Quantity</h5>
+                    <p className="leading-relaxed text-white/90">
+                      เน้นคุณค่า ใช้ประโยชน์ได้ ไม่ผลิตของเก็บฝุ่น
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="font-bold mb-1">N – Next-Gen Innovation</h5>
+                    <p className="leading-relaxed text-white/90">
+                      ทดลองใส่มีไฟใหม่เสมอ เพื่อให้ชิ้นงานล้ำตลาด
+                    </p>
+                  </div>
+
+                  <div>
+                    <h5 className="font-bold mb-1">E – Elevate Every Touch</h5>
+                    <p className="leading-relaxed text-white/90">
+                      ยกระดับตั้งแต่แพ็กเกจ
+                      <br />
+                      Unbox → After-Sales Experience
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Values - 4 Icons */}
+          <div className="relative">
+            {/* Shadow element */}
+            <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl"></div>
+
+            {/* Main content */}
+            <div className="relative bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-3xl p-8 md:p-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {/* คุณภาพ */}
+                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                    <span className="text-2xl md:text-3xl">🏆</span>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-white mb-2">
+                    คุณภาพ
                   </h4>
-                  <p className="text-[#4a3631] text-sm">
-                    เห็นสถานะงานเรียลไทม์ ไม่ต้องทวง ไม่ต้องเดา
+                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                    มุ่งมั่นผลิตสินค้า
+                    <br />
+                    ที่มีมาตรฐานสูงสุด
                   </p>
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-[#A6171C] mb-2">
-                    I – Impact Over Quantity
+
+                {/* ความไว้วางใจ */}
+                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                    <span className="text-2xl md:text-3xl">🤝</span>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-white mb-2">
+                    ความไว้วางใจ
                   </h4>
-                  <p className="text-[#4a3631] text-sm">
-                    เน้นคุณค่าจริง ใช้ประโยชน์ได้ ไม่ผลิตของเก็บฝุ่น
+                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                    สร้างความมั่นใจให้ลูกค้า
+                    <br />
+                    ด้วยความโปร่งใส
                   </p>
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-[#A6171C] mb-2">
-                    N – Next-Gen Innovation
+
+                {/* นวัตกรรม */}
+                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                    <span className="text-2xl md:text-3xl">⚡</span>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-white mb-2">
+                    นวัตกรรม
                   </h4>
-                  <p className="text-[#4a3631] text-sm">
-                    ทดลองวัสดุ–เทคโนโลยีใหม่เสมอ เพื่อให้ชิ้นงานล้ำตลาด
+                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                    พัฒนาผลิตภัณฑ์ใหม่
+                    <br />
+                    อย่างต่อเนื่อง
                   </p>
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-[#A6171C] mb-2">
-                    E – Elevate Every Touch
+
+                {/* ความรับผิดชอบ */}
+                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
+                    <span className="text-2xl md:text-3xl">🎯</span>
+                  </div>
+                  <h4 className="text-base md:text-lg font-bold text-white mb-2">
+                    ความรับผิดชอบ
                   </h4>
-                  <p className="text-[#4a3631] text-sm">
-                    ยกระดับตั้งแต่แพ็กเกจ → Unbox → After-Sales Experience
+                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                    ตอบสนองความต้องการ
+                    <br />
+                    ลูกค้าอย่างเต็มที่
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Values */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-lg border border-[#A6171C]/20 mb-16">
-          <h3 className="text-3xl font-bold text-[#2d1a18] text-center mb-12">
-            คุณค่าองค์กร
-          </h3>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-[#A6171C]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🏆</span>
-              </div>
-              <h4 className="text-lg font-bold text-[#2d1a18] mb-3">คุณภาพ</h4>
-              <p className="text-[#4a3631] text-sm">
-                มุ่งมั่นผลิตสินค้าที่มีมาตรฐานสูงสุด
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-[#A6171C]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🤝</span>
-              </div>
-              <h4 className="text-lg font-bold text-[#2d1a18] mb-3">
-                ความไว้วางใจ
-              </h4>
-              <p className="text-[#4a3631] text-sm">
-                สร้างความมั่นใจให้ลูกค้าด้วยความโปร่งใส
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-[#A6171C]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">⚡</span>
-              </div>
-              <h4 className="text-lg font-bold text-[#2d1a18] mb-3">
-                นวัตกรรม
-              </h4>
-              <p className="text-[#4a3631] text-sm">
-                พัฒนาผลิตภัณฑ์ใหม่อย่างต่อเนื่อง
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-[#A6171C]/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🎯</span>
-              </div>
-              <h4 className="text-lg font-bold text-[#2d1a18] mb-3">
-                ความรับผิดชอบ
-              </h4>
-              <p className="text-[#4a3631] text-sm">
-                ตอบสนองความต้องการลูกค้าอย่างเต็มที่
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Statistics */}
-        {/* <div className="grid md:grid-cols-4 gap-8 mb-16">
-          {[
-            { number: "15+", label: "ปีประสบการณ์", desc: "ในอุตสาหกรรม" },
-            { number: "2000+", label: "ลูกค้า", desc: "ทั่วประเทศ" },
-            { number: "50+", label: "ประเภทสินค้า", desc: "หลากหลาย" },
-            { number: "99%", label: "ความพึงพอใจ", desc: "ของลูกค้า" },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 text-center shadow-lg border border-[#A6171C]/20"
-            >
-              <div className="text-3xl font-bold text-[#A6171C] mb-2">
-                {stat.number}
-              </div>
-              <div className="text-lg font-semibold text-[#2d1a18] mb-1">
-                {stat.label}
-              </div>
-              <div className="text-[#4a3631] text-sm">{stat.desc}</div>
-            </div>
-          ))}
-        </div> */}
       </div>
     </div>
   );

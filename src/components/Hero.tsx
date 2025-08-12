@@ -2,45 +2,63 @@ import React from "react";
 
 import { heroDetails } from "@/data/hero";
 import Link from "next/link";
-// import Image from "next/image";
 
 const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative flex items-center justify-center pb-0 pt-32 md:pt-64 px-5"
+      className="relative flex items-center justify-start py-16 md:py-20 px-8 min-h-screen"
     >
-      <div className="opacity-95 absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-[#D42C2D] via-[#A6171C] to-[#8B0000] bg-[linear-gradient(to_right,#a6171c_1px,transparent_1px),linear-gradient(to_bottom,#951519_1px,transparent_1px)] bg-[size:6rem_4rem]">
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_600px_at_50%_500px,#DC143C,transparent)]"></div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-[#A6171C] via-[#8B0000] to-[#6B0000]">
+        <div className="absolute inset-0 bg-[url('/images/bg.png')] bg-cover bg-center bg-no-repeat opacity-70"></div>
       </div>
 
-      {/* <div className="absolute left-0 right-0 bottom-0 backdrop-blur-[2px] h-40 bg-gradient-to-b from-transparent via-[rgba(233,238,255,0.5)] to-[rgba(202,208,230,0.5)]"></div> */}
+      <div className="flex items-center justify-center w-full max-w-7xl mx-auto">
+        <div className="text-left relative z-20 flex-1">
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+            {heroDetails.heading1}
+          </h1>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-8 leading-tight">
+            {heroDetails.heading2}
+          </h2>
 
-      <div className="text-center relative z-20">
-        <h1 className="text-4xl md:text-6xl md:leading-tight font-bold text-white max-w-lg md:max-w-4xl mx-auto drop-shadow-lg">
-          {heroDetails.heading1}
-        </h1>
-        <h1 className="text-4xl md:text-6xl md:leading-tight font-bold text-white max-w-lg md:max-w-4xl mx-auto drop-shadow-lg">
-          {heroDetails.heading2}
-        </h1>
+          {/* Ruka Logo */}
+          <div className="mb-4 text-center">
+            <div className="px-6 py-3 inline-block">
+              <span className="text-[#F1C045] text-4xl md:text-5xl font-black">
+                Rukå
+              </span>
+            </div>
+          </div>
 
-        <div className="mt-24" />
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/products"
-            className="bg-[#8a1419] hover:bg-[#8a1419] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
-          >
-            🔍 สำรวจสินค้าของเรา
-          </Link>
-          <Link
-            href="/contact"
-            className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
-          >
-            💬 ขอคำปรึกษาฟรี
-          </Link>
+          <div className="mb-8 text-center">
+            <p className="text-lg md:text-xl text-[#FFFFFF] font-light italic">
+              Elevate Your Corporate Gifting
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              href="/products"
+              className="group bg-[#F1C045] hover:bg-[#e5b63e] text-[#8B4513] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <span>สำรวจสินค้าของเรา</span>
+            </Link>
+          </div>
         </div>
 
-        <div className="relative  mx-auto z-10 w-96 h-52"></div>
+        <div className="flex-1"></div>
+      </div>
+
+      {/* Wave Separator */}
+      <div className="absolute bottom-0 left-0 right-0 -z-10 h-20 w-full bg-gradient-to-br from-[#fdda59] via-[#fab553] to-[#f8924d]">
+        {/* <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="w-full h-12 fill-[#fdf8f6]"
+        >
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+        </svg> */}
       </div>
     </section>
   );

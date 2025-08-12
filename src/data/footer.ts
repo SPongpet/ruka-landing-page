@@ -34,7 +34,7 @@ export const footerDetails: {
     socials: {
         facebook: 'https://www.facebook.com/share/1G3NH5PCTG/',
         line: 'https://lin.ee/Eoc4mUN',
-        instagram: 'https://www.instagram.com/ruka.ruka.world?igsh=MXZna2J1MHpzbnZscg==',
+        instagram: 'https://www.instagram.com/rukaworld_th?igsh=MWRqZXhuc2ExZnllcA==',
         // twitter: 'https://twitter.com/rukaworld',
     }
 }

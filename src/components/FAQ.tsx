@@ -11,7 +11,7 @@ import { faqs } from "@/data/faq";
 
 const FAQ: React.FC = () => {
   return (
-    <section id="faq" className="py-20]">
+    <section id="faq" className="py-24">
       <div className="flex flex-col lg:flex-row gap-10 container mx-auto px-4">
         <div className="">
           <p className="hidden lg:block text-gray-300">FAQ&apos;S</p>

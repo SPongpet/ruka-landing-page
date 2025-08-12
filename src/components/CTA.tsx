@@ -3,38 +3,30 @@ import Link from "next/link";
 
 const CTA: React.FC = () => {
   return (
-    <section id="cta" className="mt-10 mb-5 lg:my-20">
-      <div className="relative h-full w-full z-10 mx-auto py-12 sm:py-20">
-        <div className="h-full w-full">
-          <div className="rounded-3xl opacity-95 absolute inset-0 -z-10 h-full w-full bg-ruby bg-[linear-gradient(to_right,#a6171c_1px,transparent_1px),linear-gradient(to_bottom,#951519_1px,transparent_1px)] bg-[size:6rem_4rem]">
-            <div className="rounded-3xl absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_600px_at_50%_500px,#e31f26,transparent)]"></div>
-          </div>
+    <section className="relative py-20 bg-gradient-to-b from-[#7b1a1b] to-[#de2a29] -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
+      <div className="max-w-6xl mx-auto px-8">
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
+            {ctaDetails.heading}
+          </h2>
 
-          <div className="h-full flex flex-col items-center justify-center text-white text-center px-5">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl md:leading-tight font-semibold mb-4 max-w-4xl">
-              {ctaDetails.heading}
-            </h2>
+          <p className="text-lg md:text-xl text-white mb-12 max-w-3xl mx-auto">
+            {ctaDetails.subheading}
+          </p>
 
-            <p className="mx-auto max-w-3xl md:px-5 text-lg mb-8">
-              {ctaDetails.subheading}
-            </p>
-
-            <div className="mt-4 flex flex-col sm:flex-row items-center gap-4">
-              <Link
-                href="/contact"
-                className="bg-sunny hover:bg-sunny/90 text-ruby px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
-              >
-                {ctaDetails.primaryCtaText}
-              </Link>
-              <Link
-                href="/products"
-                className="bg-[#8a1419] hover:bg-[#8a1419] text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
-              >
-                {ctaDetails.secondaryCtaText}
-              </Link>
-            </div>
-
-            <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 text-sm opacity-90"></div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              href="/contact"
+              className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#8B4513] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              {ctaDetails.primaryCtaText}
+            </Link>
+            <Link
+              href="/products"
+              className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#8B4513] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              {ctaDetails.secondaryCtaText}
+            </Link>
           </div>
         </div>
       </div>

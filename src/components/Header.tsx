@@ -7,7 +7,6 @@ import { HiOutlineXMark, HiBars3 } from "react-icons/hi2";
 
 import Container from "./Container";
 import { menuItems } from "@/data/menuItems";
-import Image from "next/image";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

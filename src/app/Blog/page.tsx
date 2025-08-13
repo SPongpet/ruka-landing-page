@@ -2,26 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-  blogPosts,
-  categories,
-  getFeaturedPosts,
-  getBlogPostsByCategory,
-} from "@/data/blogPosts";
+import { blogPosts, getFeaturedPosts } from "@/data/blogPosts";
 import type { BlogPost } from "@/data/blogPosts";
 
 const BlogPage: React.FC = () => {
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
-  const [selectedCategory, setSelectedCategory] = useState<string>("ทั้งหมด");
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-
-  // ฟังก์ชันสำหรับกรองบทความตามหมวดหมู่
-  const filterPostsByCategory = (category: string) => {
-    setSelectedCategory(category);
-    const filtered = getBlogPostsByCategory(category);
-    setFilteredPosts(filtered);
-  };
 
   // โหลดข้อมูลเมื่อ component mount
   useEffect(() => {

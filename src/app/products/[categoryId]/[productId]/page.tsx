@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,6 +12,7 @@ import {
   FiMail,
   FiDownload,
 } from "react-icons/fi";
+import Image from "next/image";
 
 interface ProductPageProps {
   params: {
@@ -21,6 +23,7 @@ interface ProductPageProps {
 
 const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
   const { categoryId, productId } = params;
+  const [selectedImage, setSelectedImage] = React.useState<string>("");
 
   // Find the category and product
   const category = productCategories.find((cat) => cat.id === categoryId);
@@ -30,6 +33,13 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
   if (!category || !product) {
     notFound();
   }
+
+  // Set default selected image
+  React.useEffect(() => {
+    if (product.image) {
+      setSelectedImage(product.image);
+    }
+  }, [product.image]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fdf8f6] via-[#f0e0d8] to-[#D6D0C5] pt-24 pb-16">
@@ -57,20 +67,70 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
           {/* Product Images */}
           <div className="space-y-4">
             {/* Main Image */}
-            <div className="aspect-square bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-3xl flex items-center justify-center shadow-lg">
-              <div className="text-9xl opacity-60">{category.icon}</div>
+            <div className="aspect-square bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-3xl flex items-center justify-center shadow-lg relative overflow-hidden">
+              <Image
+                src={selectedImage || product.image}
+                alt={product.name}
+                fill
+                className="object-cover rounded-3xl transition-all duration-300"
+              />
             </div>
 
-            {/* Thumbnail Images */}
-            <div className="grid grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((index) => (
-                <div
-                  key={index}
-                  className="aspect-square bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-2xl flex items-center justify-center cursor-pointer hover:shadow-lg transition-shadow"
-                >
-                  <div className="text-2xl opacity-60">{category.icon}</div>
+            {/* Thumbnail Images Gallery */}
+            <div className="space-y-2">
+              <h3 className="text-sm font-semibold text-[#2d1a18]">
+                รูปภาพเพิ่มเติม
+              </h3>
+              {product.images && product.images.length > 0 ? (
+                <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-[#A6171C] scrollbar-track-[#f0e0d8]">
+                  {/* Main product image as first option */}
+                  <div
+                    onClick={() => setSelectedImage(product.image)}
+                    className={`flex-shrink-0 aspect-square w-20 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-xl flex items-center justify-center cursor-pointer hover:shadow-lg transition-all duration-300 relative overflow-hidden border-2 ${
+                      selectedImage === product.image
+                        ? "border-[#A6171C] ring-2 ring-[#A6171C]/30"
+                        : "border-transparent hover:border-[#A6171C]/50"
+                    }`}
+                  >
+                    <Image
+                      src={product.image}
+                      alt={`${product.name} - หลัก`}
+                      fill
+                      className="object-cover rounded-xl"
+                    />
+                  </div>
+                  {/* Additional images */}
+                  {product.images.map((image, index) => (
+                    <div
+                      key={image}
+                      onClick={() => setSelectedImage(image)}
+                      className={`flex-shrink-0 aspect-square w-20 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-xl flex items-center justify-center cursor-pointer hover:shadow-lg transition-all duration-300 relative overflow-hidden border-2 ${
+                        selectedImage === image
+                          ? "border-[#A6171C] ring-2 ring-[#A6171C]/30"
+                          : "border-transparent hover:border-[#A6171C]/50"
+                      }`}
+                    >
+                      <Image
+                        src={image}
+                        alt={`${product.name} - ${index + 1}`}
+                        fill
+                        className="object-cover rounded-xl"
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              ) : (
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4].map((index) => (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 aspect-square w-20 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-xl flex items-center justify-center"
+                    >
+                      <div className="text-lg opacity-60">{category.icon}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -160,14 +220,40 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
                 <span className="text-[#A6171C]">✨</span>
                 คุณสมบัติเด่น
               </h3>
-              <ul className="space-y-3">
-                {product.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="text-[#A6171C] mt-1 text-sm">•</span>
-                    <span className="text-[#4a3631]">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-4">
+                <ul className="space-y-3">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                      <span className="text-[#4a3631]">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                {/* Feature Image Gallery */}
+                {/* {product.images && product.images.length > 1 && (
+                  <div className="mt-6">
+                    <h4 className="text-sm font-semibold text-[#2d1a18] mb-3">
+                      รูปภาพประกอบ
+                    </h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {product.images.slice(1, 5).map((image, index) => (
+                        <div
+                          key={image}
+                          onClick={() => setSelectedImage(image)}
+                          className="aspect-square bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-lg flex items-center justify-center cursor-pointer hover:shadow-lg transition-all duration-300 relative overflow-hidden border hover:border-[#A6171C]/50"
+                        >
+                          <Image
+                            src={image}
+                            alt={`${product.name} - คุณลักษณะ ${index + 1}`}
+                            fill
+                            className="object-cover rounded-lg"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )} */}
+              </div>
             </div>
 
             {/* Materials */}
@@ -176,14 +262,37 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
                 <span className="text-[#A6171C]">🔧</span>
                 วัสดุและคุณภาพ
               </h3>
-              <ul className="space-y-3">
-                {product.materials.map((material, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="text-[#A6171C] mt-1 text-sm">•</span>
-                    <span className="text-[#4a3631]">{material}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-4">
+                <ul className="space-y-3">
+                  {product.materials.map((material, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="text-[#A6171C] mt-1 text-sm">•</span>
+                      <span className="text-[#4a3631]">{material}</span>
+                    </li>
+                  ))}
+                </ul>
+                {/* Quality Showcase Image */}
+                {/* {product.images && product.images.length > 0 && (
+                  <div className="mt-6">
+                    <h4 className="text-sm font-semibold text-[#2d1a18] mb-3">
+                      คุณภาพวัสดุ
+                    </h4>
+                    <div
+                      onClick={() =>
+                        setSelectedImage(product.images?.[0] || product.image)
+                      }
+                      className="aspect-video bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-lg flex items-center justify-center cursor-pointer hover:shadow-lg transition-all duration-300 relative overflow-hidden border hover:border-[#A6171C]/50"
+                    >
+                      <Image
+                        src={product.images?.[0] || product.image}
+                        alt={`${product.name} - คุณภาพวัสดุ`}
+                        fill
+                        className="object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                )} */}
+              </div>
             </div>
 
             {/* Service Info */}
@@ -232,8 +341,13 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
                   className="group"
                 >
                   <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-[#A6171C]/20">
-                    <div className="h-40 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-xl flex items-center justify-center mb-4">
-                      <div className="text-4xl opacity-60">{category.icon}</div>
+                    <div className="h-40 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+                      <Image
+                        src={relatedProduct.image}
+                        alt={relatedProduct.name}
+                        fill
+                        className="object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+                      />
                     </div>
                     <h4 className="font-bold text-[#2d1a18] mb-2 group-hover:text-[#A6171C] transition-colors">
                       {relatedProduct.name}

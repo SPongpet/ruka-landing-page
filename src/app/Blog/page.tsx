@@ -1,118 +1,40 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  publishedAt: string;
-  category: string;
-  tags: string[];
-  imageUrl: string;
-  sourceUrl: string;
-  sourceName: string;
-  featured: boolean;
-}
+import {
+  blogPosts,
+  categories,
+  getFeaturedPosts,
+  getBlogPostsByCategory,
+} from "@/data/blogPosts";
+import type { BlogPost } from "@/data/blogPosts";
 
 const BlogPage: React.FC = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
+  const [selectedCategory, setSelectedCategory] = useState<string>("ทั้งหมด");
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
-  const [lastUpdated, setLastUpdated] = useState<string>("");
-  const [newPostsCount, setNewPostsCount] = useState(0);
 
-  // ฟังก์ชันสำหรับดึงข้อมูลบล็อก
-  const fetchBlogPosts = useCallback(
-    async (category?: string, silent = false) => {
-      try {
-        const params = new URLSearchParams();
-        if (category && category !== "ทั้งหมด") {
-          params.append("category", category);
-        }
-
-        const response = await fetch(`/api/blog-posts?${params.toString()}`);
-        const data = await response.json();
-
-        if (data.success) {
-          // ตรวจสอบบทความใหม่ - ใช้ setState callback เพื่อหลีกเลี่ยง dependency
-          if (!silent) {
-            setBlogPosts((prevPosts) => {
-              if (prevPosts.length > 0) {
-                const newPosts = data.data.filter(
-                  (newPost: BlogPost) =>
-                    !prevPosts.some(
-                      (existingPost) => existingPost.id === newPost.id
-                    )
-                );
-                if (newPosts.length > 0) {
-                  setNewPostsCount((prev) => prev + newPosts.length);
-                }
-              }
-              return data.data;
-            });
-          } else {
-            setBlogPosts(data.data);
-          }
-
-          setLastUpdated(data.lastUpdated);
-
-          // หาบทความเด่น
-          const featured = data.data.find((post: BlogPost) => post.featured);
-          setFeaturedPost(featured || data.data[0]);
-        }
-      } catch (error) {
-        console.error("Error fetching blog posts:", error);
-      }
-    },
-    [] // เอา blogPosts ออกจาก dependency เพื่อหลีกเลี่ยง infinite loop
-  );
-
-  // ฟังก์ชันสำหรับรีเฟรชข้อมูล
-  // const refreshData = async () => {
-  //   setLoading(true);
-  //   try {
-  //     await fetch("/api/blog-posts", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ action: "refresh" }),
-  //     });
-
-  //     await Promise.all([fetchBlogPosts(selectedCategory), fetchCategories()]);
-  //   } catch (error) {
-  //     console.error("Error refreshing data:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  // ฟังก์ชันสำหรับกรองบทความตามหมวดหมู่
+  const filterPostsByCategory = (category: string) => {
+    setSelectedCategory(category);
+    const filtered = getBlogPostsByCategory(category);
+    setFilteredPosts(filtered);
+  };
 
   // โหลดข้อมูลเมื่อ component mount
   useEffect(() => {
-    const loadData = async () => {
-      setLoading(true);
-      await fetchBlogPosts();
-      setLoading(false);
-    };
+    setLoading(true);
+    // ตั้งค่าบทความเด่น
+    const featured = getFeaturedPosts();
+    setFeaturedPost(featured[0] || blogPosts[0]);
 
-    loadData();
-  }, [fetchBlogPosts]);
+    // ตั้งค่าบทความที่จะแสดง
+    setFilteredPosts(blogPosts);
 
-  // Auto-refresh ทุกวัน
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchBlogPosts(undefined, true); // silent mode
-    }, 24 * 60 * 60 * 1000); // 24 hours
-
-    return () => clearInterval(interval);
-  }, [fetchBlogPosts]);
-
-  // ฟังก์ชันล้างการแจ้งเตือนบทความใหม่
-  const clearNewPostsNotification = () => {
-    setNewPostsCount(0);
-  };
+    setLoading(false);
+  }, []);
 
   // ฟังก์ชันจัดรูปแบบวันที่
   const formatDate = (dateString: string) => {
@@ -122,11 +44,6 @@ const BlogPage: React.FC = () => {
       month: "long",
       day: "numeric",
     });
-  };
-
-  // ฟังก์ชันสำหรับเปิดลิงก์ภายนอก
-  const openExternalLink = (url: string) => {
-    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   if (loading) {
@@ -176,29 +93,13 @@ const BlogPage: React.FC = () => {
               </p>
             </div>
 
-            {/* Status and Notifications */}
+            {/* Status Info */}
             <div className="flex flex-col items-center gap-4 mt-8">
-              {lastUpdated && (
-                <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
-                  <span className="text-white/90 text-sm font-medium">
-                    อัปเดตล่าสุด: {formatDate(lastUpdated)}
-                  </span>
-                </div>
-              )}
-
-              {/* New Posts Notification */}
-              {newPostsCount > 0 && (
-                <div className="bg-[#F1C045] text-[#A6171C] px-6 py-3 rounded-full text-sm font-bold flex items-center gap-3 shadow-lg animate-pulse">
-                  <span className="text-lg">🎉</span>
-                  <span>มีบทความใหม่ {newPostsCount} บทความ!</span>
-                  <button
-                    onClick={clearNewPostsNotification}
-                    className="text-[#A6171C] hover:text-[#8a1419] ml-2 font-bold text-lg transition-colors"
-                  >
-                    ✕
-                  </button>
-                </div>
-              )}
+              <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
+                <span className="text-white/90 text-sm font-medium">
+                  บทความทั้งหมด: {blogPosts.length} บทความ
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -288,13 +189,13 @@ const BlogPage: React.FC = () => {
                             {featuredPost.author}
                           </div>
                           <div className="text-[#4a3631] text-xs">
-                            จาก {featuredPost.sourceName}
+                            เวลาอ่าน {featuredPost.readTime} นาที
                           </div>
                         </div>
                       </div>
 
-                      <button
-                        onClick={() => openExternalLink(featuredPost.sourceUrl)}
+                      <Link
+                        href={`/Blog/${featuredPost.id}`}
                         className="group/btn bg-gradient-to-r from-[#A6171C] to-[#8a1419] hover:from-[#8a1419] hover:to-[#A6171C] text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2"
                       >
                         อ่านต่อ
@@ -311,7 +212,7 @@ const BlogPage: React.FC = () => {
                             d="M17 8l4 4m0 0l-4 4m4-4H3"
                           />
                         </svg>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -319,7 +220,7 @@ const BlogPage: React.FC = () => {
 
               {/* Enhanced Blog Posts Grid */}
               <div className="grid md:grid-cols-2 gap-8">
-                {blogPosts
+                {filteredPosts
                   .filter((post) => !post.featured)
                   .map((post, index) => (
                     <article
@@ -386,15 +287,15 @@ const BlogPage: React.FC = () => {
                         <div className="flex items-center justify-between pt-4 border-t border-[#A6171C]/10">
                           <div className="flex items-center gap-2">
                             <div className="w-8 h-8 bg-gradient-to-br from-[#A6171C] to-[#8a1419] rounded-full flex items-center justify-center text-white font-bold text-xs">
-                              {post.sourceName.charAt(0)}
+                              {post.author.charAt(0)}
                             </div>
                             <span className="text-[#4a3631] text-xs font-medium">
-                              {post.sourceName}
+                              เวลาอ่าน {post.readTime} นาที
                             </span>
                           </div>
 
-                          <button
-                            onClick={() => openExternalLink(post.sourceUrl)}
+                          <Link
+                            href={`/Blog/${post.id}`}
                             className="group/btn bg-gradient-to-r from-[#A6171C] to-[#8a1419] hover:from-[#8a1419] hover:to-[#A6171C] text-white px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg flex items-center gap-2"
                           >
                             อ่านเพิ่มเติม
@@ -411,7 +312,7 @@ const BlogPage: React.FC = () => {
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"
                               />
                             </svg>
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </article>
@@ -419,7 +320,7 @@ const BlogPage: React.FC = () => {
               </div>
 
               {/* No posts message */}
-              {blogPosts.length === 0 && (
+              {filteredPosts.filter((post) => !post.featured).length === 0 && (
                 <div className="text-center py-12">
                   <span className="text-6xl mb-4 block">📚</span>
                   <h3 className="text-xl font-bold text-[#2d1a18] mb-2">
@@ -436,38 +337,38 @@ const BlogPage: React.FC = () => {
             <div className="space-y-8">
               {/* Categories */}
               {/* <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-[#A6171C]/20">
-              <h3 className="text-xl font-bold text-[#2d1a18] mb-6">
-                หมวดหมู่บทความ
-              </h3>
-              <ul className="space-y-3">
-                {categories.map((category, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => setSelectedCategory(category.name)}
-                      className={`w-full flex justify-between items-center p-2 rounded-lg transition-colors ${
-                        selectedCategory === category.name
-                          ? "bg-[#A6171C] text-white"
-                          : "text-[#4a3631] hover:text-[#A6171C] hover:bg-[#A6171C]/10"
-                      }`}
-                    >
-                      <span className="flex items-center gap-2">
-                        <span>{category.icon}</span>
-                        <span>{category.name}</span>
-                      </span>
-                      <span
-                        className={`px-2 py-1 rounded-full text-xs ${
+                <h3 className="text-xl font-bold text-[#2d1a18] mb-6">
+                  หมวดหมู่บทความ
+                </h3>
+                <ul className="space-y-3">
+                  {categories.map((category, index) => (
+                    <li key={index}>
+                      <button
+                        onClick={() => filterPostsByCategory(category.name)}
+                        className={`w-full flex justify-between items-center p-2 rounded-lg transition-colors ${
                           selectedCategory === category.name
-                            ? "bg-white/20 text-white"
-                            : "bg-[#A6171C]/10 text-[#A6171C]"
+                            ? "bg-[#A6171C] text-white"
+                            : "text-[#4a3631] hover:text-[#A6171C] hover:bg-[#A6171C]/10"
                         }`}
                       >
-                        {category.count}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
+                        <span className="flex items-center gap-2">
+                          <span>{category.icon}</span>
+                          <span>{category.name}</span>
+                        </span>
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs ${
+                            selectedCategory === category.name
+                              ? "bg-white/20 text-white"
+                              : "bg-[#A6171C]/10 text-[#A6171C]"
+                          }`}
+                        >
+                          {category.count}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div> */}
 
               {/* Enhanced Popular Topics */}
               <div className="bg-white rounded-2xl p-6 shadow-xl border border-[#A6171C]/10">
@@ -483,8 +384,8 @@ const BlogPage: React.FC = () => {
                 <div className="space-y-5">
                   {blogPosts.slice(0, 4).map((post, index) => (
                     <div key={index} className="group relative">
-                      <button
-                        onClick={() => openExternalLink(post.sourceUrl)}
+                      <Link
+                        href={`/Blog/${post.id}`}
                         className="block w-full text-left p-4 rounded-xl border border-[#A6171C]/10 hover:border-[#A6171C]/30 hover:bg-gradient-to-r hover:from-[#A6171C]/5 hover:to-transparent transition-all duration-300"
                       >
                         <div className="flex items-start gap-3">
@@ -500,11 +401,11 @@ const BlogPage: React.FC = () => {
                                 {post.category}
                               </span>
                               <span>•</span>
-                              <span>{post.sourceName}</span>
+                              <span>{post.readTime} นาที</span>
                             </div>
                           </div>
                         </div>
-                      </button>
+                      </Link>
                     </div>
                   ))}
                 </div>

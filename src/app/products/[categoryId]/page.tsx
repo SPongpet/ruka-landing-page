@@ -68,9 +68,14 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
                 key={product.id}
                 className="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border border-[#A6171C]/20"
               >
-                {/* Product Image Placeholder */}
-                <div className="h-64 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] flex items-center justify-center">
-                  <div className="text-6xl opacity-60">{category.icon}</div>
+                {/* Product Image */}
+                <div className="h-64 bg-gradient-to-br from-[#f0e0d8] to-[#D6D0C5] flex items-center justify-center relative overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
 
                 <div className="p-6">

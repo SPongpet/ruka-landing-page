@@ -39,9 +39,7 @@ const ServicesPage: React.FC = () => {
               <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <div className="w-3 h-3 bg-[#A6171C] rounded-full"></div>
-                    <div className="w-2 h-2 bg-[#F1C045] rounded-full ml-1"></div>
-                    <div className="w-2 h-2 bg-[#CD853F] rounded-full ml-1"></div>
+                    🎨
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold">
                     Co-Create Design
@@ -82,15 +80,7 @@ const ServicesPage: React.FC = () => {
               <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-8 h-8 text-[#A6171C]"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" />
-                      <path d="M19 11L19.5 13.5L22 14L19.5 14.5L19 17L18.5 14.5L16 14L18.5 13.5L19 11Z" />
-                      <path d="M5 11L5.5 13.5L8 14L5.5 14.5L5 17L4.5 14.5L2 14L4.5 13.5L5 11Z" />
-                    </svg>
+                    🏭
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold">
                     Production & Quality Elevation
@@ -129,13 +119,7 @@ const ServicesPage: React.FC = () => {
               <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-8 h-8 text-[#A6171C]"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12,2A3,3 0 0,1 15,5V7H20A1,1 0 0,1 21,8V19A1,1 0 0,1 20,20H4A1,1 0 0,1 3,19V8A1,1 0 0,1 4,7H9V5A3,3 0 0,1 12,2M12,4A1,1 0 0,0 11,5V7H13V5A1,1 0 0,0 12,4Z" />
-                    </svg>
+                    📦
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold">
                     Pack & Ship
@@ -178,13 +162,7 @@ const ServicesPage: React.FC = () => {
               <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-8 h-8 text-[#A6171C]"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5 2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
-                    </svg>
+                    🤝
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold">
                     Consult & Plan

@@ -25,13 +25,13 @@ const OneStopExperience: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-[#7b1a1b] to-[#de2a29] -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
-      <div className="max-w-6xl mx-auto px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+    <section className="relative py-12 md:py-20 bg-gradient-to-b from-[#7b1a1b] to-[#de2a29] -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
             One-Stop Brand Experience
           </h2>
-          <p className="text-lg md:text-xl text-[#F1C045] max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-[#F1C045] max-w-4xl mx-auto leading-relaxed">
             ประสบการณ์แบรนด์ครบครันในที่เดียว ตั้งแต่ไอเดียจนถึงการส่งมอบ
           </p>
         </div>
@@ -39,29 +39,29 @@ const OneStopExperience: React.FC = () => {
         {/* Cards container with shadow effect */}
         <div className="relative max-w-4xl mx-auto">
           {/* Shadow background */}
-          <div className="absolute inset-6 bg-black/30 rounded-[3rem] blur-sm"></div>
+          <div className="absolute inset-3 md:inset-6 bg-black/30 rounded-[1.5rem] md:rounded-[3rem] blur-sm"></div>
 
           {/* Main container */}
-          <div className="relative bg-gradient-to-br from-[#8B0000] to-[#6B0000] rounded-[3rem] p-8 md:p-12">
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="relative bg-gradient-to-br from-[#8B0000] to-[#6B0000] rounded-[1.5rem] md:rounded-[3rem] p-4 md:p-8 lg:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-[#dbba99]"
+                  className="rounded-2xl md:rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-[#dbba99]"
                 >
                   {/* ส่วนบน */}
-                  <div className="bg-[#B8734A] flex flex-col items-center py-6 z-10 rad rounded-b-[3rem]">
-                    <div className="bg-[#D9A679] rounded-full p-4 mb-3 w-16 h-16 flex items-center justify-center text-4xl">
+                  <div className="bg-[#B8734A] flex flex-col items-center py-4 md:py-6 z-10 rad rounded-b-[1.5rem] md:rounded-b-[3rem]">
+                    <div className="bg-[#D9A679] rounded-full p-3 md:p-4 mb-2 md:mb-3 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center text-2xl md:text-4xl">
                       {service.icon}
                     </div>
-                    <h3 className="text-white font-bold text-lg md:text-xl">
+                    <h3 className="text-white font-bold text-base md:text-lg lg:text-xl text-center px-2">
                       {service.title}
                     </h3>
                   </div>
 
                   {/* ส่วนล่าง */}
-                  <div className="bg-[#dbba99] py-4 px-3 text-center">
-                    <p className="text-[#5E2A0F] font-bold text-sm md:text-base leading-tight whitespace-pre-line">
+                  <div className="bg-[#dbba99] py-3 md:py-4 px-2 md:px-3 text-center">
+                    <p className="text-[#5E2A0F] font-bold text-xs md:text-sm lg:text-base leading-tight whitespace-pre-line">
                       {service.subtitle}
                     </p>
                   </div>

@@ -7,47 +7,45 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="relative flex items-center justify-start py-16 md:py-20 px-8 min-h-screen"
+      className="relative flex items-center justify-center py-12 md:py-20 px-4 md:px-8 min-h-screen"
     >
       <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-[#A6171C] via-[#8B0000] to-[#6B0000]">
         <div className="absolute inset-0 bg-[url('/images/bg.png')] bg-cover bg-center bg-no-repeat opacity-70"></div>
       </div>
 
       <div className="flex items-center justify-center w-full max-w-7xl mx-auto">
-        <div className="text-left relative z-20 flex-1">
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+        <div className="text-center md:text-left relative z-20 w-full">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight">
             {heroDetails.heading1}
           </h1>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-8 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 md:mb-8 leading-tight">
             {heroDetails.heading2}
           </h2>
 
           {/* Ruka Logo */}
           <div className="mb-4 text-center">
-            <div className="px-6 py-3 inline-block">
-              <span className="text-[#F1C045] text-4xl md:text-5xl font-black">
+            <div className="px-4 md:px-6 py-2 md:py-3 inline-block">
+              <span className="text-[#F1C045] text-3xl sm:text-4xl md:text-5xl font-black">
                 Rukå
               </span>
             </div>
           </div>
 
-          <div className="mb-8 text-center">
-            <p className="text-lg md:text-xl text-[#FFFFFF] font-light italic">
+          <div className="mb-6 md:mb-8 text-center">
+            <p className="text-base sm:text-lg md:text-xl text-[#FFFFFF] font-light italic">
               Elevate Your Corporate Gifting
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
             <Link
               href="/products"
-              className="group bg-[#F1C045] hover:bg-[#e5b63e] text-[#8B4513] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="group bg-[#F1C045] hover:bg-[#e5b63e] text-[#8B4513] px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
             >
               <span>สำรวจสินค้าของเรา</span>
             </Link>
           </div>
         </div>
-
-        <div className="flex-1"></div>
       </div>
 
       {/* Wave Separator */}

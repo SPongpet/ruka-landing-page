@@ -106,29 +106,29 @@ const HomePage: React.FC = () => {
           </Section>
 
           {/* Testimonials Section */}
-          <section className="relative py-20 bg-gradient-to-b from-[#7b1a1b] to-[#de2a29] -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
-            <div className="max-w-6xl mx-auto px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <section className="relative py-12 md:py-20 bg-gradient-to-b from-[#7b1a1b] to-[#de2a29] -mx-[calc((100vw-100%)/2)] px-[calc((100vw-100%)/2)]">
+            <div className="max-w-6xl mx-auto px-4 md:px-8">
+              <div className="text-center mb-8 md:mb-16">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
                   ลูกค้าพูดถึงเรา
                 </h2>
-                <p className="text-lg md:text-xl text-[#F1C045] max-w-4xl mx-auto leading-relaxed">
+                <p className="text-base md:text-lg lg:text-xl text-[#F1C045] max-w-4xl mx-auto leading-relaxed">
                   ฟังเสียงจากลูกค้าที่เลือกใช้บริการของเรา
                 </p>
               </div>
 
               {/* Cards Grid */}
-              <div className="grid grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-5xl mx-auto">
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="relative flex justify-center">
                     {/* ชั้นหลัง */}
-                    <div className="absolute top-3 left-3 w-full h-full bg-[#E5B78C] rounded-[1.5rem]"></div>
+                    <div className="absolute top-2 md:top-3 left-2 md:left-3 w-full h-full bg-[#E5B78C] rounded-[1.5rem]"></div>
 
                     {/* ชั้นหน้า */}
-                    <div className="relative bg-[#C89465] rounded-[1.5rem] p-6 w-full text-center shadow-lg">
+                    <div className="relative bg-[#C89465] rounded-[1.5rem] p-4 md:p-6 w-full text-center shadow-lg">
                       {/* Avatar */}
                       <div className="flex justify-center mb-3">
-                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                        <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
                           <Image
                             src={testimonial.avatar}
                             alt={testimonial.name}
@@ -140,25 +140,25 @@ const HomePage: React.FC = () => {
                       </div>
 
                       {/* Name */}
-                      <h4 className="font-bold text-base text-white">
+                      <h4 className="font-bold text-sm md:text-base text-white">
                         {testimonial.name}
                       </h4>
 
                       {/* Message */}
-                      <p className="mt-2 text-sm text-white/90 leading-relaxed line-clamp-4">
+                      <p className="mt-2 text-xs md:text-sm text-white/90 leading-relaxed line-clamp-4">
                         &quot;{testimonial.message}&quot;
                       </p>
                     </div>
                   </div>
                 ))}
 
-                {/* ช่องว่างถ้าจำนวนไม่ครบ */}
+                {/* ช่องว่างถ้าจำนวนไม่ครบ - แสดงเฉพาะใน desktop */}
                 {Array.from(
                   { length: Math.max(0, 6 - testimonials.length) },
                   (_, index) => (
                     <div
                       key={`empty-${index}`}
-                      className="relative flex justify-center"
+                      className="relative justify-center hidden lg:flex"
                     >
                       <div className="absolute top-3 left-3 w-full h-full bg-[#dbba99] rounded-[1.5rem]"></div>
                       <div className="relative bg-[#C89465] rounded-[1.5rem] w-full h-56"></div>

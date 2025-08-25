@@ -1,7 +1,6 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import Image from "next/image";
 import Pricing from "@/components/Pricing/Pricing";
 import FAQ from "@/components/FAQ";
 import Products from "@/components/Products";
@@ -127,8 +126,8 @@ const HomePage: React.FC = () => {
                     {/* ชั้นหน้า */}
                     <div className="relative bg-[#C89465] rounded-[1.5rem] p-4 md:p-6 w-full text-center shadow-lg">
                       {/* Avatar */}
-                      <div className="flex justify-center mb-3">
-                        <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                      <div className="flex justify-center mb-3" />
+                      {/* <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
                           <Image
                             src={testimonial.avatar}
                             alt={testimonial.name}
@@ -136,8 +135,7 @@ const HomePage: React.FC = () => {
                             height={64}
                             className="w-full h-full object-cover"
                           />
-                        </div>
-                      </div>
+                        </div> */}
 
                       {/* Name */}
                       <h4 className="font-bold text-sm md:text-base text-white">

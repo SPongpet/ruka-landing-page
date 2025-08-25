@@ -22,12 +22,16 @@ const config: Config = {
         sunny: '#F1C045',
 
         'ruka-deep-red': '#5a0f10',
-        'ruka-dark-red': '#3b0a0a',
-        'ruka-mid-red': '#8c1515',
+        'ruka-dark-red': '#54200D',
+        'ruka-mid-red': '#A6171C',
         'ruka-text-red': '#4a0404',
         'ruka-beige': '#d2a679',
         'ruka-gold': '#f5a623',
 
+      },
+      fontFamily: {
+        'georgia': ['Georgia Pro CondRegular', 'serif'],
+        'georgia-pro': ['Georgia Pro CondRegular', 'serif'],
       },
     },
   },

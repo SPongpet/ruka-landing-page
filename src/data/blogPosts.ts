@@ -91,7 +91,7 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2024-12-28T10:00:00.000Z",
     category: "เทรนด์",
     tags: ["เทรนด์", "ของขวัญองค์กร", "2025", "อนาคต", "ยั่งยืน"],
-    imageUrl: "/images/gifts.png",
+    imageUrl: "/images/blogs/Blog-57-2.jpg",
     featured: true,
     readTime: 8
   },
@@ -177,7 +177,7 @@ WOW Moment มักเกิดจาก "ของที่เหมือน�
     publishedAt: "2024-12-27T14:30:00.000Z",
     category: "เคล็ดลับ",
     tags: ["เคล็ดลับ", "WOW Moment", "ของขวัญองค์กร", "ประสบการณ์"],
-    imageUrl: "/images/gifts.png",
+    imageUrl: "/images/blogs/corporate-gift.jpg",
     featured: false,
     readTime: 7
   },
@@ -286,7 +286,7 @@ WOW Moment มักเกิดจาก "ของที่เหมือน�
     publishedAt: "2024-12-26T09:15:00.000Z",
     category: "ไอเดีย",
     tags: ["ไอเดีย", "ประเภทธุรกิจ", "ของขวัญองค์กร", "แนวทาง"],
-    imageUrl: "/images/gifts.png",
+    imageUrl: "/images/blogs/new-year-gift.webp",
     featured: false,
     readTime: 10
   },
@@ -368,7 +368,7 @@ WOW Moment มักเกิดจาก "ของที่เหมือน�
     publishedAt: "2024-12-25T16:20:00.000Z",
     category: "วัฒนธรรม",
     tags: ["วัฒนธรรมไทย", "ประวัติศาสตร์", "ของขวัญ", "ภูมิปัญญา"],
-    imageUrl: "/images/gifts.png",
+    imageUrl: "/images/blogs/byzbsrclH6dyMWBPVntt.webp",
     featured: false,
     readTime: 6
   },
@@ -458,7 +458,7 @@ Unboxing = ความรู้สึก
     publishedAt: "2024-12-24T11:45:00.000Z",
     category: "ดีไซน์",
     tags: ["Unboxing", "ประสบการณ์", "ดีไซน์", "บรรจุภัณฑ์"],
-    imageUrl: "/images/gifts.png",
+    imageUrl: "/images/blogs/custom-packaging-unpakful_1024x1024.webp",
     featured: false,
     readTime: 9
   },
@@ -545,7 +545,7 @@ ROI = [(200,000 - 50,000) ÷ 50,000] x 100 = 300%
     publishedAt: "2024-12-23T13:30:00.000Z",
     category: "กลยุทธ์",
     tags: ["ROI", "การวัดผล", "กลยุทธ์", "การลงทุน"],
-    imageUrl: "/images/gifts.png",
+    imageUrl: "/images/blogs/1641202744_15618_Web_Gift_2.webp",
     featured: false,
     readTime: 8
   }

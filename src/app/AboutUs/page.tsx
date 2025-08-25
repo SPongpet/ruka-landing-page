@@ -26,7 +26,7 @@ const AboutUsPage: React.FC = () => {
             <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl"></div>
 
             {/* Main content */}
-            <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 md:p-12 text-white">
+            <div className="relative bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-8 md:p-12 text-white">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">
                 Our Why เหตุผลที่ <span className="text-[#F1C045]">Ruka</span>{" "}
                 เกิดมา?
@@ -46,30 +46,35 @@ const AboutUsPage: React.FC = () => {
                 </p>
                 <p className="text-lg">
                   เลือก Ruka แล้วมาร่วมเปลี่ยนการ{" "}
-                  <span className="font-bold">Give</span> ให้กลายเป็น{" "}
-                  <span className="font-bold">Elevate</span> ไปด้วยกัน
+                  <span className="font-bold text-[#F1C045]">Give</span>{" "}
+                  ให้กลายเป็น{" "}
+                  <span className="font-bold text-[#F1C045]">Elevate</span>{" "}
+                  ไปด้วยกัน
                 </p>
               </div>
             </div>
           </div>
 
           {/* Vision and Mission */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-8 mb-12 items-stretch">
             {/* Vision */}
             <div className="relative">
               {/* Shadow element */}
               <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl"></div>
 
               {/* Main content */}
-              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 text-white">
+              <div className="relative bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-8 text-white h-full">
                 <div className="text-center">
                   <h3 className="text-2xl md:text-3xl font-bold text-[#F1C045] mb-6">
                     Vision
                   </h3>
                   <p className="text-lg font-semibold leading-relaxed">
-                    ยกระดับ การให้ของขวัญ
+                    ยกระดับ{" "}
+                    <span className="text-[#763A20]">การให้ของขวัญ</span>
                     <br />
-                    ให้กลายเป็นสื่อคุณค่าที่แข็งแรงที่สุด
+                    <span className="text-[#763A20]">
+                      ให้กลายเป็นสื่อคุณค่าที่แข็งแรงที่สุด
+                    </span>
                   </p>
                 </div>
               </div>
@@ -81,7 +86,7 @@ const AboutUsPage: React.FC = () => {
               <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl"></div>
 
               {/* Main content */}
-              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 text-white">
+              <div className="relative bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-8 text-white">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#F1C045] text-center mb-2">
                   Mission
                 </h3>
@@ -89,40 +94,48 @@ const AboutUsPage: React.FC = () => {
                   S-H-I-N-E
                 </h4>
 
-                <div className="space-y-4 text-sm">
+                <div className="space-y-4 text-sm text-center">
                   <div>
-                    <h5 className="font-bold mb-1">S – Story-First Design</h5>
-                    <p className="leading-relaxed text-white/90">
+                    <h5 className="text-lg font-bold mb-1">
+                      S – Story-First Design
+                    </h5>
+                    <p className="text-lg leading-relaxed text-[#763A20]">
                       ทุกชิ้นต้องเล่าเรื่องแบรนด์ได้ตั้งแต่แรกเห็น
                     </p>
                   </div>
 
                   <div>
-                    <h5 className="font-bold mb-1">
+                    <h5 className="text-lg font-bold mb-1">
                       H – Hyper-Transparent Flow
                     </h5>
-                    <p className="leading-relaxed text-white/90">
+                    <p className="text-lg leading-relaxed text-[#763A20] ">
                       เสถานะงานเรียลไทม์ ไม่ต้องทวง ไม่ต้องเดา
                     </p>
                   </div>
 
                   <div>
-                    <h5 className="font-bold mb-1">I – Impact Over Quantity</h5>
-                    <p className="leading-relaxed text-white/90">
+                    <h5 className="text-lg font-bold mb-1">
+                      I – Impact Over Quantity
+                    </h5>
+                    <p className="text-lg leading-relaxed text-[#763A20]">
                       เน้นคุณค่า ใช้ประโยชน์ได้ ไม่ผลิตของเก็บฝุ่น
                     </p>
                   </div>
 
                   <div>
-                    <h5 className="font-bold mb-1">N – Next-Gen Innovation</h5>
-                    <p className="leading-relaxed text-white/90">
+                    <h5 className="text-lg font-bold mb-1">
+                      N – Next-Gen Innovation
+                    </h5>
+                    <p className="text-lg leading-relaxed text-[#763A20]">
                       ทดลองใส่มีไฟใหม่เสมอ เพื่อให้ชิ้นงานล้ำตลาด
                     </p>
                   </div>
 
                   <div>
-                    <h5 className="font-bold mb-1">E – Elevate Every Touch</h5>
-                    <p className="leading-relaxed text-white/90">
+                    <h5 className="text-lg font-bold mb-1">
+                      E – Elevate Every Touch
+                    </h5>
+                    <p className="text-lg leading-relaxed text-[#763A20]">
                       ยกระดับตั้งแต่แพ็กเกจ
                       <br />
                       Unbox → After-Sales Experience
@@ -142,14 +155,14 @@ const AboutUsPage: React.FC = () => {
             <div className="relative bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-3xl p-8 md:p-12">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {/* คุณภาพ */}
-                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                <div className="text-center bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-4">
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
                     <span className="text-2xl md:text-3xl">🏆</span>
                   </div>
                   <h4 className="text-base md:text-lg font-bold text-white mb-2">
                     คุณภาพ
                   </h4>
-                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                  <p className="text-xs md:text-sm text-[#763A20] leading-relaxed font-bold">
                     มุ่งมั่นผลิตสินค้า
                     <br />
                     ที่มีมาตรฐานสูงสุด
@@ -157,14 +170,14 @@ const AboutUsPage: React.FC = () => {
                 </div>
 
                 {/* ความไว้วางใจ */}
-                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                <div className="text-center bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-4">
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
                     <span className="text-2xl md:text-3xl">🤝</span>
                   </div>
                   <h4 className="text-base md:text-lg font-bold text-white mb-2">
                     ความไว้วางใจ
                   </h4>
-                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                  <p className="text-xs md:text-sm text-[#763A20] leading-relaxed font-bold">
                     สร้างความมั่นใจให้ลูกค้า
                     <br />
                     ด้วยความโปร่งใส
@@ -172,14 +185,14 @@ const AboutUsPage: React.FC = () => {
                 </div>
 
                 {/* นวัตกรรม */}
-                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                <div className="text-center bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-4">
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
                     <span className="text-2xl md:text-3xl">⚡</span>
                   </div>
                   <h4 className="text-base md:text-lg font-bold text-white mb-2">
                     นวัตกรรม
                   </h4>
-                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                  <p className="text-xs md:text-sm text-[#763A20] leading-relaxed font-bold">
                     พัฒนาผลิตภัณฑ์ใหม่
                     <br />
                     อย่างต่อเนื่อง
@@ -187,14 +200,14 @@ const AboutUsPage: React.FC = () => {
                 </div>
 
                 {/* ความรับผิดชอบ */}
-                <div className="text-center bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-4">
+                <div className="text-center bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-4">
                   <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#dbba99] to-[#dbba99] rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg">
                     <span className="text-2xl md:text-3xl">🎯</span>
                   </div>
                   <h4 className="text-base md:text-lg font-bold text-white mb-2">
                     ความรับผิดชอบ
                   </h4>
-                  <p className="text-xs md:text-sm text-[#dbba99] leading-relaxed font-bold">
+                  <p className="text-xs md:text-sm text-[#763A20] leading-relaxed font-bold">
                     ตอบสนองความต้องการ
                     <br />
                     ลูกค้าอย่างเต็มที่

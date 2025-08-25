@@ -7,6 +7,13 @@ import Footer from "@/components/Footer";
 import { siteDetails } from "@/data/siteDetails";
 
 import "./globals.css";
+import { Charmonman } from "next/font/google";
+
+const charmonman = Charmonman({
+  subsets: ["latin"],
+  weight: ["400", "700"], // เลือกน้ำหนักที่ต้องการ
+  variable: "--font-charmonman",
+});
 
 const manrope = Manrope({ subsets: ["latin"] });
 const sourceSans = Source_Sans_3({ subsets: ["latin"] });
@@ -44,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.className} ${sourceSans.className} antialiased`}
+        className={`${charmonman.variable} ${manrope.className} ${sourceSans.className} antialiased`}
       >
         {siteDetails.googleAnalyticsId && (
           <GoogleAnalytics gaId={siteDetails.googleAnalyticsId} />

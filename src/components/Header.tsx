@@ -18,26 +18,20 @@ const Header: React.FC = () => {
   return (
     <header className="bg-gradient-to-r from-[#A6171C] to-[#8a1419] fixed top-0 left-0 right-0 z-50 mx-auto w-full shadow-lg">
       <Container className="!px-0">
-        <nav className="mx-auto flex justify-between items-center py-3 px-5">
-          {/* โลโก้ด้านซ้าย */}
-          <div className="flex-shrink-0" />
-
+        <nav className="mx-auto flex justify-between items-center py-4 px-5">
           {/* เมนูกลาง */}
-          <ul className="hidden md:flex items-center space-x-8 font-semibold text-white">
+          <ul className="hidden md:flex items-center justify-center space-x-16 font-semibold text-white w-full text-center gap-8">
             {menuItems.map((item) => (
               <li key={item.text}>
                 <Link
                   href={item.url}
-                  className="hover:text-[#F1C045] transition-colors duration-200 border-b-2 border-transparent hover:border-[#F1C045] pb-1 text-lg tracking-wide"
+                  className="hover:text-[#F1C045] transition-colors duration-200 border-b-2 border-transparent hover:border-[#F1C045] border-white pb-1 text-2xl tracking-wide text-center"
                 >
                   {item.text}
                 </Link>
               </li>
             ))}
           </ul>
-
-          {/* ปุ่มด้านขวา */}
-          <div className="hidden md:flex items-center space-x-4" />
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
@@ -85,7 +79,7 @@ const Header: React.FC = () => {
                 </Link>
               </li>
             ))}
-            <li className="pt-4">
+            {/* <li className="pt-4">
               <Link
                 href="/contact"
                 className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-6 py-3 rounded-lg font-bold text-sm block text-center transition-all duration-300"
@@ -93,7 +87,7 @@ const Header: React.FC = () => {
               >
                 ติดต่อเรา
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </Transition>

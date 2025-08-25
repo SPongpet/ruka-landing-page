@@ -2,6 +2,7 @@ import React from "react";
 
 import { heroDetails } from "@/data/hero";
 import Link from "next/link";
+import Image from "next/image";
 
 const Hero: React.FC = () => {
   return (
@@ -14,25 +15,29 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="flex items-center justify-center w-full max-w-7xl mx-auto">
-        <div className="text-center md:text-left relative z-20 w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight">
+        <div className="text-center md:text-left relative z-20  w-8/12">
+          <h1 className=" text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight">
             {heroDetails.heading1}
           </h1>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 md:mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight">
             {heroDetails.heading2}
           </h2>
 
           {/* Ruka Logo */}
           <div className="mb-4 text-center">
             <div className="px-4 md:px-6 py-2 md:py-3 inline-block">
-              <span className="text-[#F1C045] text-3xl sm:text-4xl md:text-5xl font-black">
-                Rukå
-              </span>
+              <Image
+                src="/icons/logo.png"
+                alt="Rukå"
+                width={100}
+                height={100}
+                className="w-64 h-36"
+              />
             </div>
           </div>
 
           <div className="mb-6 md:mb-8 text-center">
-            <p className="text-base sm:text-lg md:text-xl text-[#FFFFFF] font-light italic">
+            <p className="charmonman-font text-base sm:text-lg md:text-3xl text-[#FFFFFF] font-light italic">
               Elevate Your Corporate Gifting
             </p>
           </div>
@@ -46,6 +51,7 @@ const Hero: React.FC = () => {
             </Link>
           </div>
         </div>
+        <div className="w-4/12 hidden md:block" />
       </div>
 
       {/* Wave Separator */}

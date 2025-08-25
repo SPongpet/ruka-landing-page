@@ -36,7 +36,7 @@ const ServicesPage: React.FC = () => {
               {/* Shadow element */}
               <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl" />
               {/* Co-Create Design */}
-              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
+              <div className="relative bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                     🎨
@@ -51,7 +51,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Free Logo & Graphic Design
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       ออกแบบโลโก้ +งานกราฟิคฟรี
                     </p>
                   </div>
@@ -59,7 +59,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Authentic Pantone Color Selection
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       เลือกสีโลโก้จริงจาก Pantone
                     </p>
                   </div>
@@ -67,7 +67,9 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Realistic Pre-Production Preview
                     </h4>
-                    <p className="text-sm opacity-90">ดูตัวอย่างจริงก่อนสั่ง</p>
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
+                      ดูตัวอย่างจริงก่อนสั่ง
+                    </p>
                   </div>
                 </div>
               </div>
@@ -77,7 +79,7 @@ const ServicesPage: React.FC = () => {
               {/* Shadow element */}
               <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl" />
               {/* Production & Quality Elevation */}
-              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
+              <div className="relative bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                     🏭
@@ -92,13 +94,15 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • End-to-End QC Process
                     </h4>
-                    <p className="text-sm opacity-90">ระบบ QC ทุกขั้นตอน</p>
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
+                      ระบบ QC ทุกขั้นตอน
+                    </p>
                   </div>
                   <div>
                     <h4 className="font-bold text-lg mb-1">
                       • Drop Testing & Safety Checks
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       ทดสอบความทนทานและความปลอดภัย
                     </p>
                   </div>
@@ -106,7 +110,9 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Global Manufacturing Partnerships
                     </h4>
-                    <p className="text-sm opacity-90">พันธมิตรโรงงานสากล</p>
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
+                      พันธมิตรโรงงานสากล
+                    </p>
                   </div>
                 </div>
               </div>
@@ -116,7 +122,7 @@ const ServicesPage: React.FC = () => {
               {/* Shadow element */}
               <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl" />
               {/* Pack & Ship */}
-              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
+              <div className="relative bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                     📦
@@ -131,7 +137,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Premium Unboxing Experience
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       กล่องดีไซน์เกรดพรีเมียม ทนทาน แต่ใช้ง่าย
                     </p>
                   </div>
@@ -139,7 +145,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Fast Nationwide Delivery
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       จัดส่งรวดเร็ว ครอบคลุมทุกจังหวัด
                     </p>
                   </div>
@@ -147,7 +153,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Real-Time Tracking
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       ดูสถานะพัสดุได้ 24/7 ผ่าน Dashboard
                     </p>
                   </div>
@@ -159,7 +165,7 @@ const ServicesPage: React.FC = () => {
               {/* Shadow element */}
               <div className="absolute top-4 left-4 w-full h-full bg-black/20 rounded-3xl" />
               {/* Consult & Plan */}
-              <div className="relative bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-3xl p-8 shadow-xl text-white">
+              <div className="relative bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-3xl p-8 shadow-xl text-white">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
                     🤝
@@ -174,7 +180,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Brand Discovery Lab
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       เจาะลึก Pain Point ลูกค้า
                     </p>
                   </div>
@@ -182,7 +188,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Curated Gift Strategy
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       Match ไอเดียสินค้า ให้ตรงโจทย์ ทั้งดีไซน์ ฟังก์ชัน และ
                       Mood & Tone
                     </p>
@@ -191,7 +197,7 @@ const ServicesPage: React.FC = () => {
                     <h4 className="font-bold text-lg mb-1">
                       • Smart Budget Blueprint
                     </h4>
-                    <p className="text-sm opacity-90">
+                    <p className="text-sm opacity-90 text-[#763A20] font-bold">
                       วางแผนงบประมาณแบบ คาดการณ์ Impact
                       พร้อมปรับจูนให้คุ้มค่าที่สุด
                     </p>
@@ -231,7 +237,7 @@ const ServicesPage: React.FC = () => {
           <div className="bg-gradient-to-b from-[#A6171C] to-[#de2a29] rounded-3xl p-8 md:p-12 text-center text-white">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               {/* บริการด่วนพิเศษ */}
-              <div className="bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-2xl p-6">
+              <div className="bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-2xl p-6">
                 <div className="text-4xl mb-4">⚡</div>
                 <h4 className="text-xl font-bold mb-3">บริการด่วนพิเศษ</h4>
                 <p className="text-sm">รับผลิตด่วน 15-20วัน</p>
@@ -239,7 +245,7 @@ const ServicesPage: React.FC = () => {
               </div>
 
               {/* พัฒนาสินค้าใหม่ */}
-              <div className="bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-2xl p-6">
+              <div className="bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-2xl p-6">
                 <div className="text-4xl mb-4">💡</div>
                 <h4 className="text-xl font-bold mb-3">พัฒนาสินค้าใหม่</h4>
                 <p className="text-sm">ร่วมพัฒนาสินค้าใหม่ตามแนวคิด</p>
@@ -247,7 +253,7 @@ const ServicesPage: React.FC = () => {
               </div>
 
               {/* บริการหลังการขาย */}
-              <div className="bg-gradient-to-br from-[#CD853F] to-[#A0522D] rounded-2xl p-6">
+              <div className="bg-gradient-to-br from-[#C28C60] to-[#C28C60] rounded-2xl p-6">
                 <div className="text-4xl mb-4">🤝</div>
                 <h4 className="text-xl font-bold mb-3">บริการหลังการขาย</h4>
                 <p className="text-sm">รับประกันสินค้า</p>
@@ -278,7 +284,7 @@ const ServicesPage: React.FC = () => {
               href="tel:082-113-8914"
               className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              โทร 082-113-8914
+              โทรหา RUKA เลย
             </Link>
           </div>
         </div>

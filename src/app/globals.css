@@ -16,6 +16,20 @@
   --hero-background: #f9f3f1; /* Very light warm tone */
 }
 
+@font-face {
+  font-family: 'Georgia Pro CondRegular';
+  src: url('/fonts/GeorgiaPro-CondRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 
+@font-face {
+  font-family: 'Georgia Pro CondBold';
+  src: url('/fonts/GeorgiaPro-CondBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
 html {
   @apply scroll-smooth;
 }
@@ -77,3 +91,13 @@ h1, h2, h3, h4, h5, h6, p {
 .premium-shadow {
   box-shadow: 0 10px 40px rgba(166, 23, 28, 0.1);
 }
+
+.charmonman-font {
+  font-family: var(--font-charmonman);
+}
+
+.font-georgia {
+  font-family: 'Georgia Pro CondRegular', serif;
+}
+
+

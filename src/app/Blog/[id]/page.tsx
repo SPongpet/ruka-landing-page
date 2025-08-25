@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPostById, blogPosts } from "@/data/blogPosts";
+import Image from "next/image";
 
 interface BlogDetailPageProps {
   params: {
@@ -198,7 +199,12 @@ const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ params }) => {
                   <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4zIj48cG9seWdvbiBwb2ludHM9IjIwIDAgMzAgMjAgMjAgNDAgMTAgMjAiLz48L2c+PC9nPjwvc3ZnPg==')] bg-repeat"></div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-8xl text-white/90">🎁</div>
+                  <Image
+                    src={blogPost.imageUrl}
+                    alt={blogPost.title}
+                    fill
+                    className="object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
               </div>
 

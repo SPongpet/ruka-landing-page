@@ -85,7 +85,7 @@ export default function ProductsPage() {
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-20 h-20 bg-[#F1C045] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-[#C28C60] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">✨</span>
                 </div>
                 <h4 className="text-xl font-bold mb-3">คุณภาพพรีเมี่ยม</h4>
@@ -96,7 +96,7 @@ export default function ProductsPage() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-20 h-20 bg-[#F1C045] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-[#C28C60] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">🎨</span>
                 </div>
                 <h4 className="text-xl font-bold mb-3">ปรับแต่งได้</h4>
@@ -107,7 +107,7 @@ export default function ProductsPage() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-20 h-20 bg-[#F1C045] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-[#C28C60] rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">🚚</span>
                 </div>
                 <h4 className="text-xl font-bold mb-3">จัดส่งตรงเวลา</h4>

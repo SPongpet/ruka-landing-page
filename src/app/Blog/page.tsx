@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { blogPosts, getFeaturedPosts } from "@/data/blogPosts";
 import type { BlogPost } from "@/data/blogPosts";
+import Image from "next/image";
 
 const BlogPage: React.FC = () => {
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(blogPosts);
@@ -56,15 +57,12 @@ const BlogPage: React.FC = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-5xl mx-auto py-16">
+          <div className="text-center max-w-6xl mx-auto py-16">
             {/* Main Title */}
             <div className="mb-8">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight leading-none">
+              <h1 className="text-4xl md:text-5xl lg:text-8xl font-black text-white mb-4 tracking-tight leading-none">
                 <span className="block bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-                  Blog & Insights
-                </span>
-                <span className="block text-4xl md:text-5xl lg:text-6xl mt-2 text-[#F1C045] font-bold">
-                  for RUKA
+                  Blog & Insights for RUKA
                 </span>
               </h1>
             </div>
@@ -74,20 +72,20 @@ const BlogPage: React.FC = () => {
               <h2 className="text-2xl md:text-4xl text-[#F1C045] font-bold mb-4 drop-shadow-lg">
                 ไอเดีย เทรนด์ และเคล็ดลับของขวัญองค์กร
               </h2>
-              <p className="text-white/90 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed font-light">
+              <p className="text-[#F1C045] max-w-4xl mx-auto text-2xl md:text-4xl leading-relaxed font-light">
                 อัปเดตไอเดีย & เทรนด์ของขวัญองค์กร พร้อมเคล็ดลับสร้าง โมเมนต์
                 ให้แบรนด์คุณ
               </p>
             </div>
 
             {/* Status Info */}
-            <div className="flex flex-col items-center gap-4 mt-8">
+            {/* <div className="flex flex-col items-center gap-4 mt-8">
               <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
                 <span className="text-white/90 text-sm font-medium">
                   บทความทั้งหมด: {blogPosts.length} บทความ
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -120,12 +118,16 @@ const BlogPage: React.FC = () => {
 
                     {/* Gift Icon with Animation */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative">
-                        <div className="text-8xl text-white/90 transform group-hover:scale-110 transition-transform duration-500">
-                          🎁
-                        </div>
+                      <Image
+                        src={featuredPost.imageUrl}
+                        alt={featuredPost.title}
+                        fill
+                        className="object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+                      />
+                      {/* <div className="relative">
+                        <div className="text-8xl text-white/90 transform group-hover:scale-110 transition-transform duration-500"></div>
                         <div className="absolute -inset-4 bg-white/10 rounded-full blur-xl group-hover:bg-white/20 transition-all duration-500"></div>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* Overlay Gradient */}
@@ -224,9 +226,12 @@ const BlogPage: React.FC = () => {
 
                         {/* Icon */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-6xl text-white/90 transform group-hover:scale-110 transition-transform duration-500">
-                            🎁
-                          </div>
+                          <Image
+                            src={post.imageUrl}
+                            alt={post.title}
+                            fill
+                            className="object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
+                          />
                         </div>
 
                         {/* Category Badge */}

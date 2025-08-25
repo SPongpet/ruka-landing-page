@@ -162,14 +162,20 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                <button className="bg-[#A6171C] hover:bg-[#8a1419] text-white px-4 md:px-6 py-3 md:py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2 text-sm md:text-base">
+                <Link
+                  href="/contact"
+                  className="bg-[#A6171C] hover:bg-[#8a1419] text-white px-4 md:px-6 py-3 md:py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2 text-sm md:text-base"
+                >
                   <FiShoppingCart size={16} className="md:w-5 md:h-5" />
                   สอบถามราคา
-                </button>
-                <button className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-4 md:px-6 py-3 md:py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2 text-sm md:text-base">
+                </Link>
+                <Link
+                  href="tel:082-113-8914"
+                  className="bg-[#F1C045] hover:bg-[#e5b63e] text-[#A6171C] px-4 md:px-6 py-3 md:py-4 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2 text-sm md:text-base"
+                >
                   <FiPhone size={16} className="md:w-5 md:h-5" />
                   โทรสอบถาม
-                </button>
+                </Link>
               </div>
             </div>
 

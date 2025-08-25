@@ -139,10 +139,13 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3">
-                    <button className="flex-1 bg-[#A6171C] hover:bg-[#8a1419] text-white px-4 py-3 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2">
+                    <Link
+                      href="/contact"
+                      className="flex-1 bg-[#A6171C] hover:bg-[#8a1419] text-white px-4 py-3 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
+                    >
                       <FiShoppingCart size={16} />
                       สอบถามราคา
-                    </button>
+                    </Link>
                     <Link
                       href={`/products/${categoryId}/${product.id}`}
                       className="px-4 py-3 border border-[#A6171C] text-[#A6171C] hover:bg-[#A6171C] hover:text-white rounded-xl font-semibold transition-colors duration-200 text-center"

@@ -74,7 +74,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-fill transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 
@@ -99,7 +99,10 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
                   </p>
 
                   {/* Price */}
-                  <div className="mb-4 flex flex-row gap-2 items-center justify-end">
+                  <div className="mb-4 flex flex-row gap-2 items-center justify-between">
+                    <span className="text-2xl font-bold text-[#A6171C]">
+                      {product.id}
+                    </span>
                     <span className="text-sm text-[#4a3631] ml-2">
                       (ขั้นต่ำ {product.minOrder} ชิ้น)
                     </span>

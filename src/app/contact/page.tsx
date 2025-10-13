@@ -446,7 +446,7 @@ export default function ContactPage() {
                         Instagram
                       </h4>
                       <a
-                        href="https://www.instagram.com/rukaworld_th?igsh=MWRqZXhuc2ExZnllcA=="
+                        href="https://https://www.instagram.com/rukaworld_th?igsh=MWRqZXhuc2ExZnllcA==rukaworld_th?igsh=MWRqZXhuc2ExZnllcA=="
                         className="text-[#A6171C] hover:underline text-sm"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -496,9 +496,14 @@ export default function ContactPage() {
                   >
                     💻 แชทไลน์ @ruka
                   </a>
-                  <button className="w-full border-2 border-[#A6171C] text-[#A6171C] hover:bg-[#A6171C] hover:text-white py-3 px-4 rounded-xl font-bold transition-all duration-300 text-center">
+                  <a
+                    href="https://lin.ee/Eoc4mUN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full border-2 border-[#A6171C] text-[#A6171C] hover:bg-[#A6171C] hover:text-white py-3 px-4 rounded-xl font-bold transition-all duration-300 text-center"
+                  >
                     📂 ดาวน์โหลดแคตตาล็อก
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

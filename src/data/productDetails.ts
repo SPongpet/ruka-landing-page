@@ -2,11 +2,11 @@ import { bags } from "./productDetail/bags";
 import { gadgets } from "./productDetail/gadgets";
 import { giftSets } from "./productDetail/giftSets";
 import { hats } from "./productDetail/hats";
-import { keychains } from "./productDetail/keychains";
-import { luggage } from "./productDetail/luggage";
+import { sustainable } from "./productDetail/sustainable";
 import { stationery } from "./productDetail/stationery";
 import { tumblers } from "./productDetail/tumblers";
 import { umbrellas } from "./productDetail/umbrellas";
+import { wellness } from "./productDetail/wellness";
 
 export interface Product {
     id: string;
@@ -27,9 +27,9 @@ export const productDetails: Record<string, Product[]> = {
     umbrellas: umbrellas,
     bags: bags,
     hats: hats,
-    luggage: luggage,
     gadgets: gadgets,
     'gift-sets': giftSets,
-    keychains: keychains,
-    stationery: stationery
+    sustainable: sustainable,
+    stationery: stationery,
+    wellness: wellness
 }; 

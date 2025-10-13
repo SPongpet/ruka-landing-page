@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Transition } from "@headlessui/react";
 import { HiOutlineXMark, HiBars3 } from "react-icons/hi2";
 
@@ -10,6 +11,7 @@ import { menuItems } from "@/data/menuItems";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,16 +23,25 @@ const Header: React.FC = () => {
         <nav className="mx-auto flex justify-between items-center py-4 px-5">
           {/* เมนูกลาง */}
           <ul className="hidden md:flex items-center justify-center space-x-16 font-semibold text-white w-full text-center gap-8">
-            {menuItems.map((item) => (
-              <li key={item.text}>
-                <Link
-                  href={item.url}
-                  className="hover:text-[#F1C045] transition-colors duration-200 border-b-2 border-transparent hover:border-[#F1C045] border-white pb-1 text-2xl tracking-wide text-center"
-                >
-                  {item.text}
-                </Link>
-              </li>
-            ))}
+            {menuItems.map((item) => {
+              const isActive =
+                pathname === item.url ||
+                (item.url === "/products" && pathname.startsWith("/products"));
+              return (
+                <li key={item.text}>
+                  <Link
+                    href={item.url}
+                    className={`hover:text-[#F1C045] transition-colors duration-200 border-b-2 border-transparent hover:border-[#F1C045] pb-1 text-2xl tracking-wide text-center ${
+                      isActive
+                        ? "text-[#F1C045] font-bold border-[#F1C045]"
+                        : "border-white"
+                    }`}
+                  >
+                    {item.text}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Mobile Menu Button */}
@@ -68,17 +79,24 @@ const Header: React.FC = () => {
           className="md:hidden bg-gradient-to-b from-[#A6171C] to-[#8a1419] shadow-lg"
         >
           <ul className="flex flex-col space-y-2 pt-2 pb-6 px-6 font-semibold text-white">
-            {menuItems.map((item) => (
-              <li key={item.text}>
-                <Link
-                  href={item.url}
-                  className="hover:text-[#F1C045] block py-2 px-3 rounded-lg hover:bg-white/10 transition-colors duration-200"
-                  onClick={toggleMenu}
-                >
-                  {item.text}
-                </Link>
-              </li>
-            ))}
+            {menuItems.map((item) => {
+              const isActive =
+                pathname === item.url ||
+                (item.url === "/products" && pathname.startsWith("/products"));
+              return (
+                <li key={item.text}>
+                  <Link
+                    href={item.url}
+                    className={`hover:text-[#F1C045] block py-2 px-3 rounded-lg hover:bg-white/10 transition-colors duration-200 ${
+                      isActive ? "text-[#F1C045] font-bold bg-white/10" : ""
+                    }`}
+                    onClick={toggleMenu}
+                  >
+                    {item.text}
+                  </Link>
+                </li>
+              );
+            })}
             {/* <li className="pt-4">
               <Link
                 href="/contact"

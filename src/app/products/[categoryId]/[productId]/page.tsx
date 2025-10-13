@@ -150,7 +150,11 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
             {/* Price and Order Info */}
             <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-[#A6171C]/20 shadow-lg">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                <div />
+                <div className="text-left sm:text-right">
+                  <div className="text-2xl font-bold text-[#A6171C]">
+                    {product.id}
+                  </div>
+                </div>
                 <div className="text-left sm:text-right flex flex-row gap-2 items-center justify-center">
                   <div className="text-xs md:text-sm text-[#4a3631]">
                     สั่งขั้นต่ำ
@@ -374,7 +378,9 @@ const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
                       {relatedProduct.description}
                     </p>
                     <div className="flex justify-between items-center">
-                      <span className="text-[#A6171C] font-bold" />
+                      <span className="text-[#A6171C] font-bold">
+                        {relatedProduct.id}
+                      </span>
                       <span className="text-xs text-[#4a3631]">
                         ขั้นต่ำ {relatedProduct.minOrder} ชิ้น
                       </span>

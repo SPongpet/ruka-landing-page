@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
       className="relative flex items-center justify-center py-12 md:py-20 px-4 md:px-8 min-h-screen"
     >
       <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-[#A6171C] via-[#8B0000] to-[#6B0000]">
-        <div className="absolute inset-0 bg-[url('/background/bg_01.jpg')] bg-cover bg-center bg-no-repeat opacity-70"></div>
+        <div className="absolute inset-0 bg-[url('/background/bg-3.png')] bg-cover bg-center bg-no-repeat opacity-70"></div>
       </div>
 
       <div className="flex items-center justify-center w-full max-w-7xl mx-auto">

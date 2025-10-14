@@ -73,8 +73,10 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ params }) => {
                   <Image
                     src={product.image}
                     alt={product.name}
+                    // width={280}
+                    // height={350}
                     fill
-                    className="object-fill transition-transform duration-300 group-hover:scale-105"
+                    className="object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 

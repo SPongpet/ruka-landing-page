@@ -131,7 +131,7 @@ export const umbrellas = [
       name: 'ร่มใส 36 นิ้ว',
       description: 'ร่มใส 36 นิ้ว กันลมแรงได้ดี ผ้าเคลือบกันน้ำ ขนาดใหญ่',
       price: '680-950 บาท',
-      image: '/images/products/umbrellas/UM0005/1',
+      image: '/images/products/umbrellas/UM0005/1.jpg',
       features: [
           'กันลมแรงได้ดี',
           'ผ้าเคลือบกันน้ำ',

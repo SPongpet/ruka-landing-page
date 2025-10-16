@@ -46,7 +46,7 @@ export const tumblers = [
           '/images/products/tumblers/TB0001/3.avif',
           '/images/products/tumblers/TB0001/4.avif',
           '/images/products/tumblers/TB0001/5.avif',
-          '/images/products/tumblers/TB0001/6avif',
+          '/images/products/tumblers/TB0001/6.avif',
       ]
   },
   {

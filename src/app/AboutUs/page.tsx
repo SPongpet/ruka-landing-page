@@ -99,7 +99,7 @@ const AboutUsPage: React.FC = () => {
                     <h5 className="text-lg font-bold mb-1">
                       S – Story-First Design
                     </h5>
-                    <p className="text-lg leading-relaxed text-[#763A20]">
+                    <p className="font-bold text-lg leading-relaxed text-[#763A20]">
                       ทุกชิ้นต้องเล่าเรื่องแบรนด์ได้ตั้งแต่แรกเห็น
                     </p>
                   </div>
@@ -108,8 +108,8 @@ const AboutUsPage: React.FC = () => {
                     <h5 className="text-lg font-bold mb-1">
                       H – Hyper-Transparent Flow
                     </h5>
-                    <p className="text-lg leading-relaxed text-[#763A20] ">
-                      เสถานะงานเรียลไทม์ ไม่ต้องทวง ไม่ต้องเดา
+                    <p className="font-bold text-lg leading-relaxed text-[#763A20] ">
+                      สถานะงานเรียลไทม์ ไม่ต้องทวง ไม่ต้องเดา
                     </p>
                   </div>
 
@@ -117,7 +117,7 @@ const AboutUsPage: React.FC = () => {
                     <h5 className="text-lg font-bold mb-1">
                       I – Impact Over Quantity
                     </h5>
-                    <p className="text-lg leading-relaxed text-[#763A20]">
+                    <p className="font-bold text-lg leading-relaxed text-[#763A20]">
                       เน้นคุณค่า ใช้ประโยชน์ได้ ไม่ผลิตของเก็บฝุ่น
                     </p>
                   </div>
@@ -126,7 +126,7 @@ const AboutUsPage: React.FC = () => {
                     <h5 className="text-lg font-bold mb-1">
                       N – Next-Gen Innovation
                     </h5>
-                    <p className="text-lg leading-relaxed text-[#763A20]">
+                    <p className="font-bold text-lg leading-relaxed text-[#763A20]">
                       ทดลองใส่มีไฟใหม่เสมอ เพื่อให้ชิ้นงานล้ำตลาด
                     </p>
                   </div>
@@ -135,7 +135,7 @@ const AboutUsPage: React.FC = () => {
                     <h5 className="text-lg font-bold mb-1">
                       E – Elevate Every Touch
                     </h5>
-                    <p className="text-lg leading-relaxed text-[#763A20]">
+                    <p className="font-bold text-lg leading-relaxed text-[#763A20]">
                       ยกระดับตั้งแต่แพ็กเกจ
                       <br />
                       Unbox → After-Sales Experience

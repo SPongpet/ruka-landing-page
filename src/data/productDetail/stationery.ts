@@ -24,7 +24,7 @@ export const stationery = [
       name: 'สมุดโน้ตพกพา A7 Pocket Notebook',
       description: 'สมุดโน้ตพกพาขนาด A7 ดีไซน์มินิมอล เรียบหรู พกพาสะดวก',
       price: '120-220 บาท',
-      image: '/images/products/stationery /SN0002/1',
+      image: '/images/products/stationery /SN0002/1.jpg',
       features: [
           'ดีไซน์มินิมอล เรียบหรู พกพาสะดวก',
           'มีสายรัดปิดเล่ม กันหน้ากระดาษหลุด',

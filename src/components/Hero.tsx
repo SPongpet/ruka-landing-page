@@ -20,19 +20,19 @@ const Hero: React.FC = () => {
   const latestBlog = getLatestPosts(1)[0];
 
   // Auto-slide every 4 seconds
-  useEffect(() => {
-    if (!isAutoPlaying) return;
+  // useEffect(() => {
+  //   if (!isAutoPlaying) return;
 
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => {
-        const next = (prev + 1) % totalSlides;
-        console.log("Auto-sliding from", prev, "to", next);
-        return next;
-      });
-    }, 4000);
+  //   const interval = setInterval(() => {
+  //     setCurrentSlide((prev) => {
+  //       const next = (prev + 1) % totalSlides;
+  //       console.log("Auto-sliding from", prev, "to", next);
+  //       return next;
+  //     });
+  //   }, 40000);
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, totalSlides]);
+  //   return () => clearInterval(interval);
+  // }, [isAutoPlaying, totalSlides]);
 
   const goToSlide = useCallback((index: number) => {
     console.log("Going to slide", index);
@@ -105,44 +105,49 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 bg-[url('/background/bg-3.png')] bg-cover bg-center bg-no-repeat opacity-70"></div>
           </div>
 
-          <div className="flex items-center justify-center w-full max-w-7xl mx-auto">
-            <div className="text-center md:text-left relative z-20 w-full md:w-8/12">
-              <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight">
-                {heroDetails.heading1}
-              </h1>
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight">
-                {heroDetails.heading2}
-              </h2>
+          <div className="flex items-center justify-center w-full">
+            <div className="flex-1 items-center justify-center w-full max-w-7xl mx-auto">
+              <div className="text-center md:text-left relative z-20 w-full">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight md:pl-20">
+                  {heroDetails.heading1}
+                </h1>
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-8 leading-tight md:pl-20">
+                  {heroDetails.heading2}
+                </h2>
 
-              {/* Ruka Logo */}
-              <div className="mb-4 text-center">
-                <div className="px-4 md:px-6 py-2 md:py-3 inline-block">
-                  <Image
-                    src="/icons/logo.png"
-                    alt="Rukå"
-                    width={100}
-                    height={100}
-                    className="w-64 h-36"
-                  />
+                {/* Ruka Logo */}
+                <div className="flex flex-col items-center justify-center">
+                  <div className="mb-4 text-center">
+                    <div className="px-4 md:px-6 py-2 md:py-3 inline-block">
+                      <Image
+                        src="/icons/logo.png"
+                        alt="Rukå"
+                        width={100}
+                        height={100}
+                        className="w-64 h-36"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mb-6 md:mb-8 text-center">
+                    <p className="charmonman-font text-base sm:text-lg md:text-3xl text-[#FFFFFF] font-light italic">
+                      Elevate Your Corporate Gifting
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+                    <Link
+                      href="/products"
+                      className="group bg-[#F1C045] hover:bg-[#e5b63e] text-[#8B4513] px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
+                    >
+                      <span>สำรวจสินค้าของเรา</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
-
-              <div className="mb-6 md:mb-8 text-center">
-                <p className="charmonman-font text-base sm:text-lg md:text-3xl text-[#FFFFFF] font-light italic">
-                  Elevate Your Corporate Gifting
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-                <Link
-                  href="/products"
-                  className="group bg-[#F1C045] hover:bg-[#e5b63e] text-[#8B4513] px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
-                >
-                  <span>สำรวจสินค้าของเรา</span>
-                </Link>
-              </div>
+              <div className="w-4/12 hidden md:block" />
             </div>
-            <div className="w-4/12 hidden md:block" />
+            <div className="flex-1 hidden md:block" />
           </div>
         </div>
 
@@ -151,7 +156,7 @@ const Hero: React.FC = () => {
           className="relative flex items-center justify-center py-12 md:py-20 px-4 md:px-8 min-h-screen"
           style={{ width: `${100 / totalSlides}%`, flexShrink: 0 }}
         >
-          <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-[#2D5016] via-[#3D6B1F] to-[#4A7C2A]">
+          <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-b from-[#7b1a1b] to-[#de2a29]">
             <div className="absolute inset-0 bg-[url('/background/bg-4.png')] bg-cover bg-center bg-no-repeat opacity-40"></div>
           </div>
 
@@ -160,7 +165,7 @@ const Hero: React.FC = () => {
               <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 leading-tight">
                 สินค้ายอดนิยม
               </h2>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light">
+              <p className="text-lg sm:text-xl md:text-2xl text-[#F1C045] font-bold">
                 คัดสรรสินค้าคุณภาพเพื่อธุรกิจของคุณ
               </p>
             </div>
@@ -181,10 +186,10 @@ const Hero: React.FC = () => {
                         className="object-contain"
                       />
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-[#8B4513] mb-2 group-hover:text-[#A6171C] transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#2d1a18] mb-2 group-hover:text-[#A6171C] transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-sm md:text-base text-gray-600">
+                    <p className="text-sm md:text-base text-[#4a3631]">
                       {product.description}
                     </p>
                   </div>
@@ -195,7 +200,7 @@ const Hero: React.FC = () => {
             <div className="text-center mt-8 md:mt-12">
               <Link
                 href="/products"
-                className="inline-block bg-white hover:bg-gray-100 text-[#2D5016] px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-block bg-white text-[#A6171C] hover:bg-[#F1C045] hover:text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 ดูสินค้าทั้งหมด
               </Link>
@@ -208,7 +213,7 @@ const Hero: React.FC = () => {
           className="relative flex items-center justify-center py-12 md:py-20 px-4 md:px-8 min-h-screen"
           style={{ width: `${100 / totalSlides}%`, flexShrink: 0 }}
         >
-          <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-br from-[#A6171C] via-[#F1C045] to-[#A6171C]">
+          <div className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-b from-[#7b1a1b] to-[#de2a29]">
             <div className="absolute inset-0 bg-[url('/background/bg-5.png')] bg-cover bg-center bg-no-repeat opacity-30"></div>
           </div>
 
@@ -217,7 +222,7 @@ const Hero: React.FC = () => {
               <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 leading-tight">
                 ข่าวสารและบทความล่าสุด
               </h2>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light">
+              <p className="text-lg sm:text-xl md:text-2xl text-[#F1C045] font-bold">
                 อัพเดทเทรนด์และไอเดียของขวัญองค์กร
               </p>
             </div>
@@ -258,13 +263,13 @@ const Hero: React.FC = () => {
                     <div className="flex gap-4">
                       <Link
                         href={`/Blog/${latestBlog.id}`}
-                        className="flex-1 bg-[#1e3a8a] hover:bg-[#1e40af] text-white px-6 py-3 rounded-full font-bold text-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+                        className="flex-1 bg-gradient-to-r from-[#A6171C] to-[#8a1419] hover:from-[#8a1419] hover:to-[#A6171C] text-white px-6 py-3 rounded-full font-bold text-center transition-all duration-300 transform hover:scale-105 shadow-lg"
                       >
                         อ่านบทความ
                       </Link>
                       <Link
                         href="/Blog"
-                        className="flex-1 bg-white hover:bg-gray-50 text-[#1e3a8a] border-2 border-[#1e3a8a] px-6 py-3 rounded-full font-bold text-center transition-all duration-300 transform hover:scale-105"
+                        className="flex-1 bg-white text-[#A6171C] hover:bg-[#F1C045] hover:text-white px-6 py-3 rounded-full font-bold text-center transition-all duration-300 transform hover:scale-105 shadow-lg"
                       >
                         บทความทั้งหมด
                       </Link>

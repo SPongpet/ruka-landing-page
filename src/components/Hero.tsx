@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
         console.log("Auto-sliding from", prev, "to", next);
         return next;
       });
-    }, 40000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, totalSlides]);

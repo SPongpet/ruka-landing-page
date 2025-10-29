@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
                 </h2>
 
                 {/* Ruka Logo */}
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center md:mr-32">
                   <div className="mb-4 text-center">
                     <div className="px-4 md:px-6 py-2 md:py-3 inline-block">
                       <Image

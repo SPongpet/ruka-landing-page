@@ -20,19 +20,19 @@ const Hero: React.FC = () => {
   const latestBlog = getLatestPosts(1)[0];
 
   // Auto-slide every 4 seconds
-  // useEffect(() => {
-  //   if (!isAutoPlaying) return;
+  useEffect(() => {
+    if (!isAutoPlaying) return;
 
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prev) => {
-  //       const next = (prev + 1) % totalSlides;
-  //       console.log("Auto-sliding from", prev, "to", next);
-  //       return next;
-  //     });
-  //   }, 40000);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const next = (prev + 1) % totalSlides;
+        console.log("Auto-sliding from", prev, "to", next);
+        return next;
+      });
+    }, 40000);
 
-  //   return () => clearInterval(interval);
-  // }, [isAutoPlaying, totalSlides]);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, totalSlides]);
 
   const goToSlide = useCallback((index: number) => {
     console.log("Going to slide", index);
